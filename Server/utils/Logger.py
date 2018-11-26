@@ -1,3 +1,5 @@
-from termcolor import cprint
-def print_warning(string: str, *args):
-    cprint(string, 'yellow')
+from colorama import init, Fore, Back, Style
+init()
+
+def print_warning(string: str):
+    print(Fore.YELLOW+string+Style.RESET_ALL)
