@@ -1,0 +1,13 @@
+version: "3.3"
+networks:
+  sinf-net:
+
+services:
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: Password123#
+      MSSQL_PID: Enterprise
+    ports:
+      - '1433:1433'

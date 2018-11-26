@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Animais do Primavera</string>
+
+    <!--String For the register customer view-->
+    <string name="register_customer_title">Register Customer</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="representative_name">Representative Name</string>
+    <string name="customer_address">Customer Address</string>
+    <string name="customer_email">Customer Email</string>
+    <string name="customer_phone_number">Customer Phone Number</string>
+    <string name="custumer_tax_no">Customer Tax No.</string>
+    <string name="register_customer_button">Finish Registration</string>
+</resources>
