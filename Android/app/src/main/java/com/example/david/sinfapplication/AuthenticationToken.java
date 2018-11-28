@@ -1,7 +1,12 @@
 package com.example.david.sinfapplication;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class AuthenticationToken
 {
@@ -35,10 +40,28 @@ public class AuthenticationToken
 
     private void generate()
     {
-        //TODO
-     /* byte[] httpParametersToSendBytes = getBytesOfHTTPParametersToSend(authenticationRequestParamaters);
-        sendHTTPRequest(url, httpParametersToSendBytes);*/
-        //TODO setar o authenticationToken
+        String loginRequestResponse = null;
+        try
+        {
+            loginRequestResponse = PrimaveraWebAPI.login(Route.Authentication, authenticationRequestParamaters);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            JSONObject jsonObject = new JSONObject(loginRequestResponse);
+            authenticationToken = jsonObject.getString("auth_token");
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
         lastGeneratedTokenTimeMilis = System.currentTimeMillis();
     }
 

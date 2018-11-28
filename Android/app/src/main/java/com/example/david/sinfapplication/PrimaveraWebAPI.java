@@ -19,7 +19,7 @@ public class PrimaveraWebAPI
     private static AuthenticationToken authenticationToken;
 
 
-    public static void login(final String urlString, final Map<String, Object> requestParamaters) throws
+    public static String login(final String urlString, final Map<String, Object> requestParamaters) throws
             InterruptedException, ExecutionException, TimeoutException
     {
         AsyncTask asyncTask = new AsyncTask()
@@ -33,8 +33,7 @@ public class PrimaveraWebAPI
         asyncTask.execute(new String[1]);
        Object requestResponse = asyncTask.get(requestTimeoutMilis, TimeUnit.MILLISECONDS);
 
-       String stringRequestResponse = (String) requestResponse;
-        //TODO: PARSE JSON
+       return (String) requestResponse;
     }
 
     public static String sendRequest(final String urlString, final String method, final Map<String, Object> requestParamaters) throws
