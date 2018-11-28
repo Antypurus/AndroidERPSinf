@@ -45,14 +45,14 @@
         android:layout_width="319dp"
         android:layout_height="34dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:hint="@string/custumer_tax_no"
         android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/customerPhoneNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toEndOf="@+id/customerPhoneNumber" />
 
     <EditText
@@ -73,14 +73,14 @@
         android:layout_width="319dp"
         android:layout_height="34dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:hint="@string/customer_email"
         android:inputType="textEmailAddress"
         app:layout_constraintBaseline_toBaselineOf="@+id/customerAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toEndOf="@+id/customerAddress" />
 
     <EditText
@@ -108,7 +108,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBaseline_toBaselineOf="@+id/customerName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toEndOf="@+id/customerName" />
 
     <EditText
