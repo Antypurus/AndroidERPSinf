@@ -5,7 +5,7 @@
     android:id="@+id/RegisterProgress"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    android:background="@color/colorPrimary"
     tools:layout_editor_absoluteY="16dp">
 
     <EditText
@@ -19,7 +19,6 @@
         android:ems="10"
         android:hint="@string/custumer_tax_no"
         android:inputType="number"
-        android:text="@string/custumer_tax_no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customerPhoneNumber" />
@@ -35,7 +34,6 @@
         android:ems="10"
         android:hint="@string/customer_phone_number"
         android:inputType="phone"
-        android:text="@string/customer_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customerEmail" />
@@ -51,7 +49,6 @@
         android:ems="10"
         android:hint="@string/customer_email"
         android:inputType="textEmailAddress"
-        android:text="@string/customer_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customerAddress" />
@@ -67,7 +64,6 @@
         android:ems="10"
         android:hint="@string/customer_address"
         android:inputType="textPostalAddress"
-        android:text="@string/customer_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/representativeName" />
@@ -83,7 +79,6 @@
         android:ems="10"
         android:hint="@string/representative_name"
         android:inputType="textPersonName"
-        android:text="@string/representative_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customerName" />
@@ -144,7 +139,6 @@
         android:ems="10"
         android:hint="@string/customer_name"
         android:inputType="textPersonName"
-        android:text="@string/customer_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
