@@ -63,3 +63,7 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+# our shit
+**/.idea/**
+Android/app/.idea/workspace.xml
