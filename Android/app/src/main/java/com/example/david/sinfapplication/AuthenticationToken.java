@@ -10,8 +10,8 @@ import java.util.concurrent.TimeoutException;
 
 public class AuthenticationToken
 {
-    private String authenticationToken;
-    private long lastGeneratedTokenTimeMilis;
+    private String authenticationToken = null;
+    private long lastGeneratedTokenTimeMilis = 0;
     private Map<String, Object> authenticationRequestParamaters = new LinkedHashMap<>();
     private static final long tokenExpirationTimeMilis = 15 * 60 * 1000; //15 minutes
 
