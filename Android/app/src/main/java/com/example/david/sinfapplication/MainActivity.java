@@ -3,7 +3,6 @@ package com.example.david.sinfapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -43,6 +42,9 @@ public class MainActivity extends AppCompatActivity
         }
 
 
+
         setContentView(R.layout.create_customer);
+        ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
+        bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
     }
 }
