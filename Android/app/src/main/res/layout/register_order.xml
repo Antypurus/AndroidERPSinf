@@ -39,7 +39,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/checkout_product_list"
         android:layout_width="341dp"
-        android:layout_height="156dp"
+        android:layout_height="255dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
