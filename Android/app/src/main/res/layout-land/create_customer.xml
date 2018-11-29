@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/translucent_red"
+        android:background="@drawable/rounded_corner_red"
         android:text="@string/register_customer_button"
         android:textAlignment="center"
         android:textAllCaps="true"
