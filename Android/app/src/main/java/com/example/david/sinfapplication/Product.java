@@ -36,6 +36,13 @@ public class Product
         getImageFromObservations();
     }
 
+    public Product(Product product)
+    {
+        this(new String(product.id), new String(product.description), new String(product.observations),
+                product.currentStock,  product.pvp1,  product.pvp2,  product.pvp3,  product.pvp4,  product.pvp5,
+                product.pvp6, new String(product.currency));
+    }
+
     private void getImageFromObservations()
     {
 
