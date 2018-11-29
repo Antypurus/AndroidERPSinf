@@ -2,8 +2,9 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#49496a8b</color>
+    <color name="colorAccent">#FF4C4C</color>
     <color name="white">#FFFFFF</color>
     <color name="translucent_red">#DDFF0000</color>
     <color name="translucent_white">#CCFFFFFF</color>
+    <color name="old_copper_blue">#73B1B7</color>
 </resources>

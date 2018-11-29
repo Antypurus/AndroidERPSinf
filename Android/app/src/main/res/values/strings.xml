@@ -14,5 +14,10 @@
 
     <!-- ********* Strings for the checkout view ******************** -->
     <string name="checkout_title">Checkout</string>
+    <string name="product_price_indicator">Total Price:</string>
+    <string name="product_price">$100</string>
+    <string name="customer_search">Customer Name</string>
+    <string name="edit_customer_details">Edit Customer Details For Order</string>
+    <string name="checkout_button">Finish Checkout</string>
     <!-- ************************************************************ -->
 </resources>
