@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.Activities.register_order.create_customer;
+package com.example.david.sinfapplication.Activities.create_customer;
 
 import android.app.Activity;
 import android.os.Bundle;

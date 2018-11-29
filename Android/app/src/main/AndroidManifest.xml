@@ -18,7 +18,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.register_order.register_order_activity"></activity>
+        <activity android:name=".Activities.register_order.register_order_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@ public class register_order_activity extends Activity {
         m_checkout_product_list_recycler_view.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        String[] dataset = {"Test"};
+        String[] dataset = {"Test","Test","Test","Test","Test","Test","Test","Test","Test","Test"};
         mAdapter = new register_order_product_list_adapter(dataset);
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
     }
