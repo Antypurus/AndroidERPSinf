@@ -35,7 +35,7 @@ public class AuthenticationToken
     public String get()
     {
         long currentTimeMilis = System.currentTimeMillis();
-        boolean isTokenExpired = (lastGeneratedTokenTimeMilis + tokenExpirationTimeMilis) > currentTimeMilis;
+        boolean isTokenExpired = currentTimeMilis > (lastGeneratedTokenTimeMilis + tokenExpirationTimeMilis);
         if (isTokenExpired || authenticationToken == null)
             generate();
 

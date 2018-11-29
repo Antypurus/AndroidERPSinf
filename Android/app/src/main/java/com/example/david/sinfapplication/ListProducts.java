@@ -11,14 +11,14 @@ import java.util.concurrent.TimeoutException;
 
 public class ListProducts
 {
-    private static byte[] queryBytes = ("SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
-            "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo").getBytes();
+    private static byte[] queryBytes = ("\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
+            "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"").getBytes();
     private ArrayList<Product> products;
 
     public ListProducts() throws InterruptedException, ExecutionException, TimeoutException,
             JSONException
     {
-        String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, Method.ListProducts, queryBytes);
+        String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, Method.ListProducts, ContentType.ApplicationJson, queryBytes);
         parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
