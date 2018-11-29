@@ -1,5 +1,7 @@
 package com.example.david.sinfapplication;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -44,9 +46,10 @@ public class AuthenticationToken
     {
         try
         {
-            String loginRequestResponse  = PrimaveraWebAPI.login(Route.Authentication, authenticationRequestParamatersBytes);
+            String loginRequestResponse  = PrimaveraWebAPI.makeLoginRequest(Route.Authentication, authenticationRequestParamatersBytes);
             JSONObject jsonObject = new JSONObject(loginRequestResponse);
             authenticationToken = jsonObject.getString("access_token");
+            Log.d("generate token", authenticationToken);
         } catch (Exception e)
         {
             e.printStackTrace();
