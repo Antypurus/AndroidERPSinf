@@ -42,7 +42,7 @@ public class AuthenticationToken
         {
             String loginRequestResponse  = PrimaveraWebAPI.login(Route.Authentication, authenticationRequestParamaters);
             JSONObject jsonObject = new JSONObject(loginRequestResponse);
-            authenticationToken = jsonObject.getString("auth_token");
+            authenticationToken = jsonObject.getString("access_token");
         } catch (Exception e)
         {
             e.printStackTrace();
