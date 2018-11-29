@@ -1,10 +1,16 @@
 package com.example.david.sinfapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -44,5 +50,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
         bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
+    }
+
+    public void sendMessage(View view)
+    {
+        // prototype, change to the checkout view
+        Intent intent = new Intent(this, register_order_activity.class);
+        startActivity(intent);
     }
 }

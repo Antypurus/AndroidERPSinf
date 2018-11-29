@@ -28,7 +28,7 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     //constructor
     public register_order_product_list_adapter(String[] dataset)
     {
-
+        this.dataset = dataset;
     }
 
     // TODO: change this to our view
@@ -36,7 +36,8 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     @Override
     public register_order_product_list_adapter.register_order_product_list_holder onCreateViewHolder(ViewGroup parent, int viewType) {
         //create a new text view
-        TextView tv = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.register_order,parent,false);
+        TextView tv = (TextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_view_layout, parent, false);
 
         register_order_product_list_holder holder = new register_order_product_list_holder(tv);
         return holder;
