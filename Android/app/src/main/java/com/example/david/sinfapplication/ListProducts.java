@@ -34,15 +34,10 @@ public class ListProducts
             String description = productObject.getString("Descricao");
             String observations = productObject.getString("Observacoes");
             int stockAtual = productObject.getInt("StkActual");
-            int pvp1 = productObject.getInt("PVP1");
-            int pvp2 = productObject.getInt("PVP2");
-            int pvp3 = productObject.getInt("PVP3");
-            int pvp4 = productObject.getInt("PVP4");
-            int pvp5 = productObject.getInt("PVP5");
-            int pvp6 = productObject.getInt("PVP6");
+            int pvp = productObject.getInt("PVP1");
             String currency = productObject.getString("Moeda");
 
-            Product product = new Product(id, description, observations, stockAtual, pvp1, pvp2, pvp3, pvp4, pvp5, pvp6, currency);
+            Product product = new Product(id, description, observations, stockAtual, pvp, currency);
             products.add(product);
         }
 
