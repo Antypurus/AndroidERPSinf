@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.register_order;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -17,10 +18,10 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     // you provide access to all the views for a data item in a view holder
     public static class register_order_product_list_holder extends RecyclerView.ViewHolder
     {
-        public TextView m_product_name;
-        public register_order_product_list_holder(TextView product_name) {
-            super(product_name);
-            this.m_product_name = product_name;
+        public ConstraintLayout product;
+        public register_order_product_list_holder(ConstraintLayout product) {
+            super(product);
+            this.product = product;
         }
     }
 
@@ -35,17 +36,17 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     @Override
     public register_order_product_list_adapter.register_order_product_list_holder onCreateViewHolder(ViewGroup parent, int viewType) {
         //create a new text view
-        TextView tv = (TextView) LayoutInflater.from(parent.getContext())
+        ConstraintLayout c_layout = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_view_layout, parent, false);
 
-        register_order_product_list_holder holder = new register_order_product_list_holder(tv);
+        register_order_product_list_holder holder = new register_order_product_list_holder(c_layout);
         return holder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(register_order_product_list_adapter.register_order_product_list_holder holder, int position) {
-        holder.m_product_name.setText(dataset[position]);
+        //holder.m_product_name.setText(dataset[position]);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
