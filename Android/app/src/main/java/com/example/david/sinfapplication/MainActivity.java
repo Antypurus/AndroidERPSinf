@@ -1,12 +1,14 @@
 package com.example.david.sinfapplication;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
 
-        try
+        /*try
         {
             byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
             PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersByteArray);
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         } catch (TimeoutException e)
         {
             e.printStackTrace();
-        }
+        }*/
 
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
@@ -60,5 +62,17 @@ public class MainActivity extends AppCompatActivity
         // prototype, change to the checkout view
         Intent intent = new Intent(this, register_order_activity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
     }
 }
