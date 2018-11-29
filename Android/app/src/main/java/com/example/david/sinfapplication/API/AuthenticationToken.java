@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.PrimaveraWebAPI;
+package com.example.david.sinfapplication.API;
 
 import android.util.Log;
 
