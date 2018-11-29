@@ -2,7 +2,6 @@ package com.example.david.sinfapplication.Activities.PrimaveraWebAPI;
 
 import android.util.Log;
 
-import com.example.david.sinfapplication.Activities.PrimaveraWebAPI.PrimaveraWebAPI;
 import com.example.david.sinfapplication.Route;
 import com.example.david.sinfapplication.Utils;
 
@@ -12,17 +11,19 @@ import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class AuthenticationToken
+class AuthenticationToken
 {
+    private PrimaveraWebAPI primaveraWebAPI;
     private String authenticationToken = null;
     private long lastGeneratedTokenTimeMilis = 0;
     private byte[] authenticationRequestParamatersBytes;
     private static final long tokenExpirationTimeMilis = 15 * 60 * 1000; //15 minutes
 
 
-    public AuthenticationToken(String username, String password, String company, String instance, String grant_type, String line) throws
+    public AuthenticationToken(PrimaveraWebAPI primaveraWebAPI, String username, String password, String company, String instance, String grant_type, String line) throws
             UnsupportedEncodingException
     {
+        this.primaveraWebAPI = primaveraWebAPI;
         Map<String, Object> authenticationRequestParamaters = new LinkedHashMap<>();
         authenticationRequestParamaters.put("username", username);
         authenticationRequestParamaters.put("password", password);
@@ -50,10 +51,10 @@ public class AuthenticationToken
     {
         try
         {
-            String loginRequestResponse  = PrimaveraWebAPI.makeLoginRequest(Route.Authentication, authenticationRequestParamatersBytes);
+            String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.Authentication, authenticationRequestParamatersBytes);
             JSONObject jsonObject = new JSONObject(loginRequestResponse);
             authenticationToken = jsonObject.getString("access_token");
-            Log.d("generate token", authenticationToken);
+            Log.d("generate token", authenticationToken); //TODO
         } catch (Exception e)
         {
             e.printStackTrace();

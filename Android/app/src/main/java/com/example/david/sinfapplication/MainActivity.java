@@ -12,13 +12,8 @@ import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 
-import org.json.JSONException;
-
-import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity
 {

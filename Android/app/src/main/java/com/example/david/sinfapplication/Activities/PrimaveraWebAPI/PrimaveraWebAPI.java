@@ -20,12 +20,13 @@ public class PrimaveraWebAPI
     private static final int requestTimeoutMilis = 20000;
     private static AuthenticationToken authenticationToken;
 
-    public static void login(String username, String password, String company, String instance, String grant_type, String line) throws UnsupportedEncodingException
+    public static void login(String username, String password, String company, String instance, String grant_type, String line)
+            throws UnsupportedEncodingException
     {
-        authenticationToken = new AuthenticationToken(username, password, company, instance, grant_type, line);
+        authenticationToken = new AuthenticationToken(new PrimaveraWebAPI(), username, password, company, instance, grant_type, line);
     }
 
-    protected static String makeLoginRequest(final String urlString, final byte[] bodyContent) throws
+    public String makeLoginRequest(final String urlString, final byte[] bodyContent) throws
             InterruptedException, ExecutionException, TimeoutException
     {
         AsyncTask asyncTask = new AsyncTask()
