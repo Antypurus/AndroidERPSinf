@@ -1,6 +1,10 @@
-package com.example.david.sinfapplication;
+package com.example.david.sinfapplication.Activities.PrimaveraWebAPI;
 
 import android.util.Log;
+
+import com.example.david.sinfapplication.Activities.PrimaveraWebAPI.PrimaveraWebAPI;
+import com.example.david.sinfapplication.Route;
+import com.example.david.sinfapplication.Utils;
 
 import org.json.JSONObject;
 

@@ -1,7 +1,10 @@
-package com.example.david.sinfapplication;
+package com.example.david.sinfapplication.Activities.PrimaveraWebAPI;
 
 
 import android.os.AsyncTask;
+
+import com.example.david.sinfapplication.ContentType;
+import com.example.david.sinfapplication.Method;
 
 import java.io.BufferedReader;
 import java.io.IOException;
