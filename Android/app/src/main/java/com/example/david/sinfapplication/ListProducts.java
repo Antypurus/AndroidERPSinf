@@ -13,7 +13,7 @@ public class ListProducts
 {
     private static byte[] queryBytes = ("\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
             "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"").getBytes();
-    private ArrayList<Product> products;
+    private ArrayList<Product> products = new ArrayList<>();
 
     public ListProducts() throws InterruptedException, ExecutionException, TimeoutException,
             JSONException
@@ -25,7 +25,7 @@ public class ListProducts
     private void parseListProductsRequestResponse(String listProductsRequestResponse) throws
             JSONException
     {
-        JSONObject dataSetObject = new JSONObject(listProductsRequestResponse);
+        JSONObject dataSetObject = new JSONObject(listProductsRequestResponse).getJSONObject("DataSet");
         JSONArray productsArray = dataSetObject.getJSONArray("Table");
         for(int i = 0; i < productsArray.length(); i++)
         {

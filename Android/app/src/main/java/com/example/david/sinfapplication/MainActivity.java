@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 
+import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,10 +36,12 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
 
-        /*try
+       /* try
         {
             byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
-            PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersByteArray);
+            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
+                    "password", "professional");
+            new ListProducts();
         } catch (UnsupportedEncodingException e)
         {
             e.printStackTrace();
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (JSONException e)
         {
             e.printStackTrace();
         } catch (TimeoutException e)
