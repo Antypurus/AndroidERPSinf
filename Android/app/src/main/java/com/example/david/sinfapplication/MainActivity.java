@@ -3,6 +3,7 @@ package com.example.david.sinfapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -23,10 +24,13 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("instance", "DEFAULT");
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
-
         try
         {
-            PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersMap);
+            byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
+            PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersByteArray);
+        } catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
         } catch (InterruptedException e)
         {
             e.printStackTrace();
@@ -37,7 +41,6 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         }
-
 
 
         setContentView(R.layout.create_customer);
