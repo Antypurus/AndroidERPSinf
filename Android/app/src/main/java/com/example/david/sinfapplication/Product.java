@@ -10,11 +10,11 @@ public class Product
     private String observations;
     private Image image;
     private int currentStock;
-    private int pvp;
+    private double pvp;
     private String currency;
 
 
-    public Product(String id, String description, String observations, int currentStock, int pvp, String currency)
+    public Product(String id, String description, String observations, int currentStock, double pvp, String currency)
     {
         this.id = id;
         this.description = description;
@@ -34,5 +34,33 @@ public class Product
     private void getImageFromObservations()
     {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public int getCurrentStock() {
+        return currentStock;
+    }
+
+    public double getPvp() {
+        return pvp;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 }

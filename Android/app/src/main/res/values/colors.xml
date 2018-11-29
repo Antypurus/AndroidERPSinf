@@ -7,4 +7,5 @@
     <color name="translucent_red">#DDFF0000</color>
     <color name="translucent_white">#CCFFFFFF</color>
     <color name="old_copper_blue">#73B1B7</color>
+    <color name="gray">#404040</color>
 </resources>
