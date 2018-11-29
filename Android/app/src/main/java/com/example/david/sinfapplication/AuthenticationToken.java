@@ -1,12 +1,9 @@
 package com.example.david.sinfapplication;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 public class AuthenticationToken
 {
@@ -28,6 +25,7 @@ public class AuthenticationToken
         generate();
     }
 
+    //null is returned if an error occurred
     public String get()
     {
         long currentTimeMilis = System.currentTimeMillis();
@@ -40,28 +38,18 @@ public class AuthenticationToken
 
     private void generate()
     {
-        String loginRequestResponse = null;
         try
         {
-            loginRequestResponse = PrimaveraWebAPI.login(Route.Authentication, authenticationRequestParamaters);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        }
-        try
-        {
+            String loginRequestResponse  = PrimaveraWebAPI.login(Route.Authentication, authenticationRequestParamaters);
             JSONObject jsonObject = new JSONObject(loginRequestResponse);
             authenticationToken = jsonObject.getString("auth_token");
-        } catch (JSONException e)
+        } catch (Exception e)
         {
             e.printStackTrace();
+            authenticationToken = null;
+            return;
         }
+
         lastGeneratedTokenTimeMilis = System.currentTimeMillis();
     }
 
