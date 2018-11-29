@@ -19,12 +19,13 @@ public class Product
     private String currency;
 
 
-    public Product(String id, String description, String observations, int pvp1, int pvp2,
-                   int pvp3, int pvp4, int pvp5, int pvp6, String currency)
+    public Product(String id, String description, String observations, int currentStock, int pvp1,
+                   int pvp2, int pvp3, int pvp4, int pvp5, int pvp6, String currency)
     {
         this.id = id;
         this.description = description;
         this.observations = observations;
+        this.currentStock = currentStock;
         this.pvp1 = pvp1;
         this.pvp2 = pvp2;
         this.pvp3 = pvp3;
@@ -33,11 +34,6 @@ public class Product
         this.pvp6 = pvp6;
         this.currency = currency;
         getImageFromObservations();
-    }
-
-    public void setCurrentStock(int currentStock)
-    {
-        this.currentStock = currentStock;
     }
 
     private void getImageFromObservations()
