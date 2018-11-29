@@ -1,16 +1,10 @@
 package com.example.david.sinfapplication;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-
-import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,7 +29,11 @@ public class MainActivity extends AppCompatActivity
 
         try
         {
-            PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersMap);
+            byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
+            PrimaveraWebAPI.login("http://dservers.ddns.net:2018/WebApi/token", parametersByteArray);
+        } catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
         } catch (InterruptedException e)
         {
             e.printStackTrace();
