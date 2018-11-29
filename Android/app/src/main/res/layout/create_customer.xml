@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/HeadBar" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/creation_progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="342dp"
         android:layout_height="14dp"
@@ -158,7 +158,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/creation_progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />

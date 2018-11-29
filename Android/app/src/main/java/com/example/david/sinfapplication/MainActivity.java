@@ -1,7 +1,10 @@
 package com.example.david.sinfapplication;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,8 +41,8 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-
-
         setContentView(R.layout.create_customer);
+        ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
+        bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
     }
 }

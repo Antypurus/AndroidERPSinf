@@ -8,7 +8,7 @@
     android:background="@color/colorPrimary">
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/creation_progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="664dp"
         android:layout_height="20dp"
@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/creation_progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
