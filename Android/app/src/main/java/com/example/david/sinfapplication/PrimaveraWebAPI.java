@@ -31,9 +31,9 @@ public class PrimaveraWebAPI
             }
         };
         asyncTask.execute(new String[1]);
-       Object requestResponse = asyncTask.get(requestTimeoutMilis, TimeUnit.MILLISECONDS);
+        Object requestResponse = asyncTask.get(requestTimeoutMilis, TimeUnit.MILLISECONDS);
 
-       return (String) requestResponse;
+        return (String) requestResponse;
     }
 
     public static String sendRequest(final String urlString, final String method, final byte[] bodyContent) throws
@@ -64,7 +64,7 @@ public class PrimaveraWebAPI
             urlConnection.setRequestMethod(method);
 
             urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            if(authenticationTokenRequired)
+            if (authenticationTokenRequired)
                 urlConnection.setRequestProperty("Authorization", "Bearer " + authenticationToken.get());
             urlConnection.setRequestProperty("Content-Length", String.valueOf(bodyContent.length));
 
