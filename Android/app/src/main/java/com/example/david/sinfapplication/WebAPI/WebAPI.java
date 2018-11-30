@@ -22,17 +22,6 @@ import java.util.concurrent.TimeoutException;
 
 public class WebAPI
 {
-    public static ArrayList<Product> getProductsList() throws InterruptedException, ExecutionException, TimeoutException,
-            JSONException
-    {
-        String query = "\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
-                "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"";
-
-        String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, RequestMethod.ListProducts,
-                ContentType.ApplicationJson, query.getBytes());
-        return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
-    }
-
     /**
      * Logs in to the webapi. Returns 0 on success; 1 on server error
      * @return
@@ -49,6 +38,18 @@ public class WebAPI
         }
 
         return 0;
+    }
+
+    
+    public static ArrayList<Product> getProductsList() throws InterruptedException, ExecutionException, TimeoutException,
+            JSONException
+    {
+        String query = "\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
+                "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"";
+
+        String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, RequestMethod.ListProducts,
+                ContentType.ApplicationJson, query.getBytes());
+        return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
     public static Customer viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
