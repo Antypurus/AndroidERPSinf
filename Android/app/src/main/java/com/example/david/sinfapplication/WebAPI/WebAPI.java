@@ -39,7 +39,7 @@ public class WebAPI
 
     }
 
-    public static Customer addCustomer(Customer customer) throws InterruptedException,
+    public static boolean addCustomer(Customer customer) throws InterruptedException,
             ExecutionException, TimeoutException, JSONException
     {
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();

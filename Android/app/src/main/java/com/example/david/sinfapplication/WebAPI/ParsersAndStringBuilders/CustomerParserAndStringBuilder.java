@@ -10,38 +10,39 @@ public class CustomerParserAndStringBuilder
 
     public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse)
     {
-        return new Customer("ldfjls", "---fjsdlkfs", null, null,
+        return new Customer("f", "---fjsdlkfs", null, null,
                 null, null, null, null, null, null, null,
                 null, null,  null, null, null);
     }
 
-    public static Customer parseAddCustomerRequestResponse(String addCustomerRequestResponse)
+    public static boolean parseAddCustomerRequestResponse(String addCustomerRequestResponse)
     {
-        return new Customer("ldfjls", "---fjsdlkfs", null, null,
-                null, null, null, null, null, null, null,
-                null, null,  null, null, null);
+        if(addCustomerRequestResponse.isEmpty())
+            return true;
+        else
+            return false;
     }
 
     public static JSONObject buildJsonWithCustomerNonNullAttributes(Customer customer) throws
             JSONException
     {
         JSONObject jsonObject = new JSONObject();
-        addToJsonObjectIfNotNull(jsonObject, "id", customer.getId());
-        addToJsonObjectIfNotNull(jsonObject, "name", customer.getName());
-        addToJsonObjectIfNotNull(jsonObject, "description", customer.getDescription());
-        addToJsonObjectIfNotNull(jsonObject, "address", customer.getAddress());
-        addToJsonObjectIfNotNull(jsonObject, "city", customer.getCity());
-        addToJsonObjectIfNotNull(jsonObject, "postalCode", customer.getPostalCode());
-        addToJsonObjectIfNotNull(jsonObject, "postalCodeCity", customer.getPostalCodeCity());
-        addToJsonObjectIfNotNull(jsonObject, "phoneNumber", customer.getPhoneNumber());
-        addToJsonObjectIfNotNull(jsonObject, "faxNumber", customer.getFaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "webSite", customer.getWebSite());
-        addToJsonObjectIfNotNull(jsonObject, "state", customer.getState());
-        addToJsonObjectIfNotNull(jsonObject, "taxNumber", customer.getTaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "country", customer.getCountry());
-        addToJsonObjectIfNotNull(jsonObject, "currency", customer.getCurrency());
-        addToJsonObjectIfNotNull(jsonObject, "checkingAccountDebit", customer.getCheckingAccountDebit());
-        addToJsonObjectIfNotNull(jsonObject, "pendingOrdersDebit", customer.getPendingOrdersDebit());
+        addToJsonObjectIfNotNull(jsonObject, "Cliente", customer.getId());
+        addToJsonObjectIfNotNull(jsonObject, "Nome", customer.getName());
+        addToJsonObjectIfNotNull(jsonObject, "Descricao", customer.getDescription());
+        addToJsonObjectIfNotNull(jsonObject, "Morada", customer.getAddress());
+        addToJsonObjectIfNotNull(jsonObject, "Localidade", customer.getCity());
+        addToJsonObjectIfNotNull(jsonObject, "CodigoPostal", customer.getPostalCode());
+        addToJsonObjectIfNotNull(jsonObject, "LocalidadeCodigoPostal", customer.getPostalCodeCity());
+        addToJsonObjectIfNotNull(jsonObject, "Telefone", customer.getPhoneNumber());
+        addToJsonObjectIfNotNull(jsonObject, "Fax", customer.getFaxNumber());
+        addToJsonObjectIfNotNull(jsonObject, "EnderecoWeb", customer.getWebSite());
+        addToJsonObjectIfNotNull(jsonObject, "Distrito", customer.getState());
+        addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customer.getTaxNumber());
+        addToJsonObjectIfNotNull(jsonObject, "Pais", customer.getCountry());
+        addToJsonObjectIfNotNull(jsonObject, "Moeda", customer.getCurrency());
+        addToJsonObjectIfNotNull(jsonObject, "DebitoContaCorrente", customer.getCheckingAccountDebit());
+        addToJsonObjectIfNotNull(jsonObject, "DebitoEncomendasPendentes", customer.getPendingOrdersDebit());
 
         return jsonObject;
     }
@@ -49,7 +50,9 @@ public class CustomerParserAndStringBuilder
     private static void addToJsonObjectIfNotNull(JSONObject jsonObject, String key, String value) throws
             JSONException
     {
-        if(value != null)
-            jsonObject.put(key, value);
+        if(value == null)
+            value = "";
+
+        jsonObject.put(key, value);
     }
 }
