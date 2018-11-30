@@ -1,6 +1,6 @@
 package com.example.david.sinfapplication.WebAPI.Communication;
 
-public class Method
+public class RequestMethod
 {
     private static String PrimaveraWebAPIDirectQueryMethod = "POST";
     public static String Authentication = "POST";
