@@ -91,4 +91,84 @@ public class Customer
         this.checkingAccountDebit = checkingAccountDebit;
         this.pendingOrdersDebit = pendingOrdersDebit;
     }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public String getCity()
+    {
+        return city;
+    }
+
+    public String getPostalCode()
+    {
+        return postalCode;
+    }
+
+    public String getPostalCodeCity()
+    {
+        return postalCodeCity;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public String getFaxNumber()
+    {
+        return faxNumber;
+    }
+
+    public String getWebSite()
+    {
+        return webSite;
+    }
+
+    public String getState()
+    {
+        return state;
+    }
+
+    public String getTaxNumber()
+    {
+        return taxNumber;
+    }
+
+    public String getCountry()
+    {
+        return country;
+    }
+
+    public String getCurrency()
+    {
+        return currency;
+    }
+
+    public String getCheckingAccountDebit()
+    {
+        return checkingAccountDebit;
+    }
+
+    public String getPendingOrdersDebit()
+    {
+        return pendingOrdersDebit;
+    }
 }
