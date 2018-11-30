@@ -59,6 +59,14 @@ public class WebAPI
         return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
+    /**
+     * Retrieves details of a customer by id from the ERP server. Returns an ArrayList with instances of class Product representing the products retrieved from the ERP server.
+     * @param customerId A String representing the id of the customer to retrieve from the ERP server.
+     * @return An instance of class Customer representing the customer retrieved from server.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
     public static Customer viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.viewCustomer + customerId;
