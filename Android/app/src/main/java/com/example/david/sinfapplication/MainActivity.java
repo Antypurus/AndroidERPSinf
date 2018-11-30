@@ -11,6 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
+import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import org.json.JSONException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,6 +35,16 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
 
+        /*try
+        {
+            System.out.println(WebAPI.buildJsonWithCustomerNonNullAttributes(new Customer("ldfjls", "---fjsdlkfs", null, null,
+                    null, null, null, null, null, null, null,
+                    null, null,  null, null, null)).toString());
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+*/
        /* try
         {
             byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);

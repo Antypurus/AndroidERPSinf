@@ -8,6 +8,6 @@ public class Route
     private static String PrimaveraWebAPIDirectQuery = "Administrador/Consulta";
     public static String Authentication = PrimaveraWebAPIDefaultRoute + "token";
     public static String ListProducts = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIDirectQuery;
-    public static String viewCustomer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Edita";
-
+    public static String viewCustomer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Edita/";
+    public static String addCostumer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Actualiza";
 }
