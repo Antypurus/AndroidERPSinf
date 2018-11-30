@@ -7,6 +7,7 @@ import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
+import com.example.david.sinfapplication.WebAPI.Parsers.CustomerParser;
 import com.example.david.sinfapplication.WebAPI.Parsers.ProductsListParser;
 
 import org.json.JSONException;
@@ -27,5 +28,10 @@ public class WebAPI
         return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
+    public static Customer viewCustomer() throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.viewCustomer, RequestMethod.ViewCustomer, ContentType.ApplicationJson, new byte[0]);
+        return CustomerParser.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
 
+    }
 }
