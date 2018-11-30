@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }*/
 
+       /*
         try
         {
 
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         }
-
+*/
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
         bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
