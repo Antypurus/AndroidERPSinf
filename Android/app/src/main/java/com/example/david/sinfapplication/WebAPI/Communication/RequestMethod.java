@@ -2,9 +2,11 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 
 public class RequestMethod
 {
-    private static String PrimaveraWebAPIDirectQueryMethod = "POST";
-    public static String Authentication = "POST";
-    public static String ListProducts = PrimaveraWebAPIDirectQueryMethod;
-    public static String ViewCustomer = PrimaveraWebAPIDirectQueryMethod;
-
+    private static String GET = "GET";
+    private static String POST = "POST";
+    private static String PrimaveraWebAPIRawQueryMethod = POST;
+    public static String Authentication = POST;
+    public static String ListProducts = PrimaveraWebAPIRawQueryMethod;
+    public static String ViewCustomer = GET;
+    public static String AddCustomer = POST;
 }
