@@ -5,5 +5,6 @@ public class RequestMethod
     private static String PrimaveraWebAPIDirectQueryMethod = "POST";
     public static String Authentication = "POST";
     public static String ListProducts = PrimaveraWebAPIDirectQueryMethod;
+    public static String ViewCustomer = PrimaveraWebAPIDirectQueryMethod;
 
 }
