@@ -19,5 +19,6 @@
     <string name="customer_search">Customer Name</string>
     <string name="edit_customer_details">Edit Customer Details For Order</string>
     <string name="checkout_button">Finish Checkout</string>
+    <string name="is_order_switch">Is Reservation</string>
     <!-- ************************************************************ -->
 </resources>
