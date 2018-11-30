@@ -3,14 +3,12 @@ package com.example.david.sinfapplication.WebAPI;
 
 import com.example.david.sinfapplication.ContentType;
 import com.example.david.sinfapplication.Method;
-import com.example.david.sinfapplication.Product;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.Parsers.ProductsListParser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;

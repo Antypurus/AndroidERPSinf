@@ -3,12 +3,11 @@ package com.example.david.sinfapplication.Activities.register_order;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.david.sinfapplication.CartProduct;
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.R;
 
 public class register_order_product_list_adapter extends RecyclerView.Adapter<register_order_product_list_adapter.register_order_product_list_holder>

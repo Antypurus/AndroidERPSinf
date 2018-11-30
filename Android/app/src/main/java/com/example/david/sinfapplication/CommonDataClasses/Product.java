@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication;
+package com.example.david.sinfapplication.CommonDataClasses;
 
 
 import android.media.Image;

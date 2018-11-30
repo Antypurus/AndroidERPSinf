@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.david.sinfapplication.CartProduct;
-import com.example.david.sinfapplication.Product;
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
 
 public class register_order_activity extends Activity {

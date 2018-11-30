@@ -1,12 +1,11 @@
 package com.example.david.sinfapplication.WebAPI.Parsers;
 
-import com.example.david.sinfapplication.Product;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ProductsListParser
