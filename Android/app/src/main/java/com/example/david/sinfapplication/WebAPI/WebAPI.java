@@ -29,13 +29,38 @@ public class WebAPI
         return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
+    /**
+     * Logs in to the webapi. Returns 0 on success; 1 on server error
+     * @return
+     */
+    public static int login()
+    {
+        try
+        {
+            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
+                    "password", "professional");
+        } catch (UnsupportedEncodingException e)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+
     public static Customer viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.viewCustomer + customerId;
 
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewCustomer,
                 ContentType.UrlEncoded, new byte[0]);
-        return CustomerParserAndStringBuilder.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
+        try
+        {
+            return CustomerParserAndStringBuilder.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
 
     }
 
