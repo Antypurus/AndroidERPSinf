@@ -5,7 +5,7 @@
     android:id="@+id/create_customer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/old_copper_blue1">
 
     <ProgressBar
         android:id="@+id/creation_progress"
@@ -29,12 +29,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_corner_red"
+        android:background="@drawable/rounded_corner_blue"
         android:onClick="sendMessage"
         android:text="@string/register_customer_button"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/gray"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/creation_progress"

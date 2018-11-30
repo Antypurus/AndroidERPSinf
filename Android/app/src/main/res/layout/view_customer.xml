@@ -119,37 +119,43 @@
         android:id="@+id/Meetings"
         android:layout_width="361dp"
         android:layout_height="45dp"
-        android:background="@color/buttonsColor"
-        android:text="Meetings"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:background="@drawable/rounded_corner_blue"
+        android:text="MEETINGS"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        tools:layout_editor_absoluteY="349dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="361dp"
         android:layout_height="40dp"
-        android:background="@color/buttonsColor"
+        android:background="@drawable/rounded_corner_blue"
         android:text="Sales History"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Meetings" />
+        tools:layout_editor_absoluteY="400dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="361dp"
         android:layout_height="53dp"
-        android:background="@color/buttonsColor"
+        android:background="@color/old_copper_blue"
         android:text="Orders"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        tools:layout_editor_absoluteY="445dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
