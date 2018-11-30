@@ -6,6 +6,7 @@ import com.example.david.sinfapplication.Method;
 import com.example.david.sinfapplication.Product;
 import com.example.david.sinfapplication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
+import com.example.david.sinfapplication.WebAPI.Parsers.ProductsListParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,27 +26,8 @@ public class ListProducts
             JSONException
     {
         String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, Method.ListProducts, ContentType.ApplicationJson, queryBytes);
-        parseListProductsRequestResponse(listProductsRequestResponse);
+        ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
-    private void parseListProductsRequestResponse(String listProductsRequestResponse) throws
-            JSONException
-    {
-        JSONObject dataSetObject = new JSONObject(listProductsRequestResponse).getJSONObject("DataSet");
-        JSONArray productsArray = dataSetObject.getJSONArray("Table");
-        for(int i = 0; i < productsArray.length(); i++)
-        {
-            JSONObject productObject = productsArray.getJSONObject(i);
-            String id = productObject.getString("Artigo");
-            String description = productObject.getString("Descricao");
-            String observations = productObject.getString("Observacoes");
-            int stockAtual = productObject.getInt("StkActual");
-            int pvp = productObject.getInt("PVP1");
-            String currency = productObject.getString("Moeda");
 
-            Product product = new Product(id, description, observations, stockAtual, pvp, currency);
-            products.add(product);
-        }
-
-    }
 }
