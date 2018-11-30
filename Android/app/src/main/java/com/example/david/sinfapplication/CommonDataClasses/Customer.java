@@ -17,7 +17,7 @@ public class Customer
     /**
      * Corresponds to Morada in primavera
      */
-    private String Address;
+    private String address;
     /**
      * Corresponds to Localidade in primavera
      */
@@ -45,7 +45,7 @@ public class Customer
     /**
      * Corresponds to Distrito in primavera
      */
-    private String State;
+    private String state;
     /**
      * Corresponds to NumContribuinte in primavera
      */
