@@ -7,6 +7,8 @@ public class CustomerParser
 
     public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse)
     {
-        
+        return new Customer("ldfjls", "---fjsdlkfs", null, null,
+                null, null, null, null, null, null, null,
+                null, null,  null, null, null);
     }
 }

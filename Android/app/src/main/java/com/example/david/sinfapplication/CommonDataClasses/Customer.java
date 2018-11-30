@@ -92,6 +92,30 @@ public class Customer
         this.pendingOrdersDebit = pendingOrdersDebit;
     }
 
+    public Customer(String name, String description, String address, String city,
+                    String postalCode, String postalCodeCity, String phoneNumber,
+                    String faxNumber, String webSite, String state, String taxNumber,
+                    String country, String currency, String checkingAccountDebit,
+                    String pendingOrdersDebit)
+    {
+        //TODO this.id = SHA256 ....;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.postalCodeCity = postalCodeCity;
+        this.phoneNumber = phoneNumber;
+        this.faxNumber = faxNumber;
+        this.webSite = webSite;
+        this.state = state;
+        this.taxNumber = taxNumber;
+        this.country = country;
+        this.currency = currency;
+        this.checkingAccountDebit = checkingAccountDebit;
+        this.pendingOrdersDebit = pendingOrdersDebit;
+    }
+
     public String getId()
     {
         return id;
