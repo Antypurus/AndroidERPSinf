@@ -20,13 +20,12 @@ public class WebAPI
 {
     private static byte[] queryBytes = ("\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
             "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"").getBytes();
-    private ArrayList<Product> products = new ArrayList<>();
 
-    public WebAPI() throws InterruptedException, ExecutionException, TimeoutException,
+    public static ArrayList<Product> getProductsList() throws InterruptedException, ExecutionException, TimeoutException,
             JSONException
     {
         String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, Method.ListProducts, ContentType.ApplicationJson, queryBytes);
-        ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
+        return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
 
 
