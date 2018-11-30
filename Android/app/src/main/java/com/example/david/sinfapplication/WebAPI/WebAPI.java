@@ -1,22 +1,19 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
-import android.util.JsonReader;
-
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
-import com.example.david.sinfapplication.WebAPI.Parsers.CustomerParser;
-import com.example.david.sinfapplication.WebAPI.Parsers.ProductsListParser;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParser;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 

@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.WebAPI.Parsers;
+package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
 
