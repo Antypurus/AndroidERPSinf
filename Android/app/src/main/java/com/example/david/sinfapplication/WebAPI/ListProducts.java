@@ -1,7 +1,11 @@
-package com.example.david.sinfapplication;
+package com.example.david.sinfapplication.WebAPI;
 
 
-import com.example.david.sinfapplication.WebAPI.PrimaveraWebAPI;
+import com.example.david.sinfapplication.ContentType;
+import com.example.david.sinfapplication.Method;
+import com.example.david.sinfapplication.Product;
+import com.example.david.sinfapplication.Route;
+import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 
 import org.json.JSONArray;
 import org.json.JSONException;
