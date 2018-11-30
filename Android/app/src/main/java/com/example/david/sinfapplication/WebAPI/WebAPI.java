@@ -24,7 +24,7 @@ public class WebAPI
 {
     /**
      * Logs in to the webapi. Returns 0 on success; 1 on server error
-     * @return
+     * @return 0 on success; 1 on server error
      */
     public static int login()
     {
