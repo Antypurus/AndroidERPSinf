@@ -17,12 +17,12 @@ import java.util.concurrent.TimeoutException;
 
 public class WebAPI
 {
-    private static byte[] queryBytes = ("\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
-            "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"").getBytes();
-
     public static ArrayList<Product> getProductsList() throws InterruptedException, ExecutionException, TimeoutException,
             JSONException
     {
+        byte[] queryBytes = ("\""+ "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
+                "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"").getBytes();
+
         String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, RequestMethod.ListProducts, ContentType.ApplicationJson, queryBytes);
         return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
