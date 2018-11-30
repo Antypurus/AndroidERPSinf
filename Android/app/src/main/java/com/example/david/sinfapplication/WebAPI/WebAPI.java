@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.WebAPI;
 
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.Utils;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -12,7 +13,10 @@ import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.Product
 
 import org.json.JSONException;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 

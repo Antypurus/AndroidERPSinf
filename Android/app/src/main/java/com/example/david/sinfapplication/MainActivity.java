@@ -18,6 +18,8 @@ import org.json.JSONException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -67,6 +69,21 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         }*/
+
+        try
+        {
+
+            WebAPI.viewCustomer("1");
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        }
 
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
