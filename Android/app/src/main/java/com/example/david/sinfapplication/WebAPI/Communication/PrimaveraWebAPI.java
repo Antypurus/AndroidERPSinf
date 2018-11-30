@@ -3,7 +3,6 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 
 import android.os.AsyncTask;
 
-import com.example.david.sinfapplication.ContentType;
 import com.example.david.sinfapplication.Method;
 
 import java.io.BufferedReader;

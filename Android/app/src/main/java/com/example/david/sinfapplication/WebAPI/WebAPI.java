@@ -1,8 +1,7 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
-import com.example.david.sinfapplication.ContentType;
+import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.Method;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
