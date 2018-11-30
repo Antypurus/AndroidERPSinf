@@ -1,7 +1,7 @@
 package com.example.david.sinfapplication;
 
 
-import com.example.david.sinfapplication.API.PrimaveraWebAPI;
+import com.example.david.sinfapplication.WebAPI.PrimaveraWebAPI;
 
 import org.json.JSONArray;
 import org.json.JSONException;
