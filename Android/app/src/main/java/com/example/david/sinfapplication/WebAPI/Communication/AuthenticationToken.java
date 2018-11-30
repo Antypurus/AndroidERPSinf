@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.WebAPI;
+package com.example.david.sinfapplication.WebAPI.Communication;
 
 import android.util.Log;
 
