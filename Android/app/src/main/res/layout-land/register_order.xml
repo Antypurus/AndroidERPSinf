@@ -6,6 +6,53 @@
     android:layout_height="match_parent"
     android:background="@color/old_copper_blue1">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="279dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/is_order"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/checkout_product_list"
+        app:layout_constraintTop_toBottomOf="@+id/product_price_indicator2" />
+
+    <RadioGroup
+        android:id="@+id/order_type"
+        android:layout_width="135dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_corner"
+        app:layout_constraintBottom_toTopOf="@+id/search_customer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toEndOf="@+id/checkout_product_list"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="237dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sale_order"
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="313dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/reservation"
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/edit_customer_details2"
         android:layout_width="316dp"
@@ -16,6 +63,7 @@
         android:text="@string/edit_customer_details"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/finish_checkout2"
         app:layout_constraintStart_toEndOf="@+id/checkout_product_list" />
@@ -28,6 +76,8 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_red"
         android:text="@string/checkout_button"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +86,7 @@
     <SearchView
         android:id="@+id/search_customer"
         android:layout_width="316dp"
-        android:layout_height="40dp"
+        android:layout_height="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/rounded_corner"
