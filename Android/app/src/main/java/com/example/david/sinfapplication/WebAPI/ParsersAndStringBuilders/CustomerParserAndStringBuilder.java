@@ -14,6 +14,7 @@ public class CustomerParserAndStringBuilder
 
     public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse) throws JSONException
     {
+        //TODO
         JSONObject dataSetObject = new JSONObject(viewCustomerRequestResponse).getJSONObject("DataSet");
         JSONArray productsArray = dataSetObject.getJSONArray("Table");
         JSONArray productsArray2 = dataSetObject.getJSONArray("Table");
