@@ -163,7 +163,7 @@ public class WebAPI
                 "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
                 "LD.IdCabecDoc = '" + documentId + "'" + "\"";
 
-        String requestRoute = Route.viewProduct + documentId;
+        String requestRoute = Route.viewDocument + documentId;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
                 ContentType.ApplicationJson, query.getBytes());
         try
