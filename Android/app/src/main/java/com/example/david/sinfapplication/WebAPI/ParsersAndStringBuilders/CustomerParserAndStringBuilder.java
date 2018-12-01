@@ -1,16 +1,38 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class CustomerParserAndStringBuilder
 {
 
-    public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse)
+    public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse) throws JSONException
     {
-        return new Customer("f", "---fjsdlkfs", null, null,
+        JSONObject dataSetObject = new JSONObject(viewCustomerRequestResponse).getJSONObject("DataSet");
+        JSONArray productsArray = dataSetObject.getJSONArray("Table");
+        JSONArray productsArray2 = dataSetObject.getJSONArray("Table");
+
+/*
+            JSONObject productObject = productsArray.getJSONObject(i);
+            String id = productObject.getString("Artigo");
+            String description = productObject.getString("Descricao");
+            String observations = productObject.getString("Observacoes");
+            int stockAtual = productObject.getInt("StkActual");
+            int pvp = productObject.getInt("PVP1");
+            String currency = productObject.getString("Moeda");
+
+            Product product = new Product(id, description, observations, stockAtual, pvp, currency);
+            products.add(product);
+
+        return products;
+*/
+        return new Customer("ldfjls", "---fjsdlkfs", null, null,
                 null, null, null, null, null, null, null,
                 null, null,  null, null, null);
     }
