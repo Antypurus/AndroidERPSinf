@@ -96,7 +96,33 @@ public class WebAPI
     }
 
     /**
+     * Edits the details of a customer by id on the ERP server. Returns an int indicating the result of the request.
+     * @param customerId A String representing the id of the customer whose information will be edited in the ERP server.
+     * @param customer An instance of class customer representing the new customer data to be sent to the server.
+     * @return An int indicating the success of the request. 0 indicates success; 1 indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static int editCustomer(String customerId, Customer customer) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    {
+        String requestRoute = Route.editCostumer + customerId;
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();
+
+        String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
+                ContentType.ApplicationJson, requestBody.getBytes());
+
+        boolean success = CustomerParserAndStringBuilder.parseEditCustomerRequestResponse(editCustomerRequestResponse);
+
+        if (success)
+            return 0;
+        else
+            return 1;
+    }
+
+    /**
      * Retrieves details of a product by id from the ERP server. Returns an instance of class Product representing the product retrieved from the ERP server.
+     *
      * @param productId A String representing the id of the product to retrieve from the ERP server.
      * @return An instance of class Product representing the customer retrieved from server.
      * @throws InterruptedException
