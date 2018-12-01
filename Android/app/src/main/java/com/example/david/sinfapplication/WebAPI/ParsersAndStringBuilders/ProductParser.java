@@ -6,7 +6,7 @@ import org.json.JSONException;
 
 public class ProductParser
 {
-    public static Product parseViewProductRequestResponse(String viewCustomerRequestResponse) throws
+    public static Product parseViewProductRequestResponse(String viewProductRequestResponse) throws
             JSONException
     {
         //TODO
