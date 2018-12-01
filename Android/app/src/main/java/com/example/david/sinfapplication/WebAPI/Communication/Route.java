@@ -12,4 +12,5 @@ public class Route
     public static String addCostumer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Actualiza/";
     public static String editCostumer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Actualiza/";
     public static String viewProduct = PrimaveraWebAPIDefaultRoute + "Base/Artigos/Edita/";
+    public static String viewDocument = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIDirectQuery;
 }
