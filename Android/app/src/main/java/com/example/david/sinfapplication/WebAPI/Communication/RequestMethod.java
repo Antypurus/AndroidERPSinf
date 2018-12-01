@@ -9,4 +9,5 @@ public class RequestMethod
     public static String ListProducts = PrimaveraWebAPIRawQueryMethod;
     public static String ViewCustomer = GET;
     public static String AddCustomer = POST;
+    public static String ViewProduct = GET;
 }
