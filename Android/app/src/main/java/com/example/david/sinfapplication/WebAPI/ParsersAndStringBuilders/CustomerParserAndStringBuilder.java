@@ -46,6 +46,14 @@ public class CustomerParserAndStringBuilder
             return false;
     }
 
+    public static boolean parseEditCustomerRequestResponse(String editCustomerRequestResponse)
+    {
+        if(editCustomerRequestResponse.isEmpty())
+            return true;
+        else
+            return false;
+    }
+
     public static JSONObject buildJsonWithCustomerNonNullAttributes(Customer customer) throws
             JSONException
     {
