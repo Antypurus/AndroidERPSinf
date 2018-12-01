@@ -1,10 +1,15 @@
 package com.example.david.sinfapplication.Activities.register_order;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
@@ -35,6 +40,24 @@ public class register_order_activity extends Activity {
         CartProduct[] dataset = {new CartProduct(new Product("PID","Core i7","This is shit",258,2569.48,"$"),5),new CartProduct(new Product("PID","Core i7","This is shit",258,2569.48,"$"),5)};
         mAdapter = new register_order_product_list_adapter(dataset);
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
+    }
+
+    public void sendMessage(View view)
+    {
+        // prototype, change to the checkout view
+        Intent intent = new Intent(this, view_customer_activity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

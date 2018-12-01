@@ -29,6 +29,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Activities.view_customer.view_customer_activity">
+            android:name=".register_order"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

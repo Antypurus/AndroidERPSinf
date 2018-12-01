@@ -75,6 +75,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_red"
+        android:onClick="sendMessage"
         android:text="@string/checkout_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
