@@ -12,7 +12,7 @@
         android:layout_width="202dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:text="Farfetch"
         android:textAlignment="center"
@@ -20,7 +20,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/textView3"
         android:layout_width="118dp"
         android:layout_height="25dp"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="235dp"
         android:layout_marginTop="8dp"
         android:text="Representant:"
         android:textSize="18sp"
@@ -38,10 +38,9 @@
     <TextView
         android:id="@+id/representative_name"
         android:layout_width="103dp"
-        android:layout_height="23dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:text="@string/view_customer_representative"
-        android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
@@ -50,7 +49,7 @@
         android:id="@+id/textView10"
         android:layout_width="79dp"
         android:layout_height="25dp"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="235dp"
         android:layout_marginTop="8dp"
         android:text="Address:"
         android:textSize="18sp"
@@ -61,7 +60,7 @@
         android:id="@+id/textView5"
         android:layout_width="61dp"
         android:layout_height="25dp"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="235dp"
         android:layout_marginTop="8dp"
         android:text="E-mail:"
         android:textSize="18sp"
@@ -72,7 +71,7 @@
         android:id="@+id/textView6"
         android:layout_width="60dp"
         android:layout_height="25dp"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="235dp"
         android:layout_marginTop="8dp"
         android:text="Phone:"
         android:textSize="18sp"
@@ -83,57 +82,53 @@
         android:id="@+id/textView7"
         android:layout_width="72dp"
         android:layout_height="25dp"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="235dp"
         android:layout_marginTop="4dp"
         android:text="Tax No:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
+    <TextView
         android:id="@+id/custumer_email"
         android:layout_width="167dp"
-        android:layout_height="39dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:singleLine="false"
         android:text="@string/view_customer_email"
         android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
-    <EditText
+    <TextView
         android:id="@+id/customer_address"
         android:layout_width="226dp"
-        android:layout_height="35dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="textPostalAddress"
         android:text="@string/view_customer_address"
         android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
 
-    <EditText
+    <TextView
         android:id="@+id/customer_phone"
         android:layout_width="121dp"
-        android:layout_height="35dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="phone"
         android:text="@string/view_customer_phone"
         android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6" />
 
-    <EditText
+    <TextView
         android:id="@+id/customer_tax_no"
         android:layout_width="89dp"
-        android:layout_height="37dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
         android:text="@string/view_customer_taxno"
         android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
@@ -141,54 +136,51 @@
 
     <Button
         android:id="@+id/meetings_button"
-        android:layout_width="390dp"
+        android:layout_width="183dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/rounded_corner_blue"
         android:text="Meetings"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sales_hist_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/sales_hist_button"
+        app:layout_constraintEnd_toStartOf="@+id/sales_hist_button" />
 
     <Button
         android:id="@+id/sales_hist_button"
-        android:layout_width="390dp"
+        android:layout_width="183dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_corner_blue"
         android:text="Sales History"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/orders_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/orders_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/meetings_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/orders_button"
-        android:layout_width="390dp"
+        android:layout_width="183dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="15dp"
         android:background="@drawable/rounded_corner_blue"
         android:text="Orders"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/sales_hist_button"
+        app:layout_constraintStart_toEndOf="@+id/sales_hist_button" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
