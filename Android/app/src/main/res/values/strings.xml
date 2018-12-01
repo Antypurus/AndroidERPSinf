@@ -21,7 +21,7 @@
     <string name="checkout_button">Finish Checkout</string>
     <string name="is_order">Order Type</string>
     <string name="sale_order">Sale</string>
-    <string name="reservation">Reservation</string>
+    <string name="reservation">Budget</string>
     <!-- ************************************************************ -->
 
     <!-- ********* Strings for the Customer view ******************** -->
@@ -35,6 +35,10 @@
 
     <!-- ********* Strings for the Customer view ******************** -->
     <string name="save_changes">SAVE CHANGES</string>
+    <!-- ************************************************************ -->
+
+    <!-- ********* Strings for the Product Catalog ****************** -->
+    <string name="filter_button">Filters</string>
     <!-- ************************************************************ -->
 
 </resources>
