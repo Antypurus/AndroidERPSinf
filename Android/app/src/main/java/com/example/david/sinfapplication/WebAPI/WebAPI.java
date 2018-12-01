@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.WebAPI;
 
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.Utils;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
@@ -9,6 +10,7 @@ import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
 
@@ -138,6 +140,35 @@ public class WebAPI
         try
         {
             return ProductParser.parseViewProductRequestResponse(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Retrieves details of a document by id from the ERP server. Returns an instance of class Document representing the document retrieved from the ERP server.
+     * @param documentId A String representing the id of the document to retrieve from the ERP server.
+     * @return An instance of class Document representing the document retrieved from server.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static Document viewDocumentDetails(String documentId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
+                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
+                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
+                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
+                "LD.IdCabecDoc = '" + documentId + "'" + "\"";
+
+        String requestRoute = Route.viewProduct + documentId;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return DocumentParser.parseViewProductRequestResponse(viewCustomerRequestResponse);
         } catch (JSONException e)
         {
             e.printStackTrace();
