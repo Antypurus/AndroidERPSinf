@@ -100,10 +100,11 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }*/
 
-       /*
-        try
-        {
 
+       /* try
+        {
+            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
+                    "password", "professional");
             WebAPI.viewCustomer("1");
         } catch (InterruptedException e)
         {
@@ -114,8 +115,11 @@ public class MainActivity extends AppCompatActivity
         } catch (TimeoutException e)
         {
             e.printStackTrace();
-        }
-*/
+        } catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }*/
+
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
         bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);

@@ -80,8 +80,11 @@ public class PrimaveraWebAPI
                 urlConnection.setRequestProperty("Authorization", "Bearer " + authenticationToken.get());
             urlConnection.setRequestProperty("Content-Length", String.valueOf(bodyContent.length));
 
-            urlConnection.setDoOutput(true);
-            urlConnection.getOutputStream().write(bodyContent);
+            if(method == "POST")
+            {
+                urlConnection.setDoOutput(true);
+                urlConnection.getOutputStream().write(bodyContent);
+            }
 
             InputStream errorStream = urlConnection.getErrorStream();
             if(errorStream != null) //error detected, server had responded with error code
