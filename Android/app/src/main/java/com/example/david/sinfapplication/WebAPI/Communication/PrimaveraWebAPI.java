@@ -2,12 +2,15 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.*;
+import java.nio.charset.Charset;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -79,6 +82,16 @@ public class PrimaveraWebAPI
 
             urlConnection.setDoOutput(true);
             urlConnection.getOutputStream().write(bodyContent);
+
+            InputStream errorStream = urlConnection.getErrorStream();
+            if(errorStream != null) //error detected, server had responded with error code
+            {
+                byte[] bytes = new byte[5000];
+                int readBytes = errorStream.read(bytes);
+                String errorString = new String(bytes, 0, readBytes, Charset.defaultCharset());
+                Log.e("Http return error code", errorString);
+                return null;
+            }
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             StringBuilder result = new StringBuilder();

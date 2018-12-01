@@ -95,6 +95,9 @@ public class WebAPI
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();
         String addCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.addCostumer, RequestMethod.AddCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
+        if(addCustomerRequestResponse == null)
+            return false;
+
         return CustomerParserAndStringBuilder.parseAddCustomerRequestResponse(addCustomerRequestResponse);
 
     }

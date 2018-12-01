@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import org.json.JSONException;
 
+import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -37,16 +39,44 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
 
-        /*try
+     /*   try
         {
-            System.out.println(WebAPI.buildJsonWithCustomerNonNullAttributes(new Customer("ldfjls", "---fjsdlkfs", null, null,
-                    null, null, null, null, null, null, null,
-                    null, null,  null, null, null)).toString());
+            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
+                    "password", "professional");
+            System.out.println(WebAPI.addCustomer(new Customer(
+                    "88890",
+                    "DAgsddgsS",
+                    "4gdssdg23423",
+                    "gdfdf",
+                    "42323dfgfdg4",
+                    "6",
+                    "AS",
+                    "gfddfg",
+                    "dsfsgfddfgdfgdfs",
+                    "GDFDFGD",
+                    "",
+                    "222431243432",
+                    "ES",
+                    "EUR",
+                    "fdskçlfs",
+                    null)));
         } catch (JSONException e)
         {
             e.printStackTrace();
-        }
-*/
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }*/
+
        /* try
         {
             byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
