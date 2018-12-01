@@ -112,6 +112,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_corner_blue"
+        android:onClick="goto_catalgo"
         android:text="@string/edit_customer_details"
         android:textAlignment="center"
         android:textAllCaps="false"

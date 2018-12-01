@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -42,16 +44,27 @@ public class register_order_activity extends Activity {
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
 
         float total_price = 0;
+        String currency = "";
         for(CartProduct product:dataset)
         {
-
+            total_price += product.getPvp();
+            currency = product.getCurrency();
         }
+
+        TextView total_pay_ammount = (TextView) findViewById(R.id.product_price);
+        total_pay_ammount.setText(currency+total_price);
     }
 
     public void sendMessage(View view)
     {
         // prototype, change to the checkout view
         Intent intent = new Intent(this, view_customer_activity.class);
+        startActivity(intent);
+    }
+
+    public void goto_catalgo(View view)
+    {
+        Intent intent = new Intent(this, product_catalog_activity.class);
         startActivity(intent);
     }
 

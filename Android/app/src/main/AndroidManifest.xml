@@ -34,6 +34,11 @@
             android:name=".register_order"
             android:configChanges="orientation|screenSize">
         </activity>
+
+        <activity android:name=".Activities.product_catalog.product_catalog_activity">
+            android:name=".register_order"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>
