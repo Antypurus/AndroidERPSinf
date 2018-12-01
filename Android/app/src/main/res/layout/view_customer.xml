@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/customer_name"
         android:layout_width="202dp"
         android:layout_height="68dp"
         android:layout_marginStart="104dp"
@@ -31,13 +31,13 @@
         android:textAlignment="viewStart"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/customer_name" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/representative_name"
         android:layout_width="192dp"
         android:layout_height="31dp"
-        android:text="Sr. Abílio Rosas"
+        android:text="@string/view_customer_representative"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
@@ -89,89 +89,93 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/custumer_email"
         android:layout_width="231dp"
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:singleLine="false"
-        android:text="farfetch@farfetch.com"
+        android:text="@string/view_customer_email"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/customer_address"
         android:layout_width="275dp"
         android:layout_height="42dp"
         android:ems="10"
         android:inputType="textPostalAddress"
-        android:text="Rua dos Campos Elísios, Nr 338"
+        android:text="@string/view_customer_address"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/customer_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="+351931999313"
+        android:text="@string/view_customer_phone"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/customer_tax_no"
         android:layout_width="200dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="235486479"
+        android:text="@string/view_customer_taxno"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/Meetings"
+        android:id="@+id/meetings_button"
         android:layout_width="361dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_blue"
-        android:text="MEETINGS"
-        android:textColor="@color/gray"
+        android:text="Meetings"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/sales_hist_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/sales_hist_button"
         android:layout_width="361dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_blue"
         android:text="Sales History"
-        android:textColor="@color/gray"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/orders_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/orders_button"
         android:layout_width="361dp"
-        android:layout_height="53dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="56dp"
-        android:background="@color/old_copper_blue"
+        android:background="@drawable/rounded_corner_blue"
         android:text="Orders"
-        android:textColor="@color/gray"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

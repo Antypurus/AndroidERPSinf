@@ -23,4 +23,13 @@
     <string name="sale_order">Sale</string>
     <string name="reservation">Reservation</string>
     <!-- ************************************************************ -->
+
+    <!-- ********* Strings for the Customer view ******************** -->
+    <string name="view_custumer_name">Farfetch</string>
+    <string name="view_customer_representative">Sr. Abilio Rosas</string>
+    <string name="view_customer_address">Rua dos Campos Elisios, Nr 338</string>
+    <string name="view_customer_email">farfetch@farfetch.com</string>
+    <string name="view_customer_phone">+351 931999313</string>
+    <string name="view_customer_taxno">235486479</string>
+    <!-- ************************************************************ -->
 </resources>
