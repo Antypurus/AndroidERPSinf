@@ -124,7 +124,6 @@ public class WebAPI
 
     /**
      * Retrieves details of a product by id from the ERP server. Returns an instance of class Product representing the product retrieved from the ERP server.
-     *
      * @param productId A String representing the id of the product to retrieve from the ERP server.
      * @return An instance of class Product representing the customer retrieved from server.
      * @throws InterruptedException
