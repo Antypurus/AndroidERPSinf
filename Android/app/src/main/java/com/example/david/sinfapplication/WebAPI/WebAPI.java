@@ -9,6 +9,7 @@ import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
 
 import org.json.JSONException;
@@ -92,5 +93,28 @@ public class WebAPI
                 ContentType.ApplicationJson, requestBody.getBytes());
         return CustomerParserAndStringBuilder.parseAddCustomerRequestResponse(addCustomerRequestResponse);
 
+    }
+
+    /**
+     * Retrieves details of a product by id from the ERP server. Returns an instance of class Product representing the product retrieved from the ERP server.
+     * @param productId A String representing the id of the product to retrieve from the ERP server.
+     * @return An instance of class Product representing the customer retrieved from server.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static Product viewProductAndStock(String productId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String requestRoute = Route.viewProduct + productId;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewProduct,
+                ContentType.UrlEncoded, new byte[0]);
+        try
+        {
+            return ProductParser.parseViewProductRequestResponse(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
