@@ -11,5 +11,5 @@ public class RequestMethod
     public static String AddCustomer = POST;
     public static String EditCustomer = POST;
     public static String ViewProduct = GET;
-    public static String ViewDocument = GET;
+    public static String ViewDocument = PrimaveraWebAPIRawQueryMethod;
 }
