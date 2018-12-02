@@ -39,7 +39,7 @@ public class register_order_activity extends Activity {
         m_checkout_product_list_recycler_view.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        CartProduct[] dataset = {new CartProduct(new Product("PID","Core i7","This is shit",258,2569.48,"$"),5),new CartProduct(new Product("PID","AMD RX590","This is shit",258,2569.48,"$"),5)};
+        CartProduct[] dataset = {new CartProduct(new Product("PID","Core i7","This is shit",258,2578,"$"),5),new CartProduct(new Product("PID","AMD RX590","This is shit",258,256,"$"),5)};
         mAdapter = new register_order_product_list_adapter(dataset);
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
 
