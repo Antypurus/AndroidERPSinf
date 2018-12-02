@@ -140,6 +140,7 @@
         android:layout_height="40dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/rounded_corner_blue"
+        android:onClick="goto_edit_customer"
         android:text="Meetings"
         android:textAllCaps="false"
         android:textColor="@color/white"

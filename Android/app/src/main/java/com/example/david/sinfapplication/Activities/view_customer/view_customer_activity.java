@@ -1,10 +1,14 @@
 package com.example.david.sinfapplication.Activities.view_customer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
+import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 import com.example.david.sinfapplication.R;
 
 public class view_customer_activity extends Activity {
@@ -14,6 +18,12 @@ public class view_customer_activity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_customer);
+    }
+
+    public void goto_edit_customer(View view)
+    {
+        Intent intent = new Intent(this, edit_customer_activity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -31,12 +31,17 @@
         </activity>
 
         <activity android:name=".Activities.view_customer.view_customer_activity">
-            android:name=".register_order"
+            android:name=".view_customer"
             android:configChanges="orientation|screenSize">
         </activity>
 
         <activity android:name=".Activities.product_catalog.product_catalog_activity">
-            android:name=".register_order"
+            android:name=".product_catalog"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity android:name=".Activities.edit_customer.edit_customer_activity">
+            android:name=".edit_customer"
             android:configChanges="orientation|screenSize">
         </activity>
     </application>
