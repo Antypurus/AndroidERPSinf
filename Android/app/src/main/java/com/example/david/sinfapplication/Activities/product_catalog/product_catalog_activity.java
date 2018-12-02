@@ -21,8 +21,8 @@ public class product_catalog_activity extends Activity {
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.register_order);
-        m_product_list = (RecyclerView) findViewById(R.id.checkout_product_list);
+        setContentView(R.layout.product_catalog);
+        m_product_list = (RecyclerView) findViewById(R.id.products);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView

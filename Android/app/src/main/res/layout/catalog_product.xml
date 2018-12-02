@@ -8,7 +8,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="100dp"
+        android:background="@drawable/rounder_corner_gray_border"
+        >
 
         <ImageView
             android:id="@+id/product_image"
@@ -17,6 +19,7 @@
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView

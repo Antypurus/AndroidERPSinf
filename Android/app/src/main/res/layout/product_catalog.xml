@@ -9,11 +9,11 @@
 
     <SearchView
         android:id="@+id/product_serach"
-        android:layout_width="395dp"
+        android:layout_width="342dp"
         android:layout_height="58dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +21,11 @@
 
     <Button
         android:id="@+id/filter_button"
-        android:layout_width="365dp"
+        android:layout_width="332dp"
         android:layout_height="34dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_navy_blue"
         android:text="@string/filter_button"
         android:textAlignment="center"
@@ -37,12 +37,13 @@
         app:layout_constraintTop_toBottomOf="@+id/product_serach" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/prodcuts"
-        android:layout_width="362dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/products"
+        android:layout_width="332dp"
+        android:layout_height="575dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter_button" />
