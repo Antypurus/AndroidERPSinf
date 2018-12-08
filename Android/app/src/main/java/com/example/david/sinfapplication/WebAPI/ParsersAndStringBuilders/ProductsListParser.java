@@ -20,13 +20,15 @@ public class ProductsListParser
         {
             JSONObject productObject = productsArray.getJSONObject(i);
             String id = productObject.getString("Artigo");
+            String family = productObject.getString("Familia");
+            String subfamily = productObject.getString("SubFamilia");
             String description = productObject.getString("Descricao");
             String observations = productObject.getString("Observacoes");
             int stockAtual = productObject.getInt("StkActual");
             int pvp = productObject.getInt("PVP1");
             String currency = productObject.getString("Moeda");
 
-            Product product = new Product(id, description, observations, stockAtual, pvp, currency);
+            Product product = new Product(id, family, subfamily, description, observations, stockAtual, pvp, currency);
             products.add(product);
         }
 

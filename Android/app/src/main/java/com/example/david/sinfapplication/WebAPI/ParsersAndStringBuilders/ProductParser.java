@@ -10,6 +10,6 @@ public class ProductParser
             JSONException
     {
         //TODO
-        return new Product(null, null, null, 0, 0, null);
+        return new Product(null, null, null,null, null, 0, 0, null);
     }
 }
