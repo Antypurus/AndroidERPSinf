@@ -201,14 +201,15 @@ public class WebAPI
     }
 
     /**
-     * Retrieves all documents from a customer, of the given types. Returns a list of Document instances representing the documents retrieved from the ERP server.
-     * @param documentTypes A list of string that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA']
+     * Retrieves all documents of a customer, of the given types. Returns an ArrayList of Document instances representing the documents retrieved from the ERP server.
+     * @param customerId A list of string containing the id of the customer whose documents should be displayed.
+     * @param documentTypes A string representing a list that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA'])
      * @return An instance of class Document representing the document retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static ArrayList<Document> viewDocumentsFromCustomer(ArrayList<String> documentTypes) throws InterruptedException, ExecutionException, TimeoutException
+    public static ArrayList<Document> viewDocumentsFromCustomer(String customerId, String documentTypes) throws InterruptedException, ExecutionException, TimeoutException
     {
        /* String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
                 "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
