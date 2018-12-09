@@ -178,6 +178,35 @@ public class WebAPI
     }*/
 
     /**
+     * Adds a document on the ERP server. Returns a boolean indicating the result of the request.
+     * @param document An instance of class Document representing the document to be added to the ERP server.
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static boolean createDocument(Document document) throws InterruptedException, ExecutionException, TimeoutException
+    {
+       /* String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
+                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
+                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
+                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
+                "LD.IdCabecDoc = '" + documentId + "'" + "\"";
+
+        String requestRoute = Route.viewDocument + documentId;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return DocumentParser.parseViewDocumentDetailsRequestResponse(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }*/
+        return true;
+    }
+
+    /**
      * Retrieves all documents from a customer, of the given types. Returns a list of Document instances representing the documents retrieved from the ERP server.
      * @param documentTypes A list of string that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA']
      * @return An instance of class Document representing the document retrieved from server.
