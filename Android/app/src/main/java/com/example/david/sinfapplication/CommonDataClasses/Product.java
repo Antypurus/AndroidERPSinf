@@ -5,14 +5,38 @@ import android.media.Image;
 
 public class Product
 {
+    /**
+     * Corresponds to Artigo in primavera
+     */
     private String id;
+    /**
+     * Corresponds to Familia in primavera
+     */
     private String family;
+    /**
+     * Corresponds to SubFamilia in primavera
+     */
     private String subfamily;
+    /**
+     * Corresponds to Descricao in primavera
+     */
     private String description;
+    /**
+     * Corresponds to Observacoes in primavera
+     */
     private String observations;
     private Image image;
+    /**
+     * Corresponds to StkActual in primavera
+     */
     private int currentStock;
+    /**
+     * Corresponds to PVP1 in primavera
+     */
     private double pvp;
+    /**
+     * Corresponds to Moeda in primavera
+     */
     private String currency;
 
 
