@@ -3,7 +3,7 @@ package com.example.david.sinfapplication.WebAPI;
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
-import com.example.david.sinfapplication.Utils;
+import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -11,15 +11,12 @@ import com.example.david.sinfapplication.WebAPI.Communication.Route;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
-import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
 
 import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -111,7 +108,7 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static int editCustomer(String customerId, Customer customer) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    public static boolean editCustomer(String customerId, Customer customer) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.editCostumer + customerId;
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();
@@ -119,12 +116,7 @@ public class WebAPI
         String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
 
-        boolean success = CustomerParserAndStringBuilder.parseEditCustomerRequestResponse(editCustomerRequestResponse);
-
-        if (success)
-            return 0;
-        else
-            return 1;
+        return CustomerParserAndStringBuilder.parseEditCustomerRequestResponse(editCustomerRequestResponse);
     }
 
     /**
@@ -135,7 +127,8 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static Product viewProductAndStock(String productId) throws InterruptedException, ExecutionException, TimeoutException
+    //TODO no need em principio porque o list faz tudo
+    /*public static Product viewProductAndStock(String productId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.viewProduct + productId;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewProduct,
@@ -148,19 +141,19 @@ public class WebAPI
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     /**
-     * Retrieves details of a document by id from the ERP server. Returns an instance of class Document representing the document retrieved from the ERP server.
-     * @param documentId A String representing the id of the document to retrieve from the ERP server.
+     * Retrieves all documents from a customer, of the given types. Returns a list of Document instances representing the documents retrieved from the ERP server.
+     * @param documentTypes A list o string that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA']
      * @return An instance of class Document representing the document retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static Document viewDocumentDetails(String documentId) throws InterruptedException, ExecutionException, TimeoutException
+    public static ArrayList<Document> viewDocumentsFromCustomer(ArrayList<String> documentTypes) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
+       /* String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
                 "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
                 "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
                 "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
@@ -171,7 +164,36 @@ public class WebAPI
                 ContentType.ApplicationJson, query.getBytes());
         try
         {
-            return DocumentParser.parseViewProductRequestResponse(viewCustomerRequestResponse);
+            return DocumentParser.parseViewDocumentDetailsRequestResponse(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }*/
+        return null;
+    }
+
+    /**
+     * Retrieves details of a document by id from the ERP server. Returns an instance of class Document representing the document retrieved from the ERP server.
+     * @param documentId A String representing the id of the document to retrieve from the ERP server.
+     * @return A list of instances of class DocumentLine representing the document details retrieved from server.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static ArrayList<DocumentLine> viewDocumentDetails(String documentId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.TaxaIva, LD.Quantidade, " +
+                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
+                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
+                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
+                "LD.IdCabecDoc = '" + documentId + "'" + "\"";
+
+        String requestRoute = Route.viewDocument + documentId;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return DocumentParser.parseViewDocumentDetailsRequestResponse(viewCustomerRequestResponse);
         } catch (JSONException e)
         {
             e.printStackTrace();

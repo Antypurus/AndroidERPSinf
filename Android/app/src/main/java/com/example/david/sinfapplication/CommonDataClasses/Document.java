@@ -14,7 +14,7 @@ public class Document
     private ArrayList<DocumentLine> lines;
 
 
-    public Document(String id, String docType, String serie, String docNumber, String documentTotal, String date, String state, ArrayList<DocumentLine> lines)
+    public Document(String id, String docType, String serie, String docNumber, String documentTotal, String date, String state)
     {
         this.id = id;
         this.docType = docType;
@@ -23,7 +23,6 @@ public class Document
         this.documentTotal = documentTotal;
         this.date = date;
         this.state = state;
-        this.lines = lines;
     }
 
     public String getId()
