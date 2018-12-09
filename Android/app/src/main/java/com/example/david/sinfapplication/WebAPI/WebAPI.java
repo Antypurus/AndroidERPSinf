@@ -187,8 +187,9 @@ public class WebAPI
      */
     public static boolean createDocument(Document document) throws InterruptedException, ExecutionException, TimeoutException
     {
+        String requestBody = DocumentParser.buildRequestBodyForCreateDocumentRequest(document);
         String createDocumentRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
-                ContentType.ApplicationJson, new byte[0]);
+                ContentType.ApplicationJson, requestBody.getBytes());
         try
         {
             return DocumentParser.parseCreateDocumentRequestResponse(createDocumentRequestResponse);
