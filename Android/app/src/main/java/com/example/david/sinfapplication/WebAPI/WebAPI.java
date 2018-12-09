@@ -41,6 +41,15 @@ public class WebAPI
         return 0;
     }
 
+    /**
+     * Adds a Customer to the ERP server. Returns a boolean indicating the result of the request.
+     * @param customer An instance of class Customer, filled with the details to be sent to the ERP server.
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     * @throws JSONException
+     */
     public static boolean addCustomer(Customer customer) throws InterruptedException,
             ExecutionException, TimeoutException, JSONException
     {
