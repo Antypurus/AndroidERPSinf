@@ -1,15 +1,7 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-public class CustomerFullyDetailed
+public class CustomerFullyDetailed extends Customer
 {
-    /**
-     * Corresponds to Cliente in primavera
-     */
-    private String id;
-    /**
-     * Corresponds to Nome in primavera
-     */
-    private String name;
     /**
      * Corresponds to Descricao in primavera
      */
@@ -74,6 +66,7 @@ public class CustomerFullyDetailed
                                  String country, String currency, String checkingAccountDebit,
                                  String pendingOrdersDebit)
     {
+        super(id, name);
         this.id = id;
         this.name = name;
         this.description = description;
@@ -99,6 +92,7 @@ public class CustomerFullyDetailed
                                  String pendingOrdersDebit)
     {
         //TODO this.id = SHA256 ....;
+        super("", name);
         this.name = name;
         this.description = description;
         this.address = address;
