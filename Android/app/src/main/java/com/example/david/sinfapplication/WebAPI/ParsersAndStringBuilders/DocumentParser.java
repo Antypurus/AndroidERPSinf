@@ -71,4 +71,10 @@ public class DocumentParser
         //TODO
         return true;
     }
+
+    public static String buildRequestBodyForCreateDocumentRequest(Document document)
+    {
+        //TODO
+        return "";
+    }
 }
