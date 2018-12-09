@@ -43,6 +43,7 @@ public class CustomerParserAndStringBuilder
 
     public static ArrayList<CustomerOfSalesman> parseViewCustomersOfSalesmanResponse(String viewCustomersOfSalesmanResponse) throws JSONException
     {
+        //TODO ver se isto ta bem quando o primavera estiver a dar
         JSONObject dataSetObject = new JSONObject(viewCustomersOfSalesmanResponse);
         JSONArray customersArray = dataSetObject.getJSONArray("Table");
         ArrayList<CustomerOfSalesman> customers = new ArrayList<>();
