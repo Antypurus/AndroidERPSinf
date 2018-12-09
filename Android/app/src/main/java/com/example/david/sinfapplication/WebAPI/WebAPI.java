@@ -80,10 +80,10 @@ public class WebAPI
     }
 
     /**
-     * Edits the details of a customer by id on the ERP server. Returns an int indicating the result of the request.
+     * Edits the details of a customer by id on the ERP server. Returns an boolean indicating the result of the request.
      * @param customerId A String representing the id of the customer whose information will be edited in the ERP server.
      * @param customer An instance of class customer representing the new customer data to be sent to the server.
-     * @return An int indicating the success of the request. 0 indicates success; 1 indicates server error
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
