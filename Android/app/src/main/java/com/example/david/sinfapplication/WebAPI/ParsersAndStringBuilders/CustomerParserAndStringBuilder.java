@@ -14,28 +14,29 @@ public class CustomerParserAndStringBuilder
 
     public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse) throws JSONException
     {
-        //TODO
-        JSONObject dataSetObject = new JSONObject(viewCustomerRequestResponse).getJSONObject("DataSet");
-        JSONArray productsArray = dataSetObject.getJSONArray("Table");
-        JSONArray productsArray2 = dataSetObject.getJSONArray("Table");
+        JSONObject dataSetObject = new JSONObject(viewCustomerRequestResponse);
+        String id = dataSetObject.getString("Cliente");
+        String name = dataSetObject.getString("Nome");
+        String description = dataSetObject.getString("Descricao");
+        String address = dataSetObject.getString("Morada");
+        String city = dataSetObject.getString("Localidade");
+        String postalCode = dataSetObject.getString("CodigoPostal");
+        String postalCodeCity = dataSetObject.getString("LocalidadeCodigoPostal");
+        String phoneNumber = dataSetObject.getString("Telefone");
+        String faxNumber = dataSetObject.getString("faxNumber");
+        String webSite = dataSetObject.getString("webSite");
+        String state = dataSetObject.getString("Distrito");
+        String taxNumber = dataSetObject.getString("NumContribuinte");
+        String country = dataSetObject.getString("Pais");
+        String currency = dataSetObject.getString("Moeda");
+        String checkingAccountDebit = dataSetObject.getString("DebitoContaCorrente");
+        String pendingOrdersDebit = dataSetObject.getString("DebitoEncomendasPendentes");
 
-/*
-            JSONObject productObject = productsArray.getJSONObject(i);
-            String id = productObject.getString("Artigo");
-            String description = productObject.getString("Descricao");
-            String observations = productObject.getString("Observacoes");
-            int stockAtual = productObject.getInt("StkActual");
-            int pvp = productObject.getInt("PVP1");
-            String currency = productObject.getString("Moeda");
-
-            Product product = new Product(id, description, observations, stockAtual, pvp, currency);
-            products.add(product);
-
-        return products;
-*/
-        return new Customer("ldfjls", "---fjsdlkfs", null, null,
-                null, null, null, null, null, null, null,
-                null, null,  null, null, null);
+        return new Customer(id, name, description, address,
+                city, postalCode, postalCodeCity, phoneNumber,
+                faxNumber, webSite, state, taxNumber,
+                country, currency, checkingAccountDebit,
+                pendingOrdersDebit);
     }
 
     public static boolean parseAddCustomerRequestResponse(String addCustomerRequestResponse)
