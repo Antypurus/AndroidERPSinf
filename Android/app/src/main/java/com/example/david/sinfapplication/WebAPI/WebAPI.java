@@ -54,7 +54,7 @@ public class WebAPI
     {
         String requestRoute = Route.viewCustomer + salesmanId;
 
-        String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewCustomer,
+        String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
                 ContentType.ApplicationJson, new byte[0]);
         try
         {
