@@ -1,6 +1,6 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-public class Customer
+public class CustomerFullyDetailed
 {
     /**
      * Corresponds to Cliente in primavera
@@ -68,11 +68,11 @@ public class Customer
     private String pendingOrdersDebit;
 
 
-    public Customer(String id, String name, String description, String address, String city,
-                    String postalCode, String postalCodeCity, String phoneNumber,
-                    String faxNumber, String webSite, String state, String taxNumber,
-                    String country, String currency, String checkingAccountDebit,
-                    String pendingOrdersDebit)
+    public CustomerFullyDetailed(String id, String name, String description, String address, String city,
+                                 String postalCode, String postalCodeCity, String phoneNumber,
+                                 String faxNumber, String webSite, String state, String taxNumber,
+                                 String country, String currency, String checkingAccountDebit,
+                                 String pendingOrdersDebit)
     {
         this.id = id;
         this.name = name;
@@ -92,11 +92,11 @@ public class Customer
         this.pendingOrdersDebit = pendingOrdersDebit;
     }
 
-    public Customer(String name, String description, String address, String city,
-                    String postalCode, String postalCodeCity, String phoneNumber,
-                    String faxNumber, String webSite, String state, String taxNumber,
-                    String country, String currency, String checkingAccountDebit,
-                    String pendingOrdersDebit)
+    public CustomerFullyDetailed(String name, String description, String address, String city,
+                                 String postalCode, String postalCodeCity, String phoneNumber,
+                                 String faxNumber, String webSite, String state, String taxNumber,
+                                 String country, String currency, String checkingAccountDebit,
+                                 String pendingOrdersDebit)
     {
         //TODO this.id = SHA256 ....;
         this.name = name;

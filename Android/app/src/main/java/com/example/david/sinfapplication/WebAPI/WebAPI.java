@@ -1,7 +1,7 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
@@ -68,18 +68,18 @@ public class WebAPI
     }
 
     /**
-     * Adds a Customer to the ERP server. Returns a boolean indicating the result of the request.
-     * @param customer An instance of class Customer, filled with the details to be sent to the ERP server.
+     * Adds a CustomerFullyDetailed to the ERP server. Returns a boolean indicating the result of the request.
+     * @param customerFullyDetailed An instance of class CustomerFullyDetailed, filled with the details to be sent to the ERP server.
      * @return A boolean indicating the success of the request. true indicates success; false indicates server error
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      * @throws JSONException
      */
-    public static boolean addCustomer(Customer customer) throws InterruptedException,
+    public static boolean addCustomer(CustomerFullyDetailed customerFullyDetailed) throws InterruptedException,
             ExecutionException, TimeoutException, JSONException
     {
-        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
         String addCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.addCostumer, RequestMethod.AddCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
         if(addCustomerRequestResponse == null)
@@ -92,12 +92,12 @@ public class WebAPI
     /**
      * Retrieves details of a customer by id from the ERP server. Returns an ArrayList with instances of class Product representing the products retrieved from the ERP server.
      * @param customerId A String representing the id of the customer to retrieve from the ERP server.
-     * @return An instance of class Customer representing the customer retrieved from server.
+     * @return An instance of class CustomerFullyDetailed representing the customer retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static Customer viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    public static CustomerFullyDetailed viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.viewCustomer + customerId;
 
@@ -115,18 +115,18 @@ public class WebAPI
     }
 
     /**
-     * Edits the details of a customer by id on the ERP server. Returns a boolean indicating the result of the request.
-     * @param customerId A String representing the id of the customer whose information will be edited in the ERP server.
-     * @param customer An instance of class customer representing the new customer data to be sent to the server.
+     * Edits the details of a customerFullyDetailed by id on the ERP server. Returns a boolean indicating the result of the request.
+     * @param customerId A String representing the id of the customerFullyDetailed whose information will be edited in the ERP server.
+     * @param customerFullyDetailed An instance of class customerFullyDetailed representing the new customerFullyDetailed data to be sent to the server.
      * @return A boolean indicating the success of the request. true indicates success; false indicates server error
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean editCustomer(String customerId, Customer customer) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    public static boolean editCustomer(String customerId, CustomerFullyDetailed customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.editCostumer + customerId;
-        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customer).toString();
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
 
         String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());

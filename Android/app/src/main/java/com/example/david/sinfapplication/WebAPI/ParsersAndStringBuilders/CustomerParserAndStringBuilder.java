@@ -1,8 +1,7 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
-import com.example.david.sinfapplication.CommonDataClasses.Product;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 public class CustomerParserAndStringBuilder
 {
 
-    public static Customer parseViewCustomerRequestResponse(String viewCustomerRequestResponse) throws JSONException
+    public static CustomerFullyDetailed parseViewCustomerRequestResponse(String viewCustomerRequestResponse) throws JSONException
     {
         JSONObject dataSetObject = new JSONObject(viewCustomerRequestResponse);
         String id = dataSetObject.getString("Cliente");
@@ -33,7 +32,7 @@ public class CustomerParserAndStringBuilder
         String checkingAccountDebit = dataSetObject.getString("DebitoContaCorrente");
         String pendingOrdersDebit = dataSetObject.getString("DebitoEncomendasPendentes");
 
-        return new Customer(id, name, description, address,
+        return new CustomerFullyDetailed(id, name, description, address,
                 city, postalCode, postalCodeCity, phoneNumber,
                 faxNumber, webSite, state, taxNumber,
                 country, currency, checkingAccountDebit,
@@ -75,26 +74,26 @@ public class CustomerParserAndStringBuilder
             return false;
     }
 
-    public static JSONObject buildJsonWithCustomerNonNullAttributes(Customer customer) throws
+    public static JSONObject buildJsonWithCustomerNonNullAttributes(CustomerFullyDetailed customerFullyDetailed) throws
             JSONException
     {
         JSONObject jsonObject = new JSONObject();
-        addToJsonObjectIfNotNull(jsonObject, "Cliente", customer.getId());
-        addToJsonObjectIfNotNull(jsonObject, "Nome", customer.getName());
-        addToJsonObjectIfNotNull(jsonObject, "Descricao", customer.getDescription());
-        addToJsonObjectIfNotNull(jsonObject, "Morada", customer.getAddress());
-        addToJsonObjectIfNotNull(jsonObject, "Localidade", customer.getCity());
-        addToJsonObjectIfNotNull(jsonObject, "CodigoPostal", customer.getPostalCode());
-        addToJsonObjectIfNotNull(jsonObject, "LocalidadeCodigoPostal", customer.getPostalCodeCity());
-        addToJsonObjectIfNotNull(jsonObject, "Telefone", customer.getPhoneNumber());
-        addToJsonObjectIfNotNull(jsonObject, "Fax", customer.getFaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "EnderecoWeb", customer.getWebSite());
-        addToJsonObjectIfNotNull(jsonObject, "Distrito", customer.getState());
-        addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customer.getTaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "Pais", customer.getCountry());
-        addToJsonObjectIfNotNull(jsonObject, "Moeda", customer.getCurrency());
-        addToJsonObjectIfNotNull(jsonObject, "DebitoContaCorrente", customer.getCheckingAccountDebit());
-        addToJsonObjectIfNotNull(jsonObject, "DebitoEncomendasPendentes", customer.getPendingOrdersDebit());
+        addToJsonObjectIfNotNull(jsonObject, "Cliente", customerFullyDetailed.getId());
+        addToJsonObjectIfNotNull(jsonObject, "Nome", customerFullyDetailed.getName());
+        addToJsonObjectIfNotNull(jsonObject, "Descricao", customerFullyDetailed.getDescription());
+        addToJsonObjectIfNotNull(jsonObject, "Morada", customerFullyDetailed.getAddress());
+        addToJsonObjectIfNotNull(jsonObject, "Localidade", customerFullyDetailed.getCity());
+        addToJsonObjectIfNotNull(jsonObject, "CodigoPostal", customerFullyDetailed.getPostalCode());
+        addToJsonObjectIfNotNull(jsonObject, "LocalidadeCodigoPostal", customerFullyDetailed.getPostalCodeCity());
+        addToJsonObjectIfNotNull(jsonObject, "Telefone", customerFullyDetailed.getPhoneNumber());
+        addToJsonObjectIfNotNull(jsonObject, "Fax", customerFullyDetailed.getFaxNumber());
+        addToJsonObjectIfNotNull(jsonObject, "EnderecoWeb", customerFullyDetailed.getWebSite());
+        addToJsonObjectIfNotNull(jsonObject, "Distrito", customerFullyDetailed.getState());
+        addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customerFullyDetailed.getTaxNumber());
+        addToJsonObjectIfNotNull(jsonObject, "Pais", customerFullyDetailed.getCountry());
+        addToJsonObjectIfNotNull(jsonObject, "Moeda", customerFullyDetailed.getCurrency());
+        addToJsonObjectIfNotNull(jsonObject, "DebitoContaCorrente", customerFullyDetailed.getCheckingAccountDebit());
+        addToJsonObjectIfNotNull(jsonObject, "DebitoEncomendasPendentes", customerFullyDetailed.getPendingOrdersDebit());
 
         return jsonObject;
     }

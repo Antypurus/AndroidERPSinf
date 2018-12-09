@@ -11,11 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
-
-import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         {
             PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
                     "password", "professional");
-            System.out.println(WebAPI.addCustomer(new Customer(
+            System.out.println(WebAPI.addCustomer(new CustomerFullyDetailed(
                     "88890",
                     "DAgsddgsS",
                     "4gdssdg23423",
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         }*/
 
 
-       /* try
+        try
         {
             PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
                     "password", "professional");
@@ -118,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         } catch (UnsupportedEncodingException e)
         {
             e.printStackTrace();
-        }*/
+        }
 
         setContentView(R.layout.create_customer);
         ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
