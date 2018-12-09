@@ -179,7 +179,7 @@ public class WebAPI
 
     /**
      * Retrieves all documents from a customer, of the given types. Returns a list of Document instances representing the documents retrieved from the ERP server.
-     * @param documentTypes A list o string that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA']
+     * @param documentTypes A list of string that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA']
      * @return An instance of class Document representing the document retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
