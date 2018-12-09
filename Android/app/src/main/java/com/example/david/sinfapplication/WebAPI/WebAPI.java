@@ -202,17 +202,17 @@ public class WebAPI
 
     /**
      * Retrieves all documents of a customer, of the given types. Returns an ArrayList of Document instances representing the documents retrieved from the ERP server.
-     * @param customerId A list of string containing the id of the customer whose documents should be displayed.
+     * @param customerName The name of the customer of which documents will be retrieved
      * @return An instance of class Document representing the document retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static ArrayList<Document> viewDocumentsFromCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    public static ArrayList<Document> viewDocumentsFromCustomer(String customerName) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT  CD.Id, CD.TipoDoc,  CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado " +
+        String query = "\"" + "SELECT  CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado " +
                 "FROM CabecDoc CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id " +
-                "WHERE CD.Entidade = 'C0001' AND (CD.TipoDoc = 'FA' OR CD.TipoDoc = 'ECL' OR CD.TipoDoc = 'ORC')" + "\"";
+                "WHERE CD.Nome = '" + customerName + "' AND (CD.TipoDoc = 'FA' OR CD.TipoDoc = 'ECL' OR CD.TipoDoc = 'ORC')" + "\"";
 
         String requestRoute = Route.viewCustomerDocuments;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
