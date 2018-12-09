@@ -136,7 +136,6 @@ public class WebAPI
 
     /**
      * Retrieves the products list from the ERP server. Returns an ArrayList with instances of class Product representing the products retrieved from the ERP server.
-     *
      * @return An ArrayList with instances of class Product representing the products retrieved from the ERP server.
      * @throws InterruptedException
      * @throws ExecutionException
