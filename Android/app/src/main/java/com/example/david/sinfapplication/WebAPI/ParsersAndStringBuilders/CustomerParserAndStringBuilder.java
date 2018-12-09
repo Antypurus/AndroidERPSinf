@@ -1,6 +1,7 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 
 import org.json.JSONArray;
@@ -37,6 +38,24 @@ public class CustomerParserAndStringBuilder
                 faxNumber, webSite, state, taxNumber,
                 country, currency, checkingAccountDebit,
                 pendingOrdersDebit);
+    }
+
+
+    public static ArrayList<CustomerOfSalesman> parseViewCustomersOfSalesmanResponse(String viewCustomersOfSalesmanResponse) throws JSONException
+    {
+        JSONObject dataSetObject = new JSONObject(viewCustomersOfSalesmanResponse);
+        JSONArray customersArray = dataSetObject.getJSONArray("Table");
+        ArrayList<CustomerOfSalesman> customers = new ArrayList<>();
+        for(int i = 0; i < customersArray.length(); i++)
+        {
+            JSONObject productObject = customersArray.getJSONObject(i);
+            String id = productObject.getString("Cliente");
+            String name = productObject.getString("Nome");
+            CustomerOfSalesman customerOfSalesman = new CustomerOfSalesman(id, name);
+            customers.add(customerOfSalesman);
+        }
+
+        return customers;
     }
 
     public static boolean parseAddCustomerRequestResponse(String addCustomerRequestResponse)
