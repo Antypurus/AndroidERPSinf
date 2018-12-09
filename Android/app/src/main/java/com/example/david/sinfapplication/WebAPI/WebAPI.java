@@ -43,6 +43,31 @@ public class WebAPI
     }
 
     /**
+     * Retrieves a list of customers of the salesman passed as parameter. Returns an ArrayList with instances of class CustomerOfSalesman representing the customers retrieved from the ERP server.
+     * @param salesmanId A String representing the id of the salesman whose customers should be retrieved from the ERP server.
+     * @return An ArrayList with instances of class CustomerOfSalesman representing the customers retrieved from server.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static ArrayList<CustomerOfSalesman> listCustomersOfASalesman(String salesmanId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String requestRoute = Route.viewCustomer + salesmanId;
+
+        String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewCustomer,
+                ContentType.ApplicationJson, new byte[0]);
+        try
+        {
+            return CustomerParserAndStringBuilder.parseViewCustomersOfSalesmanResponse(viewCustomersOfSalesmanResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    /**
      * Adds a Customer to the ERP server. Returns a boolean indicating the result of the request.
      * @param customer An instance of class Customer, filled with the details to be sent to the ERP server.
      * @return A boolean indicating the success of the request. true indicates success; false indicates server error
@@ -81,31 +106,6 @@ public class WebAPI
         try
         {
             return CustomerParserAndStringBuilder.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-
-    }
-
-    /**
-     * Retrieves a list of customers of the salesman passed as parameter. Returns an ArrayList with instances of class CustomerOfSalesman representing the customers retrieved from the ERP server.
-     * @param salesmanId A String representing the id of the salesman whose customers should be retrieved from the ERP server.
-     * @return An ArrayList with instances of class CustomerOfSalesman representing the customers retrieved from server.
-     * @throws InterruptedException
-     * @throws ExecutionException
-     * @throws TimeoutException
-     */
-    public static ArrayList<CustomerOfSalesman> listCustomersOfASalesman(String salesmanId) throws InterruptedException, ExecutionException, TimeoutException
-    {
-        String requestRoute = Route.viewCustomer + salesmanId;
-
-        String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewCustomer,
-                ContentType.ApplicationJson, new byte[0]);
-        try
-        {
-            return CustomerParserAndStringBuilder.parseViewCustomersOfSalesmanResponse(viewCustomersOfSalesmanResponse);
         } catch (JSONException e)
         {
             e.printStackTrace();
