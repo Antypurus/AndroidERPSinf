@@ -64,4 +64,11 @@ public class DocumentParser
 
         return documentLines;
     }
+
+    public static boolean parseCreateDocumentRequestResponse(String createDocumentRequestResponse) throws
+            JSONException
+    {
+        //TODO
+        return true;
+    }
 }
