@@ -194,7 +194,7 @@ public class WebAPI
                 "LD.IdCabecDoc = '" + documentId + "'" + "\"";
 
         String requestRoute = Route.viewDocument + documentId;
-        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
                 ContentType.ApplicationJson, query.getBytes());
         try
         {
