@@ -6,7 +6,7 @@ public class Document
 {
     private String id;
     private String docType;
-    private String serie;
+    private String series;
     private String docNumber;
     private String documentTotal;
     private String date;
@@ -14,11 +14,11 @@ public class Document
     private ArrayList<DocumentLine> lines;
 
 
-    public Document(String id, String docType, String serie, String docNumber, String documentTotal, String date, String state)
+    public Document(String id, String docType, String series, String docNumber, String documentTotal, String date, String state)
     {
         this.id = id;
         this.docType = docType;
-        this.serie = serie;
+        this.series = series;
         this.docNumber = docNumber;
         this.documentTotal = documentTotal;
         this.date = date;
@@ -45,14 +45,14 @@ public class Document
         this.docType = docType;
     }
 
-    public String getSerie()
+    public String getSeries()
     {
-        return serie;
+        return series;
     }
 
-    public void setSerie(String serie)
+    public void setSeries(String series)
     {
-        this.serie = serie;
+        this.series = series;
     }
 
     public String getDocNumber()
