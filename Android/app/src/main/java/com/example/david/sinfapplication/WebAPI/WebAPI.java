@@ -187,22 +187,15 @@ public class WebAPI
      */
     public static boolean createDocument(Document document) throws InterruptedException, ExecutionException, TimeoutException
     {
-       /* String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
-                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
-                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
-                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
-                "LD.IdCabecDoc = '" + documentId + "'" + "\"";
-
-        String requestRoute = Route.viewDocument + documentId;
-        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
-                ContentType.ApplicationJson, query.getBytes());
+        String createDocumentRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
+                ContentType.ApplicationJson, new byte[0]);
         try
         {
-            return DocumentParser.parseViewDocumentDetailsRequestResponse(viewCustomerRequestResponse);
+            return DocumentParser.parseCreateDocumentRequestResponse(createDocumentRequestResponse);
         } catch (JSONException e)
         {
             e.printStackTrace();
-        }*/
+        }
         return true;
     }
 
