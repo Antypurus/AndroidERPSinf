@@ -203,30 +203,27 @@ public class WebAPI
     /**
      * Retrieves all documents of a customer, of the given types. Returns an ArrayList of Document instances representing the documents retrieved from the ERP server.
      * @param customerId A list of string containing the id of the customer whose documents should be displayed.
-     * @param documentTypes A string representing a list that must contain the pretended document types to show. (Example: ['ORC', 'ECL', 'FA'])
      * @return An instance of class Document representing the document retrieved from server.
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static ArrayList<Document> viewDocumentsFromCustomer(String customerId, String documentTypes) throws InterruptedException, ExecutionException, TimeoutException
+    public static ArrayList<Document> viewDocumentsFromCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
-       /* String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.Desconto2, LD.Desconto3, LD.TaxaIva, LD.Quantidade, " +
-                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
-                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
-                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
-                "LD.IdCabecDoc = '" + documentId + "'" + "\"";
+        String query = "\"" + "SELECT  CD.Id, CD.TipoDoc,  CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado " +
+                "FROM CabecDoc CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id " +
+                "WHERE CD.Entidade = 'C0001' AND (CD.TipoDoc = 'FA' OR CD.TipoDoc = 'ECL' OR CD.TipoDoc = 'ORC')" + "\"";
 
-        String requestRoute = Route.viewDocument + documentId;
+        String requestRoute = Route.viewCustomerDocuments;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
                 ContentType.ApplicationJson, query.getBytes());
         try
         {
-            return DocumentParser.parseViewDocumentDetailsRequestResponse(viewCustomerRequestResponse);
+            return DocumentParser.parseViewCustomerDocumentRequestResponse(viewCustomerRequestResponse);
         } catch (JSONException e)
         {
             e.printStackTrace();
-        }*/
+        }
         return null;
     }
 
@@ -246,7 +243,7 @@ public class WebAPI
                 "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
                 "LD.IdCabecDoc = '" + documentId + "'" + "\"";
 
-        String requestRoute = Route.viewDocument + documentId;
+        String requestRoute = Route.viewDocument;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
                 ContentType.ApplicationJson, query.getBytes());
         try

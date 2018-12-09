@@ -11,24 +11,30 @@ import java.util.ArrayList;
 
 public class DocumentParser
 {
-    public static Document parseViewCustomerDocumentRequestResponse(String viewCustomerDocumentRequestResponse) throws
+    public static ArrayList<Document> parseViewCustomerDocumentRequestResponse(String viewCustomerDocumentRequestResponse) throws
             JSONException
     {
+        ArrayList<Document> documents = new ArrayList<>();
         JSONObject dataSetObject = new JSONObject(viewCustomerDocumentRequestResponse).getJSONObject("DataSet");
-        JSONArray arrayWithDocument = dataSetObject.getJSONArray("Table");
+        JSONArray documentsArray = dataSetObject.getJSONArray("Table");
 
-        assert arrayWithDocument.length() == 1;
+        int numberDocumentLines = documentsArray.length();
+        for (int i = 0; i < numberDocumentLines; i++)
+        {
+            JSONObject line = documentsArray.getJSONObject(0);
+            String id = line.getString("Id");
+            String docType = line.getString("TipoDoc");
+            String serie = line.getString("Serie");
+            String docNumber = line.getString("NumDoc");
+            String documentTotal = line.getString("TotalDocumento");
+            String date = line.getString("Data");
+            String state = line.getString("Estado");
 
-        JSONObject line = arrayWithDocument.getJSONObject(0);
-        String id = line.getString("Id");
-        String docType = line.getString("TipoDoc");
-        String serie = line.getString("Serie");
-        String docNumber = line.getString("NumDoc");
-        String documentTotal = line.getString("TotalDocumento");
-        String date = line.getString("Data");
-        String state = line.getString("Estado");
+            Document document = new Document(id, docType, serie, docNumber, documentTotal, date, state);
+            documents.add(document);
+        }
 
-        return new Document(id, docType, serie, docNumber, documentTotal, date, state);
+        return documents;
     }
 
     public static ArrayList<DocumentLine> parseViewDocumentDetailsRequestResponse(String viewDocumentDetailsRequestResponse) throws
@@ -39,7 +45,7 @@ public class DocumentParser
         JSONArray documentLinesArray = dataSetObject.getJSONArray("Table");
 
         int numberDocumentLines = documentLinesArray.length();
-        for(int i = 0; i < numberDocumentLines; i++)
+        for (int i = 0; i < numberDocumentLines; i++)
         {
             JSONObject line = documentLinesArray.getJSONObject(i);
             int number = line.getInt("NumLinha");
