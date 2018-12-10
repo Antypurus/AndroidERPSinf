@@ -2,7 +2,7 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 
 import android.util.Log;
 
-import com.example.david.sinfapplication.Utils;
+import com.example.david.sinfapplication.Utils.Utils;
 
 import org.json.JSONObject;
 
