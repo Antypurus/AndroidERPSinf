@@ -78,9 +78,25 @@ public class DocumentParser
         return true;
     }
 
-    public static String buildRequestBodyForCreateDocumentRequest(Document document)
+    public static String buildRequestBodyForCreateDocumentRequest(Document document, String customerName)
     {
-        //TODO
-        return "";
+        JSONObject requestBody = new JSONObject();
+        try
+        {
+            requestBody.put("TipoDoc", document.getDocType());
+            requestBody.put("Serie", document.getSeries());
+            requestBody.put("Entidade", customerName);
+            requestBody.put("TipoEntidade","C");  //client always
+            requestBody.put("DataDoc", document.getDocType());
+            requestBody.put("DataVenc", document.getDocType());
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+
+        return requestBody.toString();
     }
 }
