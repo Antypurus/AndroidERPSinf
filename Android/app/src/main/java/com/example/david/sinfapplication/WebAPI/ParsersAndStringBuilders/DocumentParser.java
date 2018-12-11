@@ -78,35 +78,19 @@ public class DocumentParser
         return true;
     }
 
-    public static String buildRequestBodyForCreateDocumentRequest(Document document, String customerName)
+    public static String buildRequestBodyForCreateDocumentRequest(Document document, String customerId)
     {
-        JSONObject line = documentLinesArray.getJSONObject(i);
-        int number = line.getInt("NumLinha");
-        String productId = line.getString("Artigo");
-        String productDescription = line.getString("Descricao");
-        //int discount = line.getInt("Desconto1");
-        int commercialDiscount = line.getInt("DescontoComercial");
-        //int taxes = line.getInt("TaxaIva");
-        int quantity = line.getInt("Quantidade");
-        int unitaryPrice = line.getInt("PrecUnit");
-       // int netPrice = line.getInt("PrecoLiquido");
-        String date = line.getString("Data"); //ver, talvez DataDoc
-        String outDate = line.getString("DataSaida");
-        String deliveryDate = line.getString("DataEntrega");
-        int comission = line.getInt("Comissao");
-        String idCabecDoc = line.getString("IdCabecDoc");
-
         JSONObject requestBody = new JSONObject();
         try
         {
             requestBody.put("TipoDoc", document.getDocType());
             requestBody.put("Serie", document.getSeries());
-            requestBody.put("Entidade", customerName);
+            requestBody.put("Entidade", customerId);
             requestBody.put("TipoEntidade","C");  //client always
             requestBody.put("DataDoc", document.getDocType());
             requestBody.put("DataVenc", document.getDocType());
             //DescontoComercial
-            //produtCart com as suas respetivas cenas--- Artigo, Descricao, Quantidade, PrecUnit, TaxaIva(maybe)
+            //produtCart com as suas respetivas cenas--- Artigo, Descricao, Quantidade, PrecUnit, TaxaIva(maybe as IVA from product)
         }
         catch (JSONException e)
         {
