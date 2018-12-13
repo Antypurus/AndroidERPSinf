@@ -21,4 +21,39 @@ public class Utils
         return postData.toString().getBytes("UTF-8");
     }
 
+    public static boolean IsNifValid(String nifString)
+    {
+        //check length
+        if (nifString.length() != 9)
+            return false;
+
+        //check first digit
+        String first_digit = "1 2 5 6 8 9";
+        if (first_digit.contains(String.valueOf(nifString.charAt(0))))
+            return false;
+
+        //check mod11
+        long nif = Long.parseLong(nifString);
+        int curr_number;
+        int soma = 0;
+        for (int i = 9; i >= 2; i--)
+        {
+            curr_number = (int) Math.pow(10, i - 1);
+            soma += (nif / curr_number) * i;
+            nif -= (nif / curr_number) * curr_number;  // subtracts the current number * 10 raised to the power of its position
+        }
+
+        int remainder_11 = soma % 11;
+        if (remainder_11 == 0)
+            if (nif == 0 || nif == 1)
+                return true;
+            else
+                return false;
+        else
+        if (nif == 11 - remainder_11)
+            return true;
+        else
+            return false;
+    }
+
 }
