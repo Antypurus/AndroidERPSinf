@@ -15,6 +15,12 @@ public class DocumentLine
     private String idCabecDoc;
 
 
+    public DocumentLine(String productId,  int quantity)
+    {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public DocumentLine(int number, String productId, String productDescription, int commercialDiscount, int quantity,
                             int unitaryPrice, String date, String outDate, String deliveryDate, int comission, String idCabecDoc)
     {

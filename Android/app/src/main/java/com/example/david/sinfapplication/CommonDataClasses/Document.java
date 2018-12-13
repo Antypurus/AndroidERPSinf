@@ -25,6 +25,12 @@ public class Document
         this.state = state;
     }
 
+    public Document(String docType, String series)
+    {
+        this.docType = docType;
+        this.series = series;
+    }
+
     public String getId()
     {
         return id;

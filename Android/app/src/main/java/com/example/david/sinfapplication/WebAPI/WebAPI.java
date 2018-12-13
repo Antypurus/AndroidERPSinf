@@ -190,14 +190,8 @@ public class WebAPI
         String requestBody = DocumentParser.buildRequestBodyForCreateDocumentRequest(document, customerId);
         String createDocumentRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
                 ContentType.ApplicationJson, requestBody.getBytes());
-        try
-        {
-            return DocumentParser.parseCreateDocumentRequestResponse(createDocumentRequestResponse);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return true;
+
+        return DocumentParser.parseCreateDocumentRequestResponse(createDocumentRequestResponse);
     }
 
     /**

@@ -24,7 +24,7 @@ public class Route
     public static String editCostumer = PrimaveraWebAPIDefaultRoute + "Base/Clientes/Actualiza/";
 
     //Documents
-    public static String createDocument = PrimaveraWebAPIDefaultRoute + "Compras/Docs/CreateDocument";
+    public static String createDocument = PrimaveraWebAPIDefaultRoute + "Vendas/Docs/CreateDocument/";
     public static String viewDocument = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
     public static String viewCustomerDocuments = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
 }

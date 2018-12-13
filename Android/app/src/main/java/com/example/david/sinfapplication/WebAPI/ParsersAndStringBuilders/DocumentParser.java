@@ -87,29 +87,30 @@ public class DocumentParser
 
     public static String buildRequestBodyForCreateDocumentRequest(Document document, String customerId)
     {
+        //TODO NAO consigo colocar DescontoComercial nem Desconto1 no criar documento
         JSONObject requestBody = new JSONObject();
         try
         {
-            requestBody.put("TipoDoc", document.getDocType());
-            requestBody.put("Serie", document.getSeries());
-            requestBody.put("Entidade", customerId);
-            requestBody.put("TipoEntidade","C");  //client always
-            requestBody.put("DataDoc", document.getDocType());
-            requestBody.put("DataVenc", document.getDocType());
-            requestBody.put("DescontoComercial", document.getDocType());
-
             JSONArray linesArray = new JSONArray();
             ArrayList<DocumentLine> documentLines = document.getLines();
             for(int i = 0; i < documentLines.size(); i++)
             {
                 JSONObject line = new JSONObject();
                 DocumentLine documentLine = documentLines.get(i);
-                String artigo = documentLine.getProductId();
+                String item = documentLine.getProductId();
+                line.put("Artigo", item);
                 int quantity = documentLine.getQuantity();
+                line.put("Quantidade", String.valueOf(quantity));
                 linesArray.put(line);
             }
             requestBody.putOpt("Linhas", linesArray);
             //produtCart com as suas respetivas cenas--- Artigo, Descricao, Quantidade, PrecUnit, TaxaIva(maybe as IVA from product)
+
+            requestBody.put("Tipodoc", document.getDocType());
+            requestBody.put("Serie", document.getSeries());
+            requestBody.put("Entidade", customerId);
+            requestBody.put("TipoEntidade","C");  //client always
+            //requestBody.put("DescontoComercial", document.getDocType());
         }
         catch (JSONException e)
         {
