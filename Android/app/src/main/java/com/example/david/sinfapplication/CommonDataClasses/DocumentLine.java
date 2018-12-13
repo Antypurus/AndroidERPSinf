@@ -5,12 +5,9 @@ public class DocumentLine
     private int number;
     private String productId;
     private String productDescription;
-    private int discount;
     private int commercialDiscount;
-    private int taxes;
     private int quantity;
     private int unitaryPrice;
-    private int netPrice;
     private String date;
     private String outDate;
     private String deliveryDate;
@@ -18,17 +15,15 @@ public class DocumentLine
     private String idCabecDoc;
 
 
-    public DocumentLine(int number, String productId, String productDescription, int discount, int commercialDiscount, int taxes, int quantity, int unitaryPrice, int netPrice, String date, String outDate, String deliveryDate, int comission, String idCabecDoc)
+    public DocumentLine(int number, String productId, String productDescription, int commercialDiscount, int quantity,
+                            int unitaryPrice, String date, String outDate, String deliveryDate, int comission, String idCabecDoc)
     {
         this.number = number;
         this.productId = productId;
         this.productDescription = productDescription;
-        this.discount = discount;
         this.commercialDiscount = commercialDiscount;
-        this.taxes = taxes;
         this.quantity = quantity;
         this.unitaryPrice = unitaryPrice;
-        this.netPrice = netPrice;
         this.date = date;
         this.outDate = outDate;
         this.deliveryDate = deliveryDate;
@@ -66,16 +61,6 @@ public class DocumentLine
         this.productDescription = productDescription;
     }
 
-    public int getDiscount()
-    {
-        return discount;
-    }
-
-    public void setDiscount(int discount)
-    {
-        this.discount = discount;
-    }
-
     public int getCommercialDiscount()
     {
         return commercialDiscount;
@@ -84,16 +69,6 @@ public class DocumentLine
     public void setCommercialDiscount(int commercialDiscount)
     {
         this.commercialDiscount = commercialDiscount;
-    }
-
-    public int getTaxes()
-    {
-        return taxes;
-    }
-
-    public void setTaxes(int taxes)
-    {
-        this.taxes = taxes;
     }
 
     public int getQuantity()
@@ -116,14 +91,9 @@ public class DocumentLine
         this.unitaryPrice = unitaryPrice;
     }
 
-    public int getNetPrice()
+    public int getGlobalPriceWithQuantityAndDiscounts()
     {
-        return netPrice;
-    }
-
-    public void setNetPrice(int netPrice)
-    {
-        this.netPrice = netPrice;
+        return (unitaryPrice * quantity) * (100 - commercialDiscount);
     }
 
     public String getDate()

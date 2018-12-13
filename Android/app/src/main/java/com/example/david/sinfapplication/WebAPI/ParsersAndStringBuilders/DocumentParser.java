@@ -51,20 +51,17 @@ public class DocumentParser
             int number = line.getInt("NumLinha");
             String productId = line.getString("Artigo");
             String productDescription = line.getString("Descricao");
-            //int discount = line.getInt("Desconto1");
             int commercialDiscount = line.getInt("DescontoComercial");
-            //int taxes = line.getInt("TaxaIva");
             int quantity = line.getInt("Quantidade");
             int unitaryPrice = line.getInt("PrecUnit");
-           // int netPrice = line.getInt("PrecoLiquido");
             String date = line.getString("Data"); //ver
             String outDate = line.getString("DataSaida");
             String deliveryDate = line.getString("DataEntrega");
             int comission = line.getInt("Comissao");
             String idCabecDoc = line.getString("IdCabecDoc");
 
-            DocumentLine documentLine = new DocumentLine(number, productId, productDescription, discount, commercialDiscount, taxes,
-                    quantity, unitaryPrice, netPrice, date, outDate, deliveryDate, comission, idCabecDoc);
+            DocumentLine documentLine = new DocumentLine(number, productId, productDescription, commercialDiscount,
+                    quantity, unitaryPrice, date, outDate, deliveryDate, comission, idCabecDoc);
             documentLines.add(documentLine);
         }
 
@@ -89,7 +86,19 @@ public class DocumentParser
             requestBody.put("TipoEntidade","C");  //client always
             requestBody.put("DataDoc", document.getDocType());
             requestBody.put("DataVenc", document.getDocType());
-            //DescontoComercial
+            requestBody.put("DescontoComercial", document.getDocType());
+
+            JSONArray linesArray = new JSONArray();
+            ArrayList<DocumentLine> documentLines = document.getLines();
+            for(int i = 0; i < documentLines.size(); i++)
+            {
+                JSONObject line = new JSONObject();
+                DocumentLine documentLine = documentLines.get(i);
+                String artigo = documentLine.getProductId();
+                int quantity = documentLine.getQuantity();
+                linesArray.put(line);
+            }
+            requestBody.putOpt("Linhas", linesArray);
             //produtCart com as suas respetivas cenas--- Artigo, Descricao, Quantidade, PrecUnit, TaxaIva(maybe as IVA from product)
         }
         catch (JSONException e)
