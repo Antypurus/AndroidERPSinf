@@ -41,8 +41,14 @@ public class DocumentParser
             JSONException
     {
         ArrayList<DocumentLine> documentLines = new ArrayList<>();
+        if(viewDocumentDetailsRequestResponse == null)
+            return null;
         JSONObject dataSetObject = new JSONObject(viewDocumentDetailsRequestResponse).getJSONObject("DataSet");
+        if(dataSetObject == null)
+            return null;
         JSONArray documentLinesArray = dataSetObject.getJSONArray("Table");
+        if(documentLinesArray == null)
+            return null;
 
         int numberDocumentLines = documentLinesArray.length();
         for (int i = 0; i < numberDocumentLines; i++)

@@ -185,9 +185,9 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean createDocument(Document document) throws InterruptedException, ExecutionException, TimeoutException
+    public static boolean createDocument(Document document, String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String requestBody = DocumentParser.buildRequestBodyForCreateDocumentRequest(document);
+        String requestBody = DocumentParser.buildRequestBodyForCreateDocumentRequest(document, customerId);
         String createDocumentRequestResponse = PrimaveraWebAPI.sendRequest(Route.createDocument, RequestMethod.createDocument,
                 ContentType.ApplicationJson, requestBody.getBytes());
         try
@@ -212,7 +212,7 @@ public class WebAPI
     {
         String query = "\"" + "SELECT  CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado " +
                 "FROM CabecDoc CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id " +
-                "WHERE CD.Nome = '" + customerName + "' AND (CD.TipoDoc = 'FA' OR CD.TipoDoc = 'ECL' OR CD.TipoDoc = 'ORC')" + "\"";
+                "WHERE CD.Entidade = '" + customerName + "' AND (CD.TipoDoc = 'FA' OR CD.TipoDoc = 'ECL' OR CD.TipoDoc = 'ORC')" + "\"";
 
         String requestRoute = Route.viewCustomerDocuments;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewDocument,
@@ -237,10 +237,10 @@ public class WebAPI
      */
     public static ArrayList<DocumentLine> viewDocumentDetails(String documentId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.Desconto1, LD.TaxaIva, LD.Quantidade, " +
-                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.PrecoLiquido, LD.Vendedor," +
-                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc" +
-                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where" +
+        String query = "\"" + "SELECT LD.NumLinha, LD.Artigo, LD.TaxaIva, LD.Quantidade, " +
+                "LD.PrecUnit, LD.Data, LD.DataSaida, LD.DataEntrega, LD.DescontoComercial, LD.Comissao, LD.Vendedor," +
+                "LD.Descricao, LD.IdCabecDoc, CD.Id, CD.TipoDoc, CD.Serie, CD.NumDoc, CD.TotalDocumento, CD.Data, CDS.Estado from CabecDoc " +
+                "CD INNER JOIN CabecDocStatus CDS ON CDS.IdCabecDoc = CD.Id INNER JOIN LinhasDoc LD ON CDS.IdCabecDoc = LD.IdCabecDoc where " +
                 "LD.IdCabecDoc = '" + documentId + "'" + "\"";
 
         String requestRoute = Route.viewDocument;
