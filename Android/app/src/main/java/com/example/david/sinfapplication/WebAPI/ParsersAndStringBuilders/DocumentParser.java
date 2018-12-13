@@ -74,11 +74,15 @@ public class DocumentParser
         return documentLines;
     }
 
-    public static boolean parseCreateDocumentRequestResponse(String createDocumentRequestResponse) throws
-            JSONException
+    public static boolean parseCreateDocumentRequestResponse(String createDocumentRequestResponse)
     {
-        //TODO
-        return true;
+        if(createDocumentRequestResponse == null)
+            return false;
+
+        if(createDocumentRequestResponse == "true")
+            return true;
+        else
+            return false;
     }
 
     public static String buildRequestBodyForCreateDocumentRequest(Document document, String customerId)
