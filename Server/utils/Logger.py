@@ -3,3 +3,6 @@ init()
 
 def print_warning(string: str):
     print(Fore.YELLOW+string+Style.RESET_ALL)
+
+def print_error(string: str):
+    print(Fore.RED+string+Style.RESET_ALL)
