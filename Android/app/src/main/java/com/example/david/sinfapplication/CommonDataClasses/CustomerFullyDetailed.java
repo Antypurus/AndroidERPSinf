@@ -1,5 +1,10 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+
 public class CustomerFullyDetailed extends Customer
 {
     /**
@@ -89,10 +94,20 @@ public class CustomerFullyDetailed extends Customer
                                  String postalCode, String postalCodeCity, String phoneNumber,
                                  String faxNumber, String webSite, String state, String taxNumber,
                                  String country, String currency, String checkingAccountDebit,
-                                 String pendingOrdersDebit)
+                                 String pendingOrdersDebit) throws NoSuchAlgorithmException
     {
-        //TODO this.id = SHA256 ....;
         super("", name);
+        //TODO ver se isto ta a funcionar direito;
+        String fullObjString = name + description + address + city + postalCode
+                + postalCodeCity + phoneNumber + faxNumber + webSite + state
+                + taxNumber + country + currency + checkingAccountDebit + pendingOrdersDebit;
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte hash[] = digest.digest(fullObjString.getBytes());
+        StringBuilder hashSB = new StringBuilder();
+        for (byte b : hash)
+            hashSB.append(String.format("%02X ", b));
+
+        this.id = hashSB.toString();
         this.name = name;
         this.description = description;
         this.address = address;
@@ -108,6 +123,7 @@ public class CustomerFullyDetailed extends Customer
         this.currency = currency;
         this.checkingAccountDebit = checkingAccountDebit;
         this.pendingOrdersDebit = pendingOrdersDebit;
+        this.hashCode();
     }
 
     public String getId()
