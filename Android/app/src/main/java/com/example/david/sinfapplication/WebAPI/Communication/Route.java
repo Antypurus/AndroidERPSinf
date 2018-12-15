@@ -4,14 +4,20 @@ public class Route
 {
     //Server
     private static final String serverHostName = "dservers.ddns.net";
-    private static final String serverPort = "2018";
+    private static final String primaveraServerPort = "2018";
+    private static final String pythonServerPort = "5000";
 
     //Primavera Web API
-    private static String PrimaveraWebAPIDefaultRoute = "http://" + serverHostName + ":" + serverPort + "/WebApi/";
+    private static String PrimaveraWebAPIDefaultRoute = "http://" + serverHostName + ":" + primaveraServerPort + "/WebApi/";
     private static String PrimaveraWebAPIRawQuery = "Administrador/Consulta";
+
+    //Python Web API
+    private static String PythonWebAPIDefaultRoute = "http://" + serverHostName + ":" + pythonServerPort + "/";
+    //private static String PythonAPIRawQuery = "Administrador/Consulta";
 
     //PrimaveraAuthentication
     public static String PrimaveraAuthentication = PrimaveraWebAPIDefaultRoute + "token";
+    public static String PythonAuthentication = PythonWebAPIDefaultRoute + "register";
 
     //Products
     public static String ListProducts = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
