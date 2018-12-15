@@ -260,7 +260,8 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean createSaleOpportunitie(SaleOpportunitie saleOpportunitie) throws InterruptedException, ExecutionException, TimeoutException
+    public static boolean createSaleOpportunitie(SaleOpportunitie saleOpportunitie) throws
+            InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.createSaleOpportunitie;
         String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.createSaleOpportunitie,
