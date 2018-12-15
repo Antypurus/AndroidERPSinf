@@ -26,9 +26,11 @@ public class PythonWebAPI
         authenticationToken = new AuthenticationToken(new PrimaveraWebAPI(), username, password, company, instance, grant_type, line);
     }
 
-    public String makeLoginRequest(final byte[] bodyContent) throws
+    public String makeLoginRequest(final String username, final String password) throws
             InterruptedException, ExecutionException, TimeoutException
     {
+        final byte[] bodyContent = ("username=" + username + "&password=" + password).getBytes();
+
         AsyncTask asyncTask = new AsyncTask()
         {
             @Override
