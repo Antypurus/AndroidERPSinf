@@ -6,6 +6,7 @@ import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -268,5 +269,42 @@ public class WebAPI
                 ContentType.ApplicationJson, saleOpportunitie.getJson().getBytes());
 
         return SaleOpportunitieParser.parseCreateSaleOpportunitieRequestResponse(createSaleOpportunitieRequestResponse);
+    }
+
+    /**
+     * Adds a proposal for a saleOpportunitie on the ERP server. Returns a boolean indicating the result of the request.
+     * @param saleOpportunitieProposal A object of SaleOpportunitieProposal that contains the saleOpportunitieProposal to be created
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static boolean createProposalForSaleOpportunitie(SaleOpportunitieProposal saleOpportunitieProposal) throws
+            InterruptedException, ExecutionException, TimeoutException, JSONException
+    {
+        String requestRoute = Route.createProposalForSaleOpportunitie;
+        String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.createProposalForSaleOpportunitie,
+                ContentType.ApplicationJson, saleOpportunitieProposal.getJson().getBytes());
+
+        return SaleOpportunitieParser.parseCreateProposalForSaleOpportunitieRequestResponse(createSaleOpportunitieRequestResponse);
+    }
+
+    /**
+     * Adds a saleOpportunitie on the ERP server. Returns a boolean indicating the result of the request.
+     * @param saleOpportunitieNumber The number of the sale opportunitie to be transformed
+     * @param numberProposalToAccept The number of the proposal, of the group of proposals that were made to that sale opportunitie, that will be accepted4
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static boolean transformSaleOpportunitie(String saleOpportunitieNumber, int numberProposalToAccept) throws
+            InterruptedException, ExecutionException, TimeoutException, JSONException
+    {
+        String requestRoute = Route.transformSaleOpportunitie;
+        String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.transformSaleOpportunitie,
+                ContentType.ApplicationJson, SaleOpportunitieParser.transformSaleOpportunitieProposalRequestBody(saleOpportunitieNumber, numberProposalToAccept).getBytes());
+
+        return SaleOpportunitieParser.parseTransformSaleOpportunitieRequestResponse(createSaleOpportunitieRequestResponse);
     }
 }

@@ -56,12 +56,22 @@ public class SaleOpportunitie
         this.opportunitieNumber = String.valueOf((description + creationDate + expirationDate + resume + entity + entityType + saleState).hashCode());
     }
 
-    public String getOpportunitie()
+    public String getOpportunitieId()
+    {
+        return opportunitieId;
+    }
+
+    public void setOpportunitieId(String opportunitieId)
+    {
+        this.opportunitieId = opportunitieId;
+    }
+
+    public String getOpportunitieNumber()
     {
         return opportunitieNumber;
     }
 
-    public void setOpportunitie(String opportunitie)
+    public void setOpportunitieNumber(String opportunitie)
     {
         this.opportunitieNumber = opportunitie;
     }
