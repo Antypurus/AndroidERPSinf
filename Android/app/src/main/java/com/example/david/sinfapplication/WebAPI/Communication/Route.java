@@ -27,4 +27,10 @@ public class Route
     public static String createDocument = PrimaveraWebAPIDefaultRoute + "Vendas/Docs/CreateDocument/";
     public static String viewDocument = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
     public static String viewCustomerDocuments = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+
+    //Sales Opportunities
+    public static String createSaleOpportunitie = PrimaveraWebAPIDefaultRoute + "CRM/OportunidadesVenda/Actualiza/\"\"";
+    public static String createProposalForSaleOpportunitie = PrimaveraWebAPIDefaultRoute + "CRM/PropostasOPV/Actualiza/";
+    public static String transformSaleOpportunitie = PrimaveraWebAPIDefaultRoute + "CRM/PropostasOPV/GenerateDocument/V/{documentType}/A/";
+
 }

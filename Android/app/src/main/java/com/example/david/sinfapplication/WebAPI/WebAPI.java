@@ -5,6 +5,7 @@ import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -13,6 +14,7 @@ import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpportunitieParser;
 
 import org.json.JSONException;
 
@@ -250,4 +252,20 @@ public class WebAPI
         return null;
     }
 
+    /**
+     * Adds a saleOpportunitie on the ERP server. Returns a boolean indicating the result of the request.
+     * @param saleOpportunitie A object of SaleOpportunitie that contains the saleOpportunitie to be created
+     * @return A boolean indicating the success of the request. true indicates success; false indicates server error
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     */
+    public static boolean createSaleOpportunitie(SaleOpportunitie saleOpportunitie) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String requestRoute = Route.createSaleOpportunitie;
+        String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.createSaleOpportunitie,
+                ContentType.ApplicationJson, saleOpportunitie.getJson().getBytes());
+
+        return SaleOpportunitieParser.parseCreateSaleOpportunitieRequestResponse(createSaleOpportunitieRequestResponse);
+    }
 }

@@ -1,5 +1,8 @@
 package com.example.david.sinfapplication.Utils;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
@@ -56,4 +59,12 @@ public class Utils
             return false;
     }
 
+    public static void addToJsonObjectIfNotNull(JSONObject jsonObject, String key, String value) throws
+            JSONException
+    {
+        if(value == null)
+            value = "";
+
+        jsonObject.put(key, value);
+    }
 }

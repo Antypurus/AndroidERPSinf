@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
+import com.example.david.sinfapplication.Utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,32 +79,23 @@ public class CustomerParserAndStringBuilder
             JSONException
     {
         JSONObject jsonObject = new JSONObject();
-        addToJsonObjectIfNotNull(jsonObject, "Cliente", customerFullyDetailed.getId());
-        addToJsonObjectIfNotNull(jsonObject, "Nome", customerFullyDetailed.getName());
-        addToJsonObjectIfNotNull(jsonObject, "Descricao", customerFullyDetailed.getDescription());
-        addToJsonObjectIfNotNull(jsonObject, "Morada", customerFullyDetailed.getAddress());
-        addToJsonObjectIfNotNull(jsonObject, "Localidade", customerFullyDetailed.getCity());
-        addToJsonObjectIfNotNull(jsonObject, "CodigoPostal", customerFullyDetailed.getPostalCode());
-        addToJsonObjectIfNotNull(jsonObject, "LocalidadeCodigoPostal", customerFullyDetailed.getPostalCodeCity());
-        addToJsonObjectIfNotNull(jsonObject, "Telefone", customerFullyDetailed.getPhoneNumber());
-        addToJsonObjectIfNotNull(jsonObject, "Fax", customerFullyDetailed.getFaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "EnderecoWeb", customerFullyDetailed.getWebSite());
-        addToJsonObjectIfNotNull(jsonObject, "Distrito", customerFullyDetailed.getState());
-        addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customerFullyDetailed.getTaxNumber());
-        addToJsonObjectIfNotNull(jsonObject, "Pais", customerFullyDetailed.getCountry());
-        addToJsonObjectIfNotNull(jsonObject, "Moeda", customerFullyDetailed.getCurrency());
-        addToJsonObjectIfNotNull(jsonObject, "DebitoContaCorrente", customerFullyDetailed.getCheckingAccountDebit());
-        addToJsonObjectIfNotNull(jsonObject, "DebitoEncomendasPendentes", customerFullyDetailed.getPendingOrdersDebit());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Cliente", customerFullyDetailed.getId());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Nome", customerFullyDetailed.getName());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Descricao", customerFullyDetailed.getDescription());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Morada", customerFullyDetailed.getAddress());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Localidade", customerFullyDetailed.getCity());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "CodigoPostal", customerFullyDetailed.getPostalCode());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "LocalidadeCodigoPostal", customerFullyDetailed.getPostalCodeCity());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Telefone", customerFullyDetailed.getPhoneNumber());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Fax", customerFullyDetailed.getFaxNumber());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "EnderecoWeb", customerFullyDetailed.getWebSite());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Distrito", customerFullyDetailed.getState());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customerFullyDetailed.getTaxNumber());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Pais", customerFullyDetailed.getCountry());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "Moeda", customerFullyDetailed.getCurrency());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "DebitoContaCorrente", customerFullyDetailed.getCheckingAccountDebit());
+        Utils.addToJsonObjectIfNotNull(jsonObject, "DebitoEncomendasPendentes", customerFullyDetailed.getPendingOrdersDebit());
 
         return jsonObject;
-    }
-
-    private static void addToJsonObjectIfNotNull(JSONObject jsonObject, String key, String value) throws
-            JSONException
-    {
-        if(value == null)
-            value = "";
-
-        jsonObject.put(key, value);
     }
 }
