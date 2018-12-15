@@ -34,7 +34,7 @@ public class PythonWebAPI
             @Override
             protected Object doInBackground(Object[] objects)
             {
-                return sendAndReceiveResponseGeneric(urlString, RequestMethod.Authentication, bodyContent, ContentType.UrlEncoded, false);
+                return sendAndReceiveResponseGeneric(urlString, RequestMethod.Authentication, bodyContent, ContentType.ApplicationJson, false);
             }
         };
         asyncTask.execute(new String[1]);
