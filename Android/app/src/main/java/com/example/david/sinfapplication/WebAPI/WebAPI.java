@@ -298,10 +298,12 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean transformSaleOpportunitie(String saleOpportunitieNumber, int numberProposalToAccept) throws
+    public static boolean transformSaleOpportunitie(String saleOpportunitieNumber, int numberProposalToAccept, String documentType) throws
             InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.transformSaleOpportunitie;
+        requestRoute.replaceFirst("{documentType}", documentType);
+
         String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.transformSaleOpportunitie,
                 ContentType.ApplicationJson, SaleOpportunitieParser.transformSaleOpportunitieProposalRequestBody(saleOpportunitieNumber, numberProposalToAccept).getBytes());
 
