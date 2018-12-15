@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class SaleOpportunitieProposal
 {
-    private int proposalNumber;
+    private int proposalNumber; //TODO see how to handle it...como saber o numero que deve ser +1 que o anterior
     private SaleOpportunitie saleOpportunitie;
     private ArrayList<CartProduct> productsList;
 
