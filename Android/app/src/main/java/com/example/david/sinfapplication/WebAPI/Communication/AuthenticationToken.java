@@ -50,7 +50,7 @@ class AuthenticationToken
     {
         try
         {
-            String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.Authentication, authenticationRequestParamatersBytes);
+            String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.PrimaveraAuthentication, authenticationRequestParamatersBytes);
             JSONObject jsonObject = new JSONObject(loginRequestResponse);
             authenticationToken = jsonObject.getString("access_token");
             Log.d("generate token", authenticationToken); //TODO

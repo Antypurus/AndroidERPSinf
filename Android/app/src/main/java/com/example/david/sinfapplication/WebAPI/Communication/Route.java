@@ -10,8 +10,8 @@ public class Route
     private static String PrimaveraWebAPIDefaultRoute = "http://" + serverHostName + ":" + serverPort + "/WebApi/";
     private static String PrimaveraWebAPIRawQuery = "Administrador/Consulta";
 
-    //Authentication
-    public static String Authentication = PrimaveraWebAPIDefaultRoute + "token";
+    //PrimaveraAuthentication
+    public static String PrimaveraAuthentication = PrimaveraWebAPIDefaultRoute + "token";
 
     //Products
     public static String ListProducts = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
