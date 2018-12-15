@@ -26,7 +26,7 @@ public class PythonWebAPI
         authenticationToken = new AuthenticationToken(new PrimaveraWebAPI(), username, password, company, instance, grant_type, line);
     }
 
-    public String makeLoginRequest(final String urlString, final byte[] bodyContent) throws
+    public String makeLoginRequest(final byte[] bodyContent) throws
             InterruptedException, ExecutionException, TimeoutException
     {
         AsyncTask asyncTask = new AsyncTask()
@@ -34,7 +34,7 @@ public class PythonWebAPI
             @Override
             protected Object doInBackground(Object[] objects)
             {
-                return sendAndReceiveResponseGeneric(urlString, RequestMethod.Authentication, bodyContent, ContentType.ApplicationJson, false);
+                return sendAndReceiveResponseGeneric(Route.PythonAuthentication, RequestMethod.Authentication, bodyContent, ContentType.ApplicationJson, false);
             }
         };
         asyncTask.execute(new String[1]);
