@@ -28,7 +28,7 @@ def login():
                                  (username, password))
     if id is None:
         # there is no user with these credentials
-        return "Error: Invalid Password Username Combo",status.HTTP_404_NOT_FOUND
+        return "Error: Invalid Password Username Combo",404
     else:
         # login occurs
         ret = {}
@@ -42,7 +42,7 @@ def login():
         ret["instance"]   = env.get_env("PRIMAVERA_INSTANCE")
         ret["grant_type"] = env.get_env("PRIMAVERA_GRANT")
         ret["line"]       = env.get_env("PRIMAVERA_LINE")
-        return json.dumps(ret),status.HTTP_200_OK
+        return json.dumps(ret),200
 
 # handles registering a vendor in the database
 @app.route("/register", methods=['POST'])
@@ -55,10 +55,10 @@ def register():
         primavera_id = request.form["primavera_id"]
 
         database.insert("insert into salesperson(username,password,primavera_id) values(%s,%s,%s)",(username,password,primavera_id))
-        return "Success: User Created You Can Now Login",status.HTTP_403_FORBIDDEN
+        return "Success: User Created You Can Now Login",status.200
     else:
         #username already exists
-        return "Error: Username Already Exist",status.HTTP_200_OK
+        return "Error: Username Already Exist",403
 
 
 if __name__ == "__main__":
