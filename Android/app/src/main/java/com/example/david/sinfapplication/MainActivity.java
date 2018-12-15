@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
 
        /* try
         {
-            byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
+            byte[] parametersByteArray = UtilsClass.getBytesOfHTTPParametersToSend(parametersMap);
             PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
                     "password", "professional");
             new ListProducts();

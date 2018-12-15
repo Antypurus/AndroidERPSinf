@@ -2,7 +2,7 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 
 import android.util.Log;
 
-import com.example.david.sinfapplication.Utils.Utils;
+import com.example.david.sinfapplication.Utils.UtilsClass;
 
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ class AuthenticationToken
         authenticationRequestParamaters.put("instance", instance);
         authenticationRequestParamaters.put("grant_type", grant_type);
         authenticationRequestParamaters.put("line", line);
-        authenticationRequestParamatersBytes = Utils.getBytesOfHTTPParametersToSend(authenticationRequestParamaters);
+        authenticationRequestParamatersBytes = UtilsClass.getBytesOfHTTPParametersToSend(authenticationRequestParamaters);
 
         generate();
     }

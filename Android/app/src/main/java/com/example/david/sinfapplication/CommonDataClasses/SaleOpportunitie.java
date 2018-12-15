@@ -1,6 +1,6 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-import com.example.david.sinfapplication.Utils.Utils;
+import com.example.david.sinfapplication.Utils.UtilsClass;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -179,17 +179,17 @@ public class SaleOpportunitie
     public String getJson() throws JSONException
     {
         JSONObject jsonObject = new JSONObject();
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Oportunidade", opportunitieNumber);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Descricao", description);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "DataCriacao", creationDate);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "DataExpiracao", expirationDate);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Resumo", resume);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Entidade", entity);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "TipoEntidade", entityType);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "EstadoVenda", saleState);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Moeda", currency);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "Vendedor", salesman);
-        Utils.addToJsonObjectIfNotNull(jsonObject, "CicloVenda", saleCycle);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Oportunidade", opportunitieNumber);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Descricao", description);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "DataCriacao", creationDate);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "DataExpiracao", expirationDate);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Resumo", resume);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Entidade", entity);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "TipoEntidade", entityType);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "EstadoVenda", saleState);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Moeda", currency);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Vendedor", salesman);
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "CicloVenda", saleCycle);
 
         return jsonObject.toString();
     }

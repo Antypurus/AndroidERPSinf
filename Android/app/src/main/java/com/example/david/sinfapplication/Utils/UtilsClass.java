@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class Utils
+public class UtilsClass
 {
     public static byte[] getBytesOfHTTPParametersToSend(Map<String, Object> params) throws
             UnsupportedEncodingException
