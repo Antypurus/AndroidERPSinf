@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class PythonLoginResponseParser
 {
-    public static PirmaveraAuthenticationCredentials parsePythonLoginResponse(String pythonLoginResponse)
+    public static PirmaveraAuthenticationCredentials parsePythonLoginResponse(String pythonLoginResponse) throws JSONException
     {
         JSONObject dataSetObject = null;
         try
@@ -15,16 +15,19 @@ public class PythonLoginResponseParser
             dataSetObject = new JSONObject(pythonLoginResponse);
         } catch (JSONException e)
         {
-            e.printStackTrace();
+            //Pyhton server returned non-Json content, which means error
+            //The error comes in a string format
+            //Return null to inform the caller it was an error
+            return null;
         }
-        try
-        {
-            String username = dataSetObject.getString("username");
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
+        String username = dataSetObject.getString("username");
+        String password = dataSetObject.getString("password");
+        String company = dataSetObject.getString("company");
+        String instance = dataSetObject.getString("instance");
+        String grant_type = dataSetObject.getString("password");
+        String line = dataSetObject.getString("line");
 
-        return null;
+        return new PirmaveraAuthenticationCredentials(username, password, company,
+                instance, grant_type, line);
     }
 }
