@@ -15,6 +15,11 @@ import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 public class create_customer_activity extends Activity {
 
     @Override
@@ -35,7 +40,23 @@ public class create_customer_activity extends Activity {
         CustomerBasic customerBasic = new CustomerBasic(customerName, customerAddress,
                 customerEmail, customerPhoneNumber, customerTaxNumber);
 
-        
+        try
+        {
+            WebAPI.addCustomer(customerBasic);
+        } catch (InterruptedException e)
+        {
+            //TODO mostrar mensagem de erro ao user
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
 
         //CustomerFullyDetailed customerOfSalesman = new CustomerFullyDetailed(customerName, re)
           // prototype, change to the checkout view
