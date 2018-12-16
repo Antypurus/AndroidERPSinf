@@ -8,6 +8,7 @@ import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
+import com.example.david.sinfapplication.WebAPI.Communication.PythonWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
@@ -15,6 +16,7 @@ import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.PythonLoginResponseParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpportunitieParser;
 
 import org.json.JSONException;
@@ -28,13 +30,20 @@ public class WebAPI
 {
     /**
      * Logs in to the webapi. Returns 0 on success; 1 on server error
-     *
-     * @return 0 on success; 1 on server error
+     * @param username A String representing the username to use to login to the WebAPI.
+     * @param password A String representing the password to use to login to the WebAPI.
+     * @throws InterruptedException
+     * @throws ExecutionException
+     * @throws TimeoutException
+     * @return 0 on success; 1 on server error; 2 on wrong username/password combination
      */
-    public static int login()
+    public static int login(String username, String password) throws InterruptedException, ExecutionException, TimeoutException
     {
         try
         {
+            PythonWebAPI pythonWebAPI = new PythonWebAPI();
+            String pythonResponse = pythonWebAPI.makeLoginRequest(username, password);
+            PythonLoginResponseParser.parsePythonLoginResponse(pythonResponse);
             PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
                     "password", "professional");
         } catch (UnsupportedEncodingException e)
