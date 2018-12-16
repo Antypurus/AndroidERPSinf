@@ -39,7 +39,7 @@ public class product_catalog_activity extends Activity {
         m_product_list.setLayoutManager(mLayoutManager);
 
 
-        ArrayList<Product> products = null;
+        ArrayList<Product> products = new ArrayList<>();
         try {
             products = WebAPI.getProductsList();
         } catch (InterruptedException e) {
