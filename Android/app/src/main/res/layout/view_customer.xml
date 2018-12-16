@@ -61,26 +61,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="65dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
-        android:text="E-mail:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="70dp"
         android:layout_height="31dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
         android:text="Phone:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        tools:layout_editor_absoluteY="269dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -92,21 +80,6 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/custumer_email"
-        android:layout_width="213dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:singleLine="false"
-        android:text="@string/view_customer_email"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/customer_address"
@@ -154,7 +127,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_blue"
-        android:onClick="goto_edit_customer"
+        android:onClick="goto_customer_meetings"
         android:text="Meetings"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -166,6 +139,25 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/meetings_button4"
+        android:layout_width="337dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/rounded_corner_blue"
+        android:onClick="goto_edit_customer"
+        android:text="Edit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sales_hist_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/sales_hist_button"
         android:layout_width="337dp"
         android:layout_height="40dp"
@@ -173,6 +165,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_blue"
+        android:onClick="goto_customer_sales_history"
         android:text="Sales History"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -191,6 +184,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/rounded_corner_blue"
+        android:onClick="goto_customer_orders"
         android:text="Orders"
         android:textAllCaps="false"
         android:textColor="@color/white"

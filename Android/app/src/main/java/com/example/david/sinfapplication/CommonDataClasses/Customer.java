@@ -1,6 +1,8 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-public class Customer
+import java.io.Serializable;
+
+public class Customer implements Serializable
 {
     /**
      * The id of the customer
