@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.Login.login_activity;
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
@@ -39,96 +40,7 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
 
-     /*   try
-        {
-            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
-                    "password", "professional");
-            System.out.println(WebAPI.addCustomer(new Customer(
-                    "88890",
-                    "DAgsddgsS",
-                    "4gdssdg23423",
-                    "gdfdf",
-                    "42323dfgfdg4",
-                    "6",
-                    "AS",
-                    "gfddfg",
-                    "dsfsgfddfgdfgdfs",
-                    "GDFDFGD",
-                    "",
-                    "222431243432",
-                    "ES",
-                    "EUR",
-                    "fdskçlfs",
-                    null)));
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e)
-        {
-            e.printStackTrace();
-        }*/
-
-       /* try
-        {
-            byte[] parametersByteArray = Utils.getBytesOfHTTPParametersToSend(parametersMap);
-            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
-                    "password", "professional");
-            new ListProducts();
-        } catch (UnsupportedEncodingException e)
-        {
-            e.printStackTrace();
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        }*/
-
-
-       /* try
-        {
-            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
-                    "password", "professional");
-            WebAPI.viewCustomer("1");
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e)
-        {
-            e.printStackTrace();
-        }*/
-
-        setContentView(R.layout.create_customer);
-        ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
-        bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
-    }
-
-    public void sendMessage(View view)
-    {
-        // prototype, change to the checkout view
-        Intent intent = new Intent(this, register_order_activity.class);
+        Intent intent = new Intent(this, login_activity.class);
         startActivity(intent);
     }
 
