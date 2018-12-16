@@ -41,10 +41,6 @@ public class CustomerFullyDetailed extends CustomerBasic
      */
     private String country;
     /**
-     * Corresponds to Moeda in primavera
-     */
-    private String currency;
-    /**
      * Corresponds to DebitoContaCorrente in primavera
      */
     private String checkingAccountDebit;
@@ -60,7 +56,7 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String country, String currency, String checkingAccountDebit,
                                  String pendingOrdersDebit)
     {
-        super(id, name, address, phoneNumber, taxNumber);
+        super(id, name, address, phoneNumber, taxNumber, currency);
         this.name = name;
         this.description = description;
         this.address = address;
@@ -73,7 +69,6 @@ public class CustomerFullyDetailed extends CustomerBasic
         this.state = state;
         this.taxNumber = taxNumber;
         this.country = country;
-        this.currency = currency;
         this.checkingAccountDebit = checkingAccountDebit;
         this.pendingOrdersDebit = pendingOrdersDebit;
     }
@@ -84,7 +79,7 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String country, String currency, String checkingAccountDebit,
                                  String pendingOrdersDebit)
     {
-        super("", name, address, phoneNumber, taxNumber);
+        super("", name, address, phoneNumber, taxNumber, currency);
         //TODO ver se isto ta a funcionar direito;
         String fullObjString = name + description + address + city + postalCode
                 + postalCodeCity + phoneNumber + faxNumber + webSite + state
@@ -116,7 +111,6 @@ public class CustomerFullyDetailed extends CustomerBasic
         this.state = state;
         this.taxNumber = taxNumber;
         this.country = country;
-        this.currency = currency;
         this.checkingAccountDebit = checkingAccountDebit;
         this.pendingOrdersDebit = pendingOrdersDebit;
         this.hashCode();
