@@ -11,10 +11,6 @@ public class CustomerFullyDetailed extends CustomerBasic
      */
     private String description;
     /**
-     * Corresponds to Morada in primavera
-     */
-    private String address;
-    /**
      * Corresponds to Localidade in primavera
      */
     private String city;
@@ -27,10 +23,6 @@ public class CustomerFullyDetailed extends CustomerBasic
      */
     private String postalCodeCity;
     /**
-     * Corresponds to Telefone in primavera
-     */
-    private String phoneNumber;
-    /**
      * Corresponds to Fax in primavera
      */
     private String faxNumber;
@@ -42,10 +34,6 @@ public class CustomerFullyDetailed extends CustomerBasic
      * Corresponds to Distrito in primavera
      */
     private String state;
-    /**
-     * Corresponds to NumContribuinte in primavera
-     */
-    private String taxNumber;
     /**
      * Corresponds to Pais in primavera
      */
@@ -70,7 +58,7 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String country, String currency, String checkingAccountDebit,
                                  String pendingOrdersDebit)
     {
-        super(id, name);
+        super(id, name, address, phoneNumber, taxNumber);
         this.name = name;
         this.description = description;
         this.address = address;
@@ -94,7 +82,7 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String country, String currency, String checkingAccountDebit,
                                  String pendingOrdersDebit) throws NoSuchAlgorithmException
     {
-        super("", name);
+        super("", name, address, phoneNumber, taxNumber);
         //TODO ver se isto ta a funcionar direito;
         String fullObjString = name + description + address + city + postalCode
                 + postalCodeCity + phoneNumber + faxNumber + webSite + state
