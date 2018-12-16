@@ -2,24 +2,13 @@ package com.example.david.sinfapplication;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.Login.login_activity;
-import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
-import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
-import com.example.david.sinfapplication.WebAPI.WebAPI;
-
-import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity
 {
