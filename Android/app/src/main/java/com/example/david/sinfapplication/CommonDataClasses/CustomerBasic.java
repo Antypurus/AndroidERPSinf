@@ -20,13 +20,18 @@ public class CustomerBasic extends Customer
      * Corresponds to NumContribuinte in primavera
      */
     protected String taxNumber;
+    /**
+     * Corresponds to Moeda in primavera
+     */
+    protected String currency;
 
-    public CustomerBasic(String id, String name, String address, String phoneNumber, String taxNumber)
+    public CustomerBasic(String id, String name, String address, String phoneNumber, String taxNumber, String currency)
     {
         super(id, name);
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.taxNumber = taxNumber;
+        this.currency = currency;
     }
 
     public String getAddress()
@@ -44,7 +49,12 @@ public class CustomerBasic extends Customer
         return taxNumber;
     }
 
-    public CustomerBasic(String name, String address, String phoneNumber, String taxNumber)
+    public String getCurrency()
+    {
+        return currency;
+    }
+
+    public CustomerBasic(String name, String address, String phoneNumber, String taxNumber, String currency)
     {
         super("", name);
         //TODO ver se isto ta a funcionar direito;
@@ -68,5 +78,6 @@ public class CustomerBasic extends Customer
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.taxNumber = taxNumber;
+        this.currency = currency;
     }
 }
