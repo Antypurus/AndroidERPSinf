@@ -1,6 +1,6 @@
 package com.example.david.sinfapplication.WebAPI.Communication;
 
-public class PirmaveraAuthenticationCredentials
+public class PrimaveraAuthenticationCredentials
 {
     private String username;
     private String password;
@@ -9,7 +9,7 @@ public class PirmaveraAuthenticationCredentials
     private String grant_type;
     private String line;
 
-    public PirmaveraAuthenticationCredentials(String username, String password, String company, String instance, String grant_type, String line)
+    public PrimaveraAuthenticationCredentials(String username, String password, String company, String instance, String grant_type, String line)
     {
         this.username = username;
         this.password = password;

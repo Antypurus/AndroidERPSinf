@@ -8,7 +8,7 @@ import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
-import com.example.david.sinfapplication.WebAPI.Communication.PirmaveraAuthenticationCredentials;
+import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraAuthenticationCredentials;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonResponseStrings;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
@@ -48,7 +48,7 @@ public class WebAPI
         {
             PythonWebAPI pythonWebAPI = new PythonWebAPI();
             String pythonResponse = pythonWebAPI.makeLoginRequest(username, password);
-            PirmaveraAuthenticationCredentials credentials = PythonLoginResponseParser.parsePythonLoginResponse(pythonResponse);
+            PrimaveraAuthenticationCredentials credentials = PythonLoginResponseParser.parsePythonLoginResponse(pythonResponse);
             if (credentials == null)
             {
                 if (pythonResponse.equals(PythonResponseStrings.invalidUsernameOrPassword))
