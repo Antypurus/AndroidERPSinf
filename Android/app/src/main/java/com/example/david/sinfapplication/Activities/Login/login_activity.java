@@ -1,11 +1,13 @@
 package com.example.david.sinfapplication.Activities.Login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -51,6 +53,9 @@ public class login_activity extends AppCompatActivity {
             {
                 //go to main menu
                 Log.d("Primavera Login","Login Successfull");
+
+                Intent intent = new Intent(this, product_catalog_activity.class);
+                startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))
             {

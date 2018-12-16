@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.david.sinfapplication.Activities.register_order.register_order_product_list_adapter;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class product_catalog_activity extends Activity {
 
@@ -32,18 +38,21 @@ public class product_catalog_activity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         m_product_list.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
-        CartProduct[] dataset =
-                {
-                        new CartProduct(
-                                new Product("PID","Core i7", "Processadores", "Intel", "This is shit",258,2578,"$"),
-                                5, 0),
-                        new CartProduct(
-                                new Product("PID","Placas Gráficas", "AMD","AMD RX590","This is shit",258,256,"$"),
-                                5, 0)
-                };
 
-        mAdapter = new product_list_adapter(dataset);
+        ArrayList<Product> products = null;
+        try {
+            products = WebAPI.getProductsList();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        mAdapter = new product_list_adapter(products);
         m_product_list.setAdapter(mAdapter);
     }
 

@@ -13,11 +13,13 @@ import com.example.david.sinfapplication.Activities.register_order.register_orde
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
 
+import java.util.ArrayList;
+
 public class product_list_adapter extends RecyclerView.Adapter<product_list_adapter.product_list_holder> {
 
-    Product[] dataset;
+    ArrayList<Product> dataset;
 
-    public product_list_adapter(Product[] products)
+    public product_list_adapter(ArrayList<Product> products)
     {
         this.dataset = products;
     }
@@ -52,13 +54,13 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
 
     @Override
     public void onBindViewHolder(product_list_holder holder, int position) {
-        holder.product_price.setText(dataset[position].getCurrency()+dataset[position].getPvp());
-        holder.product_name.setText(dataset[position].getDescription());
+        holder.product_price.setText(dataset.get(position).getCurrency()+dataset.get(position).getPvp());
+        holder.product_name.setText(dataset.get(position).getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return this.dataset.length;
+        return this.dataset.size();
     }
 
 
