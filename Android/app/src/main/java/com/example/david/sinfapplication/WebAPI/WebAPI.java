@@ -8,6 +8,8 @@ import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
+import com.example.david.sinfapplication.WebAPI.Communication.PirmaveraAuthenticationCredentials;
+import com.example.david.sinfapplication.WebAPI.Communication.PythonResponseStrings;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -28,6 +30,9 @@ import java.util.concurrent.TimeoutException;
 
 public class WebAPI
 {
+    public enum loginResult {loginSucessfull, loginFailedServerError, loginFailedWrongUsernameOrPassword};
+
+
     /**
      * Logs in to the webapi. Returns 0 on success; 1 on server error
      * @param username A String representing the username to use to login to the WebAPI.
@@ -37,21 +42,31 @@ public class WebAPI
      * @throws TimeoutException
      * @return 0 on success; 1 on server error; 2 on wrong username/password combination
      */
-    public static int login(String username, String password) throws InterruptedException, ExecutionException, TimeoutException
+    public static loginResult login(String username, String password) throws InterruptedException, ExecutionException, TimeoutException
     {
         try
         {
             PythonWebAPI pythonWebAPI = new PythonWebAPI();
             String pythonResponse = pythonWebAPI.makeLoginRequest(username, password);
-            PythonLoginResponseParser.parsePythonLoginResponse(pythonResponse);
+            PirmaveraAuthenticationCredentials credentials = PythonLoginResponseParser.parsePythonLoginResponse(pythonResponse);
+            if (credentials == null)
+            {
+                if (pythonResponse.equals(PythonResponseStrings.invalidUsernameOrPassword))
+                    return loginResult.loginFailedWrongUsernameOrPassword;
+                else
+                    return loginResult.loginFailedServerError;
+            }
             PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
                     "password", "professional");
         } catch (UnsupportedEncodingException e)
         {
-            return 1;
+            return loginResult.loginFailedServerError;
+        } catch (JSONException e)
+        {
+            return loginResult.loginFailedServerError;
         }
 
-        return 0;
+        return loginResult.loginSucessfull;
     }
 
     /**
