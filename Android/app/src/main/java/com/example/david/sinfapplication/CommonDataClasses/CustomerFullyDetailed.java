@@ -98,7 +98,7 @@ public class CustomerFullyDetailed extends CustomerBasic
         for (byte b : hash)
             hashSB.append(String.format("%02X ", b));
 
-        this.id = hashSB.toString();
+        this.id = hashSB.toString().substring(0, 12);
         this.name = name;
         this.description = description;
         this.address = address;
