@@ -1,12 +1,16 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 public class CartProduct extends Product
 {
     private int quantity;
     private int discount;
 
-    public CartProduct(Product product, int quantity, int discount)
+    public CartProduct(Product product, int quantity, int discount) throws InterruptedException,
+            ExecutionException, TimeoutException
     {
         super(product);
         this.quantity = quantity;

@@ -1,9 +1,14 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
 
-import android.media.Image;
+import android.graphics.Bitmap;
+
+import com.example.david.sinfapplication.Utils.LoadImage;
 
 import java.io.Serializable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class Product implements Serializable
 {
@@ -27,7 +32,11 @@ public class Product implements Serializable
      * Corresponds to Observacoes in primavera
      */
     private String observations;
-    private Image image;
+    /**
+     * Corresponds to CDU_CampoVar1 in primavera
+     */
+    private String imagePath;
+    private Bitmap image;
     /**
      * Corresponds to StkActual in primavera
      */
@@ -42,28 +51,38 @@ public class Product implements Serializable
     private String currency;
 
 
-    public Product(String id, String family, String subfamily, String description, String observations, int currentStock, double pvp, String currency)
+    public Product(String id, String family, String subfamily, String description, String imagePath,
+                   String observations, int currentStock, double pvp, String currency) throws
+            InterruptedException, ExecutionException, TimeoutException
     {
         this.id = id;
         this.family = family;
         this.subfamily = subfamily;
         this.description = description;
+        this.imagePath = imagePath;
         this.observations = observations;
         this.currentStock = currentStock;
         this.pvp = pvp;
         this.currency = currency;
-        getImageFromObservations();
+        loadImageFromServer();
     }
 
-    public Product(Product product)
+    private void loadImageFromServer() throws InterruptedException, ExecutionException,
+            TimeoutException
     {
-        this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.observations),
-                product.currentStock,  product.pvp, new String(product.currency));
+        if(imagePath == null || imagePath.isEmpty())
+            return;
+
+        LoadImage imageObject = new LoadImage(imagePath);
+        imageObject.execute(new String[1]);
+        image = (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
     }
 
-    private void getImageFromObservations()
+    public Product(Product product) throws InterruptedException, ExecutionException,
+            TimeoutException
     {
-
+        this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.imagePath),
+                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency));
     }
 
     public String getId()
@@ -116,12 +135,12 @@ public class Product implements Serializable
         this.observations = observations;
     }
 
-    public Image getImage()
+    public Bitmap getImage()
     {
         return image;
     }
 
-    public void setImage(Image image)
+    public void setImage(Bitmap image)
     {
         this.image = image;
     }
