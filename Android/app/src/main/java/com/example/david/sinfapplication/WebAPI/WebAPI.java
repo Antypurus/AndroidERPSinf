@@ -56,8 +56,14 @@ public class WebAPI
                 else
                     return loginResult.loginFailedServerError;
             }
-            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
-                    "password", "professional");
+            String primaveraUsername = credentials.getUsername();
+            String primaveraPassword = credentials.getPassword();
+            String company = credentials.getCompany();
+            String instance = credentials.getInstance();
+            String grant_type = credentials.getGrant_type();
+            String line = credentials.getLine();
+            PrimaveraWebAPI.login(primaveraUsername, primaveraPassword, company, instance,
+                    grant_type, line);
         } catch (UnsupportedEncodingException e)
         {
             return loginResult.loginFailedServerError;
