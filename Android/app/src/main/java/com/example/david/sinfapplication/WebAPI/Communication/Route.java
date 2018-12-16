@@ -17,7 +17,7 @@ public class Route
 
     //PrimaveraAuthentication
     public static String PrimaveraAuthentication = PrimaveraWebAPIDefaultRoute + "token";
-    public static String PythonAuthentication = PythonWebAPIDefaultRoute + "register";
+    public static String PythonAuthentication = PythonWebAPIDefaultRoute + "login";
 
     //Products
     public static String ListProducts = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
