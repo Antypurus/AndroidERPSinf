@@ -33,12 +33,11 @@ public class create_customer_activity extends Activity {
     {
         String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
         String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();
-        String customerEmail = ((EditText)this.findViewById(R.id.customerEmail)).getText().toString();
         String customerPhoneNumber = ((EditText)this.findViewById(R.id.customerPhoneNumber)).getText().toString();
         String customerTaxNumber = ((EditText)this.findViewById(R.id.customerTaxNumber)).getText().toString();
 
         CustomerBasic customerBasic = new CustomerBasic(customerName, customerAddress,
-                customerEmail, customerPhoneNumber, customerTaxNumber, "EUR");
+                customerPhoneNumber, customerTaxNumber, "EUR");
 
         try
         {
