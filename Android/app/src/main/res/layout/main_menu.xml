@@ -30,6 +30,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_navy_blue"
+        android:onClick="toCatalog"
         android:text="Prodcut Catalog"
         android:textAllCaps="false"
         android:textColor="@color/white"

@@ -1,14 +1,16 @@
 package com.example.david.sinfapplication.Activities.Login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
-import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -17,17 +19,31 @@ import java.util.concurrent.TimeoutException;
 
 public class login_activity extends AppCompatActivity {
 
+    SharedPreferences preferences = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        preferences = getSharedPreferences("Primavera",0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
+        ((Button)this.findViewById(R.id.login_button)).performClick();
     }
 
     public void execute_login(View view)
     {
-        String username = ((EditText)this.findViewById(R.id.username)).getText().toString();
-        String password = ((EditText)this.findViewById(R.id.password)).getText().toString();
+        String username = "";
+        String password = "";
+        if(this.preferences.contains("username") && this.preferences.contains("password"))
+        {
+            username = preferences.getString("username","");
+            password = preferences.getString("password","");
+        }
+        else {
+            username = ((EditText) this.findViewById(R.id.username)).getText().toString();
+            password = ((EditText) this.findViewById(R.id.password)).getText().toString();
+        }
 
         if(username.equals("")||password.equals(""))
         {
@@ -54,6 +70,11 @@ public class login_activity extends AppCompatActivity {
             {
                 //go to main menu
                 Log.d("Primavera Login","Login Successfull");
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("username",username);
+                editor.putString("password",password);
+                editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
                 startActivity(intent);
