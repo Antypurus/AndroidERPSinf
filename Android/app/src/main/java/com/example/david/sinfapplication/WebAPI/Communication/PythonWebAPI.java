@@ -19,13 +19,7 @@ public class PythonWebAPI
 {
     private static final int requestTimeoutMilis = 20000;
     private static AuthenticationToken authenticationToken;
-
-    public static void login(String username, String password, String company, String instance, String grant_type, String line)
-            throws UnsupportedEncodingException
-    {
-        authenticationToken = new AuthenticationToken(new PrimaveraWebAPI(), username, password, company, instance, grant_type, line);
-    }
-
+    
     public String makeLoginRequest(final String username, final String password) throws
             InterruptedException, ExecutionException, TimeoutException
     {
