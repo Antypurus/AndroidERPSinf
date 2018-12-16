@@ -24,7 +24,7 @@ public class PythonLoginResponseParser
         String password = dataSetObject.getString("password");
         String company = dataSetObject.getString("company");
         String instance = dataSetObject.getString("instance");
-        String grant_type = dataSetObject.getString("password");
+        String grant_type = dataSetObject.getString("grant_type");
         String line = dataSetObject.getString("line");
 
         return new PrimaveraAuthenticationCredentials(username, password, company,
