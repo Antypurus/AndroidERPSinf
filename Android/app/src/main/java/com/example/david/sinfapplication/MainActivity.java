@@ -12,11 +12,8 @@ import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.Login.login_activity;
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
-
-import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
@@ -39,7 +36,7 @@ public class MainActivity extends AppCompatActivity
         parametersMap.put("instance", "DEFAULT");
         parametersMap.put("grant_type", "password");
         parametersMap.put("line", "professional");
-
+        
         Intent intent = new Intent(this, login_activity.class);
         startActivity(intent);
     }

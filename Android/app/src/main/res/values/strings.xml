@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Animais do Primavera</string>
 
-    <!-- ******** Strings For the register customer view *************-->
+    <!-- ******** Strings For the register customerFullyDetailed view *************-->
     <string name="register_customer_title">Register Customer</string>
     <string name="customer_name">Customer Name</string>
     <string name="representative_name">Representative Name</string>
@@ -24,7 +24,7 @@
     <string name="reservation">Budget</string>
     <!-- ************************************************************ -->
 
-    <!-- ********* Strings for the Customer view ******************** -->
+    <!-- ********* Strings for the CustomerFullyDetailed view ******************** -->
     <string name="view_customer_name">Farfetch</string>
     <string name="view_customer_representative">Sr. Abilio Rosas</string>
     <string name="view_customer_address">Rua dos Campos Elisios, Nr 338</string>
@@ -33,7 +33,7 @@
     <string name="view_customer_taxno">235486479</string>
     <!-- ************************************************************ -->
 
-    <!-- ********* Strings for the Customer view ******************** -->
+    <!-- ********* Strings for the CustomerFullyDetailed view ******************** -->
     <string name="save_changes">SAVE CHANGES</string>
     <!-- ************************************************************ -->
 
