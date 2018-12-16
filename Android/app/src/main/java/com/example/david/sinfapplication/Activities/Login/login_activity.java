@@ -34,7 +34,7 @@ public class login_activity extends AppCompatActivity {
 
         WebAPI.loginResult result = null;
         try {
-            WebAPI.login(username,password);
+            result = WebAPI.login(username,password);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -42,6 +42,8 @@ public class login_activity extends AppCompatActivity {
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
+
+        Log.d("Primavera Login","Finished Login Proccess");
 
         if(result!=null)
         {
