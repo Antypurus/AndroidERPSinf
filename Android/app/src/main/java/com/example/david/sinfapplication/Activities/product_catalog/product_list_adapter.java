@@ -1,16 +1,19 @@
 package com.example.david.sinfapplication.Activities.product_catalog;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.Product.Product_activity;
 import com.example.david.sinfapplication.Activities.register_order.register_order_product_list_adapter;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
@@ -35,7 +38,7 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
 
     public static class product_list_holder extends RecyclerView.ViewHolder
     {
-        CardView product;
+        public CardView product;
 
         public ImageView product_image;
         public TextView product_name;
@@ -62,7 +65,7 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
     }
 
     @Override
-    public void onBindViewHolder(product_list_holder holder, int position) {
+    public void onBindViewHolder(final product_list_holder holder, final int position) {
         holder.product_price.setText(dataset.get(position).getCurrency()+dataset.get(position).getPvp());
         holder.product_name.setText(dataset.get(position).getDescription());
 
@@ -79,6 +82,8 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
             e.printStackTrace();
         }
         holder.product_image.setImageBitmap(bmp);
+
+        holder.product.setOnClickListener(view -> go_to_product(position, holder.product));
     }
 
     @Override
@@ -86,5 +91,11 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
         return this.dataset.size();
     }
 
+    public void go_to_product(int position, View view)
+    {
+        Intent intent = new Intent(view.getContext(), Product_activity.class);
+        intent.putExtra("product",this.dataset.get(position));
+        view.getContext().startActivity(intent);
+    }
 
 }

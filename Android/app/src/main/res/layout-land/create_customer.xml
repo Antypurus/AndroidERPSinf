@@ -5,7 +5,8 @@
     android:id="@+id/create_customer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/old_copper_blue1">
+    android:background="@color/old_copper_blue1"
+    android:focusable="true" android:focusableInTouchMode="true">
 
     <ProgressBar
         android:id="@+id/creation_progress"

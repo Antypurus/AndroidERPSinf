@@ -3,7 +3,9 @@ package com.example.david.sinfapplication.CommonDataClasses;
 
 import android.media.Image;
 
-public class Product
+import java.io.Serializable;
+
+public class Product implements Serializable
 {
     /**
      * Corresponds to Artigo in primavera
