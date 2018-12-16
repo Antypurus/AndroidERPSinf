@@ -35,6 +35,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.create_customer.create_customer_activity">
+            android:name=".view_customer"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
         <activity android:name=".Activities.product_catalog.product_catalog_activity">
             android:name=".product_catalog"
             android:configChanges="orientation|screenSize">
