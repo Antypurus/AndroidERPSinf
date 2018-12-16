@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
 import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
@@ -84,11 +85,14 @@ public class login_activity extends AppCompatActivity {
             {
                 // wrong username password combo error msg
                 Log.d("Primavera Login","Wrong Username/password comobo");
+
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Wrong Username/Password Combo");
             }
             else
             {
                 // server error msg
                 Log.d("Primavera Login","Login Server Error");
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Internal Server Error Please Try Again Later");
             }
         }
     }
