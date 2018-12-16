@@ -1,6 +1,7 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
+import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
@@ -101,17 +102,17 @@ public class WebAPI
 
     /**
      * Adds a CustomerFullyDetailed to the ERP server. Returns a boolean indicating the result of the request.
-     * @param customerFullyDetailed An instance of class CustomerFullyDetailed, filled with the details to be sent to the ERP server.
+     * @param customerBasic An instance of class CustomerBasic, filled with the details to be sent to the ERP server.
      * @return A boolean indicating the success of the request. true indicates success; false indicates server error
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws TimeoutException
      * @throws JSONException
      */
-    public static boolean addCustomer(CustomerFullyDetailed customerFullyDetailed) throws InterruptedException,
+    public static boolean addCustomer(CustomerBasic customerBasic) throws InterruptedException,
             ExecutionException, TimeoutException, JSONException
     {
-        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerBasic).toString();
         String addCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.addCostumer, RequestMethod.AddCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
         if(addCustomerRequestResponse == null)

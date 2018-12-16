@@ -5,10 +5,20 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class create_customer_activity extends Activity {
 
@@ -21,8 +31,36 @@ public class create_customer_activity extends Activity {
 
     public void sendMessage(View view)
     {
-        // prototype, change to the checkout view
-        Intent intent = new Intent(this, register_order_activity.class);
+        String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
+        String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();
+        String customerEmail = ((EditText)this.findViewById(R.id.customerEmail)).getText().toString();
+        String customerPhoneNumber = ((EditText)this.findViewById(R.id.customerPhoneNumber)).getText().toString();
+        String customerTaxNumber = ((EditText)this.findViewById(R.id.customerTaxNumber)).getText().toString();
+
+        CustomerBasic customerBasic = new CustomerBasic(customerName, customerAddress,
+                customerEmail, customerPhoneNumber, customerTaxNumber);
+
+        try
+        {
+            WebAPI.addCustomer(customerBasic);
+        } catch (InterruptedException e)
+        {
+            //TODO mostrar mensagem de erro ao user
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        //CustomerFullyDetailed customerOfSalesman = new CustomerFullyDetailed(customerName, re)
+          // prototype, change to the checkout view
+      Intent intent = new Intent(this, register_order_activity.class);
         startActivity(intent);
     }
 

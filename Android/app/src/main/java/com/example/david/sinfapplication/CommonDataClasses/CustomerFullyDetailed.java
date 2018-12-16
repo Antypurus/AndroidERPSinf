@@ -1,5 +1,7 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
+import android.util.Log;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -80,14 +82,22 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String postalCode, String postalCodeCity, String phoneNumber,
                                  String faxNumber, String webSite, String state, String taxNumber,
                                  String country, String currency, String checkingAccountDebit,
-                                 String pendingOrdersDebit) throws NoSuchAlgorithmException
+                                 String pendingOrdersDebit)
     {
         super("", name, address, phoneNumber, taxNumber);
         //TODO ver se isto ta a funcionar direito;
         String fullObjString = name + description + address + city + postalCode
                 + postalCodeCity + phoneNumber + faxNumber + webSite + state
                 + taxNumber + country + currency + checkingAccountDebit + pendingOrdersDebit;
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        MessageDigest digest = null;
+        try
+        {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+            Log.e("CustomerFullyDetailed", "Error computing SHA-256 of CustomerBasic");
+        }
         byte hash[] = digest.digest(fullObjString.getBytes());
         StringBuilder hashSB = new StringBuilder();
         for (byte b : hash)
