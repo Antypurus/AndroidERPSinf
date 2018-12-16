@@ -29,6 +29,21 @@ public class CustomerBasic extends Customer
         this.taxNumber = taxNumber;
     }
 
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public String getTaxNumber()
+    {
+        return taxNumber;
+    }
+
     public CustomerBasic(String name, String address, String phoneNumber, String taxNumber)
     {
         super("", name);
