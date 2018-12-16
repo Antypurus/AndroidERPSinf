@@ -77,7 +77,7 @@ public class login_activity extends AppCompatActivity {
                 editor.putString("password",password);
                 editor.apply();
 
-                Intent intent = new Intent(this, create_customer_activity.class);
+                Intent intent = new Intent(this, main_menu_activity.class);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))
