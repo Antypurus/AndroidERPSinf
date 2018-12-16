@@ -89,7 +89,7 @@ public class PythonWebAPI
                 int readBytes = errorStream.read(bytes);
                 String errorString = new String(bytes, 0, readBytes, Charset.defaultCharset());
                 Log.e("Http return error code", errorString);
-                return null;
+                return errorString;
             }
 
             BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
