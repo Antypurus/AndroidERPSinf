@@ -74,7 +74,7 @@ public class CustomerBasic extends Customer
             hashSB.append(String.format("%02X ", b));
 
         this.id = hashSB.toString();
-        this.id = "888442";
+        //this.id = "888442";
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.taxNumber = taxNumber;
