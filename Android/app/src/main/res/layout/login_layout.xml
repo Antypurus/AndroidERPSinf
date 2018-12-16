@@ -100,6 +100,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/rounded_corner_navy_blue"
+        android:onClick="execute_login"
         android:text="Execute Login"
         android:textAlignment="center"
         android:textAllCaps="false"
