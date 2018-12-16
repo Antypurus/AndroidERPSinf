@@ -38,7 +38,7 @@ public class create_customer_activity extends Activity {
         String customerTaxNumber = ((EditText)this.findViewById(R.id.customerTaxNumber)).getText().toString();
 
         CustomerBasic customerBasic = new CustomerBasic(customerName, customerAddress,
-                customerEmail, customerPhoneNumber, customerTaxNumber);
+                customerEmail, customerPhoneNumber, customerTaxNumber, "EUR");
 
         try
         {
