@@ -100,9 +100,8 @@ public class MainActivity extends AppCompatActivity
 
         try
         {
-            PrimaveraWebAPI.login("FEUP", "qualquer1", "BELAFLOR", "DEFAULT",
-                    "password", "professional");
-            WebAPI.viewCustomer("1");
+            WebAPI.loginResult result = WebAPI.login("rui vitoria", "pass");
+            System.out.println(result);
         } catch (InterruptedException e)
         {
             e.printStackTrace();
@@ -110,9 +109,6 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
         } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e)
         {
             e.printStackTrace();
         }
