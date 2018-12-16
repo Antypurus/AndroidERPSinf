@@ -177,7 +177,7 @@ public class WebAPI
     public static ArrayList<Product> getProductsList() throws InterruptedException, ExecutionException, TimeoutException,
             JSONException
     {
-        String query = "\"" + "SELECT A.Artigo, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
+        String query = "\"" + "SELECT A.Artigo, A.Familia, A.SubFamilia, A.Descricao, A.Observacoes, A.StkActual, AM.PVP1, AM.PVP2, AM.PVP3, AM.PVP4, AM.PVP5, " +
                 "AM.PVP6, AM.Moeda from Artigo A INNER JOIN ArtigoMoeda AM ON A.Artigo = AM.Artigo" + "\"";
 
         String listProductsRequestResponse = PrimaveraWebAPI.sendRequest(Route.ListProducts, RequestMethod.ListProducts,
