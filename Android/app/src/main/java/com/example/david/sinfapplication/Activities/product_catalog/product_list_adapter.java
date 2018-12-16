@@ -1,5 +1,7 @@
 package com.example.david.sinfapplication.Activities.product_catalog;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +14,15 @@ import android.widget.TextView;
 import com.example.david.sinfapplication.Activities.register_order.register_order_product_list_adapter;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.Utils.LoadImage;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class product_list_adapter extends RecyclerView.Adapter<product_list_adapter.product_list_holder> {
 
@@ -56,6 +65,20 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
     public void onBindViewHolder(product_list_holder holder, int position) {
         holder.product_price.setText(dataset.get(position).getCurrency()+dataset.get(position).getPvp());
         holder.product_name.setText(dataset.get(position).getDescription());
+
+        LoadImage image = new LoadImage("http://dservers.ddns.net/sinf_images/a.png");
+        image.execute(new String[1]);
+        Bitmap bmp = null;
+        try {
+            bmp = (Bitmap)image.get(50000,TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+        holder.product_image.setImageBitmap(bmp);
     }
 
     @Override
