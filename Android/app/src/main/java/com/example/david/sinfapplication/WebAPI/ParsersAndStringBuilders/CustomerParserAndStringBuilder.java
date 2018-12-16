@@ -25,8 +25,8 @@ public class CustomerParserAndStringBuilder
         String postalCode = dataSetObject.getString("CodigoPostal");
         String postalCodeCity = dataSetObject.getString("LocalidadeCodigoPostal");
         String phoneNumber = dataSetObject.getString("Telefone");
-        String faxNumber = dataSetObject.getString("faxNumber");
-        String webSite = dataSetObject.getString("webSite");
+        String faxNumber = dataSetObject.getString("Fax");
+        String webSite = dataSetObject.getString("EnderecoWeb");
         String state = dataSetObject.getString("Distrito");
         String taxNumber = dataSetObject.getString("NumContribuinte");
         String country = dataSetObject.getString("Pais");

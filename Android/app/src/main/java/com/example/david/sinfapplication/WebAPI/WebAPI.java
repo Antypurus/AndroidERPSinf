@@ -130,21 +130,13 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static CustomerFullyDetailed viewCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    public static CustomerFullyDetailed viewCustomer(String customerId) throws InterruptedException,
+            ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.viewCustomer + customerId;
-
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewCustomer,
                 ContentType.UrlEncoded, new byte[0]);
-        try
-        {
-            return CustomerParserAndStringBuilder.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-
+        return CustomerParserAndStringBuilder.parseViewCustomerRequestResponse(viewCustomerRequestResponse);
     }
 
     /**
