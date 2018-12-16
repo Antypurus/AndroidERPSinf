@@ -64,11 +64,10 @@ public class WebAPI
             String line = credentials.getLine();
             PrimaveraWebAPI.login(primaveraUsername, primaveraPassword, company, instance,
                     grant_type, line);
-        } catch (UnsupportedEncodingException e)
+        }
+        catch (Exception e)
         {
-            return loginResult.loginFailedServerError;
-        } catch (JSONException e)
-        {
+            e.printStackTrace();
             return loginResult.loginFailedServerError;
         }
 

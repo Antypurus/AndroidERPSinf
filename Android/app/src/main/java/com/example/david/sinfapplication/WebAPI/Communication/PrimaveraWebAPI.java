@@ -21,7 +21,7 @@ public class PrimaveraWebAPI
     private static AuthenticationToken authenticationToken;
 
     public static void login(String username, String password, String company, String instance, String grant_type, String line)
-            throws UnsupportedEncodingException
+            throws Exception
     {
         authenticationToken = new AuthenticationToken(new PrimaveraWebAPI(), username, password, company, instance, grant_type, line);
     }
@@ -107,7 +107,7 @@ public class PrimaveraWebAPI
 
             return result.toString();
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
             return null;

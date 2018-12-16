@@ -19,8 +19,8 @@ class AuthenticationToken
     private static final long tokenExpirationTimeMilis = 15 * 60 * 1000; //15 minutes
 
 
-    public AuthenticationToken(PrimaveraWebAPI primaveraWebAPI, String username, String password, String company, String instance, String grant_type, String line) throws
-            UnsupportedEncodingException
+    public AuthenticationToken(PrimaveraWebAPI primaveraWebAPI, String username, String password, String company, String instance,
+                               String grant_type, String line) throws Exception
     {
         this.primaveraWebAPI = primaveraWebAPI;
         Map<String, Object> authenticationRequestParamaters = new LinkedHashMap<>();
@@ -36,7 +36,7 @@ class AuthenticationToken
     }
 
     //null is returned if an error occurred
-    public String get()
+    public String get() throws Exception
     {
         long currentTimeMilis = System.currentTimeMillis();
         boolean isTokenExpired = currentTimeMilis > (lastGeneratedTokenTimeMilis + tokenExpirationTimeMilis);
@@ -46,20 +46,12 @@ class AuthenticationToken
         return authenticationToken;
     }
 
-    private void generate()
+    private void generate() throws Exception
     {
-        try
-        {
-            String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.PrimaveraAuthentication, authenticationRequestParamatersBytes);
-            JSONObject jsonObject = new JSONObject(loginRequestResponse);
-            authenticationToken = jsonObject.getString("access_token");
-            Log.d("generate token", authenticationToken); //TODO
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            authenticationToken = null;
-            return;
-        }
+        String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.PrimaveraAuthentication, authenticationRequestParamatersBytes);
+        JSONObject jsonObject = new JSONObject(loginRequestResponse);
+        authenticationToken = jsonObject.getString("access_token");
+        Log.d("generate token", authenticationToken); //TODO
 
         lastGeneratedTokenTimeMilis = System.currentTimeMillis();
     }
