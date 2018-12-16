@@ -103,7 +103,7 @@ public class PythonWebAPI
 
             return result.toString();
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             e.printStackTrace();
             return null;
