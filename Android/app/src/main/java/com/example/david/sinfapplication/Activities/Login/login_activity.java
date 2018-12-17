@@ -98,7 +98,7 @@ public class login_activity extends AppCompatActivity {
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))
             {
                 // wrong username password combo error msg
-                Log.d("Primavera Login","Wrong Username/password comobo");
+                Log.d("Primavera Login","Wrong Username/password combo");
 
                 ((TextView)this.findViewById(R.id.error_pane)).setText("Wrong Username/Password Combo");
             }
