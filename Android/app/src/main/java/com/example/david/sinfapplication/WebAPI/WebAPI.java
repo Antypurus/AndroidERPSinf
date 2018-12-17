@@ -148,9 +148,9 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean editCustomer(String customerId, CustomerFullyDetailed customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    public static boolean editCustomer(CustomerBasic customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
-        String requestRoute = Route.editCostumer + customerId;
+        String requestRoute = Route.editCostumer + customerFullyDetailed.getId();
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
 
         String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
