@@ -86,6 +86,7 @@ public class CustomerParserAndStringBuilder
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Telefone", customerFullyDetailed.getPhoneNumber());
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customerFullyDetailed.getTaxNumber());
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Moeda", customerFullyDetailed.getCurrency());
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "EmModoEdicao", "true");
 
         return jsonObject;
     }
