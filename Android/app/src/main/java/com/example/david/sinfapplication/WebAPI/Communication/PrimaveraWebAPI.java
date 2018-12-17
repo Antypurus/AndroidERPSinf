@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 
 public class PrimaveraWebAPI
 {
-    private static final int requestTimeoutMilis = 20000;
+    private static final int requestTimeoutMilis = 1000*60*2;
     private static AuthenticationToken authenticationToken;
 
     public static void login(String username, String password, String company, String instance, String grant_type, String line)
