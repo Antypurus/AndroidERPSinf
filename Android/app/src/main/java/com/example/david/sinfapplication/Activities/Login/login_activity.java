@@ -50,6 +50,15 @@ public class login_activity extends AppCompatActivity {
             password = ((EditText) this.findViewById(R.id.password)).getText().toString();
         }
 
+        String username_field_text = ((EditText) this.findViewById(R.id.username)).getText().toString();
+        String password_field_text = ((EditText) this.findViewById(R.id.password)).getText().toString();
+
+        if(!username_field_text.equals("") && !password_field_text.equals(""))
+        {
+            username = username_field_text;
+            password = password_field_text;
+        }
+
         if(username.equals("")||password.equals(""))
         {
             Log.d("Primavera Login","No Username or password suplied");
@@ -82,8 +91,6 @@ public class login_activity extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
-                CustomerBasic customerBasic = new CustomerBasic("fsdsfd", "asdasd", "asdasd", "23112", "123123", "EUR");
-                intent.putExtra("customer", customerBasic);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))

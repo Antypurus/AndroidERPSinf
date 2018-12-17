@@ -85,7 +85,7 @@ public class WebAPI
      */
     public static ArrayList<CustomerOfSalesman> listCustomersOfASalesman(String salesmanId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String requestRoute = Route.listCustomersOfASalesman + salesmanId;
+        String requestRoute = Route.listCustomersOfASalesman;
 
         String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
                 ContentType.ApplicationJson, new byte[0]);

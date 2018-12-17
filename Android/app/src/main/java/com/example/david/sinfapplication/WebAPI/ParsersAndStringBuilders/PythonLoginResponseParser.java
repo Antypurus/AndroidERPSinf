@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraAuthenticationCredentials;
 
 import org.json.JSONException;
@@ -20,6 +21,9 @@ public class PythonLoginResponseParser
             //Return null to inform the caller it was an error
             return null;
         }
+        String vendor_id = dataSetObject.getString("primavera_id");
+        CommonStorage.vender_id = vendor_id;
+
         String username = dataSetObject.getString("username");
         String password = dataSetObject.getString("password");
         String company = dataSetObject.getString("company");
