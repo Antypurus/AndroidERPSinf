@@ -80,7 +80,7 @@ public class CustomerParserAndStringBuilder
             return false;
     }
 
-    public static JSONObject buildJsonWithCustomerNonNullAttributes(CustomerBasic customerFullyDetailed) throws
+    public static JSONObject buildJsonWithCustomerNonNullAttributes(CustomerBasic customerFullyDetailed, Boolean editMode) throws
             JSONException
     {
         JSONObject jsonObject = new JSONObject();
@@ -90,7 +90,7 @@ public class CustomerParserAndStringBuilder
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Telefone", customerFullyDetailed.getPhoneNumber());
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "NumContribuinte", customerFullyDetailed.getTaxNumber());
         UtilsClass.addToJsonObjectIfNotNull(jsonObject, "Moeda", customerFullyDetailed.getCurrency());
-        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "EmModoEdicao", "true");
+        UtilsClass.addToJsonObjectIfNotNull(jsonObject, "EmModoEdicao", editMode.toString());
 
         return jsonObject;
     }

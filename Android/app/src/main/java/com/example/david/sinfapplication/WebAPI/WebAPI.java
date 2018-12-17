@@ -114,7 +114,7 @@ public class WebAPI
     public static boolean addCustomer(CustomerBasic customerBasic) throws InterruptedException,
             ExecutionException, TimeoutException, JSONException
     {
-        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerBasic).toString();
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerBasic, false).toString();
         String addCustomerRequestResponse = PrimaveraWebAPI.sendRequest(Route.addCostumer, RequestMethod.AddCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
         if(addCustomerRequestResponse == null)
@@ -152,7 +152,7 @@ public class WebAPI
     public static boolean editCustomer(CustomerBasic customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.editCostumer;
-        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
+        String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed, true).toString();
 
         String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
                 ContentType.ApplicationJson, requestBody.getBytes());
