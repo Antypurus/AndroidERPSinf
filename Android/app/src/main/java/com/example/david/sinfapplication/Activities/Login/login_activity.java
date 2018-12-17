@@ -81,7 +81,7 @@ public class login_activity extends AppCompatActivity {
                 editor.putString("password",password);
                 editor.apply();
 
-                Intent intent = new Intent(this, edit_customer_activity.class);
+                Intent intent = new Intent(this, main_menu_activity.class);
                 CustomerBasic customerBasic = new CustomerBasic("fsdsfd", "asdasd", "asdasd", "23112", "123123", "EUR");
                 intent.putExtra("customer", customerBasic);
                 startActivity(intent);

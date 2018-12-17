@@ -65,6 +65,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.costumer_list.costumer_list_activity">
+            android:name=".edit_customer"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
     </application>
 
 </manifest>

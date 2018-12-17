@@ -18,14 +18,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
-        final Map<String,Object> parametersMap = new LinkedHashMap<>();
-        parametersMap.put("username", "FEUP");
-        parametersMap.put("password", "qualquer1");
-        parametersMap.put("company", "BELAFLOR");
-        parametersMap.put("instance", "DEFAULT");
-        parametersMap.put("grant_type", "password");
-        parametersMap.put("line", "professional");
-
         Intent intent = new Intent(this, login_activity.class);
         startActivity(intent);
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.david.sinfapplication.Activities.costumer_list.costumer_list_activity;
 import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.R;
 
@@ -20,6 +21,12 @@ public class main_menu_activity extends AppCompatActivity {
     public void toCatalog(View view)
     {
         Intent intent = new Intent(this,product_catalog_activity.class);
+        this.startActivity(intent);
+    }
+
+    public void toCostumerList(View view)
+    {
+        Intent intent = new Intent(this,costumer_list_activity.class);
         this.startActivity(intent);
     }
 
