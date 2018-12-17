@@ -29,7 +29,6 @@
         android:layout_width="319dp"
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
@@ -37,29 +36,13 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customerEmail" />
-
-    <EditText
-        android:id="@+id/customerEmail"
-        android:layout_width="319dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:hint="@string/customer_email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customerAddress" />
+        tools:layout_editor_absoluteY="301dp" />
 
     <EditText
         android:id="@+id/customerAddress"
         android:layout_width="319dp"
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
@@ -67,22 +50,7 @@
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/representativeName" />
-
-    <EditText
-        android:id="@+id/representativeName"
-        android:layout_width="319dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_corner"
-        android:ems="10"
-        android:hint="@string/representative_name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customerName" />
+        tools:layout_editor_absoluteY="201dp" />
 
     <TextView
         android:id="@+id/HeadBar"
