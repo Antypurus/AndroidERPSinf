@@ -8,11 +8,6 @@ import android.widget.TextView;
 
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
-import com.example.david.sinfapplication.Utils.LoadImage;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Product_activity extends AppCompatActivity {
 

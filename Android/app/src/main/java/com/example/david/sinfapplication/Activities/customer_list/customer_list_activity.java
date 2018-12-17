@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.Activities.costumer_list;
+package com.example.david.sinfapplication.Activities.customer_list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class costumer_list_activity extends AppCompatActivity {
+public class customer_list_activity extends AppCompatActivity {
 
     private RecyclerView m_costumer_list;
     private RecyclerView.Adapter mAdapter;
@@ -56,7 +55,7 @@ public class costumer_list_activity extends AppCompatActivity {
 
     public void toAddCostumer(View view)
     {
-        Intent intent = new Intent(this, create_customer_activity.class);
+        Intent intent = new Intent(this, create_custom er_activity.class);
         this.startActivity(intent);
     }
 
