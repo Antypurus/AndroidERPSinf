@@ -10,8 +10,6 @@ import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.Utils.LoadImage;
 
-import org.w3c.dom.Text;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
