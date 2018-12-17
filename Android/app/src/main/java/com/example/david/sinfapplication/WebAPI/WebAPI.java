@@ -86,9 +86,9 @@ public class WebAPI
     public static ArrayList<CustomerOfSalesman> listCustomersOfASalesman(String salesmanId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.listCustomersOfASalesman;
-
+        String query = "\"SELECT Cliente, Nome FROM Clientes WHERE Vendedor = \'" + salesmanId + "\'\"";
         String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
-                ContentType.ApplicationJson, new byte[0]);
+                ContentType.ApplicationJson, query.getBytes());
         try
         {
             return CustomerParserAndStringBuilder.parseViewCustomersOfSalesmanResponse(viewCustomersOfSalesmanResponse);
