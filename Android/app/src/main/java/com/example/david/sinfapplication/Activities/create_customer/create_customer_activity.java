@@ -6,21 +6,17 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
+import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.Utils.UtilsClass;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
-import org.json.JSONException;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
-
-public class create_customer_activity extends Activity {
+public class create_customer_activity extends Activity
+{
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -31,10 +27,23 @@ public class create_customer_activity extends Activity {
 
     public void sendMessage(View view)
     {
-        String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
-        String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();
-        String customerPhoneNumber = ((EditText)this.findViewById(R.id.customerPhoneNumber)).getText().toString();
-        String customerTaxNumber = ((EditText)this.findViewById(R.id.customerTaxNumber)).getText().toString();
+        String customerName = ((EditText) this.findViewById(R.id.customerName)).getText().toString();
+        String customerAddress = ((EditText) this.findViewById(R.id.customerAddress)).getText().toString();
+        String customerPhoneNumber = ((EditText) this.findViewById(R.id.customerPhoneNumber)).getText().toString();
+        String customerTaxNumber = ((EditText) this.findViewById(R.id.customerTaxNumber)).getText().toString();
+
+        if(customerName.isEmpty() || customerAddress.isEmpty() || customerPhoneNumber.isEmpty() ||
+                customerTaxNumber.isEmpty() || customerTaxNumber.isEmpty())
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("All inputs must be filled");
+            return;
+        }
+
+        if (UtilsClass.IsNifValid(customerTaxNumber) == false)
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Invalid NIF");
+            return;
+        }
 
         CustomerBasic customerBasic = new CustomerBasic(customerName, customerAddress,
                 customerPhoneNumber, customerTaxNumber, "EUR");
@@ -42,38 +51,38 @@ public class create_customer_activity extends Activity {
         try
         {
             boolean result = WebAPI.addCustomer(customerBasic);
-            if (result)
-                ; //TODO mostrar mensagem de success
-            else
-                ;//TODO mostrar mensagem de erro
+            if (result == false)
+            {
+                ((TextView) this.findViewById(R.id.error_pane)).setText("Error adding the client!");
+                return;
+            }
+
         } catch (InterruptedException e)
         {
-            //TODO mostrar mensagem de erro ao user
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Network error!");
             e.printStackTrace();
-        } catch (ExecutionException e)
+            return;
+        } catch (Exception e)
         {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Server error");
             e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
+            return;
         }
 
-        //CustomerFullyDetailed customerOfSalesman = new CustomerFullyDetailed(customerName, re)
-          // prototype, change to the checkout view
-      Intent intent = new Intent(this, register_order_activity.class);
+        Intent intent = new Intent(this, customer_list_activity.class);
         startActivity(intent);
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig)
+    {
         super.onConfigurationChanged(newConfig);
         // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
             Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
         }
     }

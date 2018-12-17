@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.Activities.costumer_list;
+package com.example.david.sinfapplication.Activities.customer_list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class costumer_list_activity extends AppCompatActivity {
+public class customer_list_activity extends AppCompatActivity {
 
     private RecyclerView m_costumer_list;
     private RecyclerView.Adapter mAdapter;

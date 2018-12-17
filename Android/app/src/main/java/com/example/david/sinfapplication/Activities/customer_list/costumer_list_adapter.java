@@ -1,16 +1,13 @@
-package com.example.david.sinfapplication.Activities.costumer_list;
+package com.example.david.sinfapplication.Activities.customer_list;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
