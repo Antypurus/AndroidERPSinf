@@ -141,7 +141,6 @@ public class WebAPI
 
     /**
      * Edits the details of a customerFullyDetailed by id on the ERP server. Returns a boolean indicating the result of the request.
-     * @param customerId A String representing the id of the customerFullyDetailed whose information will be edited in the ERP server.
      * @param customerFullyDetailed An instance of class customerFullyDetailed representing the new customerFullyDetailed data to be sent to the server.
      * @return A boolean indicating the success of the request. true indicates success; false indicates server error
      * @throws InterruptedException
@@ -150,7 +149,7 @@ public class WebAPI
      */
     public static boolean editCustomer(CustomerBasic customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
-        String requestRoute = Route.editCostumer + customerFullyDetailed.getId();
+        String requestRoute = Route.editCostumer;
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed).toString();
 
         String editCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.EditCustomer,
