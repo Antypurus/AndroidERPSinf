@@ -91,6 +91,8 @@ public class login_activity extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
+                CustomerBasic customerBasic = new CustomerBasic("47", "asdasd", "asdasd", "23112", "123123", "EUR");
+                intent.putExtra("customer", customerBasic);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))

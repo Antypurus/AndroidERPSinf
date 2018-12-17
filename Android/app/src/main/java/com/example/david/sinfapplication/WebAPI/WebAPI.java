@@ -87,6 +87,8 @@ public class WebAPI
     {
         String requestRoute = Route.listCustomersOfASalesman;
         String query = "\"SELECT Cliente, Nome FROM Clientes WHERE Vendedor = \'" + salesmanId + "\'\"";
+
+        query = "\"SELECT Cliente, Nome FROM Clientes WHERE Cliente = '1'\"";
         String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
                 ContentType.ApplicationJson, query.getBytes());
         try
