@@ -71,10 +71,10 @@ public class CustomerBasic extends Customer
         byte hash[] = digest.digest(fullObjString.getBytes());
         StringBuilder hashSB = new StringBuilder();
         for (byte b : hash)
-            hashSB.append(String.format("%02X ", b));
+            hashSB.append(String.format("%02X", b));
 
-        this.id = hashSB.toString();
-        this.id = "888442";
+        this.id = hashSB.toString().substring(0, 12);
+        //this.id = "888442";
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.taxNumber = taxNumber;

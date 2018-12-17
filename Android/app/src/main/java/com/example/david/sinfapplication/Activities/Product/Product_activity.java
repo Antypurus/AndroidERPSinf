@@ -23,20 +23,9 @@ public class Product_activity extends AppCompatActivity {
         setContentView(R.layout.product_layout);
 
         Product product = (Product) getIntent().getSerializableExtra("product");
-
-        LoadImage image = new LoadImage("http://dservers.ddns.net/sinf_images/a.png");
-        image.execute(new String[1]);
-        Bitmap bmp = null;
-        try {
-            bmp = (Bitmap)image.get(50000,TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
-        ((ImageView)this.findViewById(R.id.product_image)).setImageBitmap(bmp);
+        Bitmap productImage = product.getImage();
+        if(productImage != null)
+            ((ImageView)this.findViewById(R.id.product_image)).setImageBitmap(productImage);
 
         ((TextView)this.findViewById(R.id.product_name)).setText(product.getDescription());
         if(!product.getFamily().equals("null"))
