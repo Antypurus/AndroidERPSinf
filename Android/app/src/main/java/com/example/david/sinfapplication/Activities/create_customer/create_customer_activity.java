@@ -43,7 +43,7 @@ public class create_customer_activity extends Activity {
         {
             boolean result = WebAPI.addCustomer(customerBasic);
             if (result)
-                ;
+                ; //TODO mostrar mensagem de success
             else
                 ;//TODO mostrar mensagem de erro
         } catch (InterruptedException e)
