@@ -26,8 +26,6 @@ public class edit_customer_activity extends Activity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_customer);
-        ProgressBar bar = (ProgressBar) findViewById(R.id.creation_progress);
-        bar.getProgressDrawable().mutate().setColorFilter(Color.RED,PorterDuff.Mode.SRC_IN);
     }
 
     public void sendMessage(View view)
