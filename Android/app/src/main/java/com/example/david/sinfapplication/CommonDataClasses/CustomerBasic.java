@@ -54,6 +54,21 @@ public class CustomerBasic extends Customer
         return currency;
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
     public CustomerBasic(String name, String address, String phoneNumber, String taxNumber, String currency)
     {
         super("", name);
