@@ -32,6 +32,14 @@ public class edit_customer_activity extends Activity {
     {
         CustomerBasic customer = (CustomerBasic) getIntent().getSerializableExtra("customer");
 
+        String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
+        String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();
+        String customerPhoneNumber = ((EditText)this.findViewById(R.id.customerPhoneNumber)).getText().toString();
+        
+        customer.setName(customerName);
+        customer.setAddress(customerAddress);
+        customer.setPhoneNumber(customerPhoneNumber);
+
         try
         {
             boolean result = WebAPI.editCustomer(customer);
