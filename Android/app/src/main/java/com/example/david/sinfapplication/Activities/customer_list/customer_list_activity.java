@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
@@ -55,7 +56,7 @@ public class customer_list_activity extends AppCompatActivity {
 
     public void toAddCostumer(View view)
     {
-        Intent intent = new Intent(this, create_custom er_activity.class);
+        Intent intent = new Intent(this, create_customer_activity.class);
         this.startActivity(intent);
     }
 
