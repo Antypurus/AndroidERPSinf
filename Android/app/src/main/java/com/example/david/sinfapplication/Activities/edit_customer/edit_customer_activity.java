@@ -2,21 +2,16 @@ package com.example.david.sinfapplication.Activities.edit_customer;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 
-import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
+import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
-import org.json.JSONException;
-
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class edit_customer_activity extends Activity {
@@ -35,6 +30,11 @@ public class edit_customer_activity extends Activity {
         String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
         String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();
         String customerPhoneNumber = ((EditText)this.findViewById(R.id.customerPhoneNumber)).getText().toString();
+        if(customerName.isEmpty() || customerAddress.isEmpty() || customerPhoneNumber.isEmpty())
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("All inputs must be filled");
+            return;
+        }
 
         customer.setName(customerName);
         customer.setAddress(customerAddress);
@@ -43,27 +43,26 @@ public class edit_customer_activity extends Activity {
         try
         {
             boolean result = WebAPI.editCustomer(customer);
-            if (result)
-                ; //TODO mostrar mensagem de success
-            else
-                ;//TODO mostrar mensagem de erro
-        } catch (InterruptedException e)
-        {
-            //TODO mostrar mensagem de erro ao user
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
+            if (result == false)
+            {
+                ((TextView) this.findViewById(R.id.error_pane)).setText("Error edit the client!");
+                return;
+            }
         } catch (TimeoutException e)
         {
             e.printStackTrace();
-        } catch (JSONException e)
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Network error!");
+            return;
+        } catch (Exception e)
         {
             e.printStackTrace();
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Server error!");
+            return;
         }
 
         // prototype, change to the checkout view
-        Intent intent = new Intent(this, register_order_activity.class);
+        Intent intent = new Intent(this, view_customer_activity.class);
+        intent.putExtra("customerId", customer.getId());
         startActivity(intent);
     }
 

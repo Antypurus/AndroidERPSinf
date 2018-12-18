@@ -72,7 +72,6 @@ public class CustomerBasic extends Customer
     public CustomerBasic(String name, String address, String phoneNumber, String taxNumber, String currency)
     {
         super("", name);
-        //TODO ver se isto ta a funcionar direito;
         String fullObjString = name + address + phoneNumber + taxNumber;
         MessageDigest digest = null;
         try
@@ -89,7 +88,6 @@ public class CustomerBasic extends Customer
             hashSB.append(String.format("%02X", b));
 
         this.id = hashSB.toString().substring(0, 12);
-        //this.id = "888442";
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.taxNumber = taxNumber;
