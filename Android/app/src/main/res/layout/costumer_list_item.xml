@@ -37,7 +37,7 @@
                 tools:text="test" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/costumer_call_button"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/colorPrimary"
