@@ -41,7 +41,9 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
         ConstraintLayout c_layout = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.costumer_list_item, parent, false);
 
         costumer_list_adapter.costumer_list_holder adapter = new costumer_list_adapter.costumer_list_holder(c_layout);
-        return null;
+
+
+        return adapter;
     }
 
     @Override
