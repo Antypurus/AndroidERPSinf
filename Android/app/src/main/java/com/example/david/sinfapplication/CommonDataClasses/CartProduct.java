@@ -9,8 +9,7 @@ public class CartProduct extends Product
     private int quantity;
     private int discount;
 
-    public CartProduct(Product product, int quantity, int discount) throws InterruptedException,
-            ExecutionException, TimeoutException
+    public CartProduct(Product product, int quantity, int discount)
     {
         super(product);
         this.quantity = quantity;

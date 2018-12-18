@@ -85,8 +85,7 @@ public class Product implements Serializable
         return (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
     }
 
-    public Product(Product product) throws InterruptedException, ExecutionException,
-            TimeoutException
+    public Product(Product product)
     {
         this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.imagePath),
                 new String(product.observations), product.currentStock,  product.pvp, new String(product.currency), product.image);
