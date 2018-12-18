@@ -1,10 +1,14 @@
 package com.example.david.sinfapplication.Utils;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 public class UtilsClass
@@ -66,5 +70,24 @@ public class UtilsClass
             value = "";
 
         jsonObject.put(key, value);
+    }
+
+    public static String getSHA256OfStringInHexadecimalEncoding(String str)
+    {
+        MessageDigest digest = null;
+        try
+        {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+            Log.e("CustomerBasic", "Error computing SHA-256 of CustomerBasic");
+        }
+        byte hash[] = digest.digest(str.getBytes());
+        StringBuilder hashSB = new StringBuilder();
+        for (byte b : hash)
+            hashSB.append(String.format("%02X", b));
+
+        return hashSB.toString();
     }
 }
