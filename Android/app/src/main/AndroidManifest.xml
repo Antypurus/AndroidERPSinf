@@ -38,7 +38,7 @@
         </activity>
 
         <activity android:name=".Activities.create_customer.create_customer_activity">
-            android:name=".view_customer"
+            android:name=".create_customer"
             android:configChanges="orientation|screenSize">
         </activity>
 
@@ -53,22 +53,27 @@
         </activity>
 
         <activity android:name=".Activities.Login.login_activity">
-            android:name=".edit_customer"
+            android:name=".login"
             android:configChanges="orientation|screenSize">
         </activity>
 
         <activity android:name=".Activities.Main_Menu.main_menu_activity">
-            android:name=".edit_customer"
+            android:name=".main_menu"
             android:configChanges="orientation|screenSize">
         </activity>
 
         <activity android:name=".Activities.Product.Product_activity">
-            android:name=".edit_customer"
+            android:name=".product"
             android:configChanges="orientation|screenSize">
         </activity>
 
         <activity android:name=".Activities.customer_list.customer_list_activity">
-            android:name=".edit_customer"
+            android:name=".customer_list"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity android:name=".Activities.sales_history.sales_history_activity">
+            android:name=".sales_history"
             android:configChanges="orientation|screenSize">
         </activity>
 
