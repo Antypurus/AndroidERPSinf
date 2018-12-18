@@ -47,8 +47,10 @@ public class customer_list_activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mAdapter = new costumer_list_adapter(costumers);
-        m_costumer_list.setAdapter(mAdapter);
+        if(costumers!=null) {
+            mAdapter = new costumer_list_adapter(costumers);
+            m_costumer_list.setAdapter(mAdapter);
+        }
 
         FloatingActionButton add_button = (FloatingActionButton)this.findViewById(R.id.add_costumer_button);
         add_button.setOnClickListener(view -> toAddCostumer(add_button));

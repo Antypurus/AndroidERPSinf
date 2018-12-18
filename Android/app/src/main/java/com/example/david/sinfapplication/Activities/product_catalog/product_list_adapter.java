@@ -94,6 +94,7 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
     public void go_to_product(int position, View view)
     {
         Intent intent = new Intent(view.getContext(), Product_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("product",this.dataset.get(position));
         view.getContext().startActivity(intent);
     }
