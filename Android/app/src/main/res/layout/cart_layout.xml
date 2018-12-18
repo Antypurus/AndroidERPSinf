@@ -33,17 +33,18 @@
         app:layout_constraintTop_toBottomOf="@+id/title_bar" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/products"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/checkout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/checkout_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
