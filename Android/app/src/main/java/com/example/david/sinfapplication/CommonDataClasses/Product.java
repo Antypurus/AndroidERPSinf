@@ -55,6 +55,13 @@ public class Product implements Serializable
                    String observations, int currentStock, double pvp, String currency) throws
             InterruptedException, ExecutionException, TimeoutException
     {
+        this(id, family, subfamily, description, imagePath, observations, currentStock, pvp, currency, null);
+        Bitmap bitmap = loadImageFromServer();
+    }
+
+    public Product(String id, String family, String subfamily, String description, String imagePath,
+                   String observations, int currentStock, double pvp, String currency, Bitmap image)
+    {
         this.id = id;
         this.family = family;
         this.subfamily = subfamily;
@@ -64,18 +71,18 @@ public class Product implements Serializable
         this.currentStock = currentStock;
         this.pvp = pvp;
         this.currency = currency;
-        loadImageFromServer();
+        this.image = image;
     }
 
-    private void loadImageFromServer() throws InterruptedException, ExecutionException,
+    private Bitmap loadImageFromServer() throws InterruptedException, ExecutionException,
             TimeoutException
     {
         if(imagePath == null || imagePath.isEmpty())
-            return;
+            return null;
 
         LoadImage imageObject = new LoadImage(imagePath);
         imageObject.execute(new String[1]);
-        image = (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
+        return (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
     }
 
     public Product(Product product) throws InterruptedException, ExecutionException,
