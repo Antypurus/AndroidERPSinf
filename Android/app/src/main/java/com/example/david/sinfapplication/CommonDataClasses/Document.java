@@ -1,6 +1,10 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
+import com.example.david.sinfapplication.Utils.UtilsClass;
+
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Document
 {
@@ -27,7 +31,9 @@ public class Document
 
     public Document(String docType, String series, String documentTotal, String date, String state)
     {
-        //this.id = Thread.currentThread().;
+        Long randomNumber = new Random().nextLong();
+        String sha256 = UtilsClass.getSHA256OfStringInHexadecimalEncoding(String.valueOf(randomNumber));
+        this.id = sha256.substring(0, 12);
         this.docType = docType;
         this.series = series;
         //this.docNumber = docNumber;
