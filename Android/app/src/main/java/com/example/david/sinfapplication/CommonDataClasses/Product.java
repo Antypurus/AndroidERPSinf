@@ -89,7 +89,7 @@ public class Product implements Serializable
             TimeoutException
     {
         this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.imagePath),
-                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency));
+                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency), product.image);
     }
 
     public String getId()
