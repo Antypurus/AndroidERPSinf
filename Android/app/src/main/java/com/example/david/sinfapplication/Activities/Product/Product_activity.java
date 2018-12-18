@@ -51,8 +51,6 @@ public class Product_activity extends AppCompatActivity {
         Integer quantityInt = new Integer(quantityString);
         Integer discountInt = new Integer(discountString);
 
-        //TODO ver qual o max discount e mostrar msg de erro
-
         if (quantityInt <= 0)
         {
             ((TextView) this.findViewById(R.id.error_pane)).setText("Quantity must be greater than 0");
