@@ -25,12 +25,12 @@ public class Document
         this.state = state;
     }
 
-    public Document(String docType, String series, String docNumber, String documentTotal, String date, String state)
+    public Document(String docType, String series, String documentTotal, String date, String state)
     {
         //this.id = Thread.currentThread().;
         this.docType = docType;
         this.series = series;
-        this.docNumber = docNumber;
+        //this.docNumber = docNumber;
         this.documentTotal = documentTotal;
         this.date = date;
         this.state = state;
