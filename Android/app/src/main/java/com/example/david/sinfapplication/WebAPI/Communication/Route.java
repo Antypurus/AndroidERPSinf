@@ -4,6 +4,7 @@ public class Route
 {
     //Server
     private static final String primaveraServerHostName = "dservers.ddns.net";
+    private static final String primaveraRedundantServerHostName = "dcameras.ddns.net";
     private static final String pythonServerHostName = "dservers.ddns.net";
     private static final String primaveraServerPort = "2018";
     private static final String pythonServerPort = "5000";
