@@ -3,9 +3,12 @@ package com.example.david.sinfapplication.Activities.Product;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
 
@@ -37,6 +40,25 @@ public class Product_activity extends AppCompatActivity {
         {
             ((TextView) this.findViewById(R.id.product_description)).setText(product.getObservations());
         }
+    }
+
+    public void addProductToCart(View view)
+    {
+        Product product = (Product) getIntent().getSerializableExtra("product");
+        String quantityString = ((TextView)this.findViewById(R.id.buy_quantity)).getText().toString();
+        String discountString = ((TextView)this.findViewById(R.id.buy_discount)).getText().toString();
+
+        Integer quantityInt = new Integer(quantityString);
+        Integer discountInt = new Integer(discountString);
+
+        //TODO ver qual o max discount e mostrar msg de erro
+        /*
+        if (discountInt < MAX_DISCOUNT)
+            ;
+            */
+        CartProduct cartProduct = new CartProduct(product, quantityInt, discountInt);
+        CommonStorage.cartProducts.add(cartProduct);
+        System.out.println("stuff");
     }
 
 }
