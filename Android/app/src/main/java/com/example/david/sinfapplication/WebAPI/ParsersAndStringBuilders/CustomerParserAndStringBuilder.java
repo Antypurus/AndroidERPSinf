@@ -56,7 +56,7 @@ public class CustomerParserAndStringBuilder
             JSONObject productObject = customersArray.getJSONObject(i);
             String id = productObject.getString("Cliente");
             String name = productObject.getString("Nome");
-            String phoneNumber = productObject.getString("Telefone");
+            String phoneNumber = productObject.getString("Fac_Tel");
             CustomerOfSalesman customerOfSalesman = new CustomerOfSalesman(id, name, phoneNumber);
             customers.add(customerOfSalesman);
         }

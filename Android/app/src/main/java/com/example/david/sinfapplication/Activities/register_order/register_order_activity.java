@@ -13,13 +13,13 @@ import android.widget.Toast;
 import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
-import com.example.david.sinfapplication.CommonDataClasses.Product;
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.R;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
+import java.util.ArrayList;
 
-public class register_order_activity extends Activity {
+public class register_order_activity extends Activity
+{
 
     private RecyclerView m_checkout_product_list_recycler_view;
     private RecyclerView.Adapter mAdapter;
@@ -42,41 +42,20 @@ public class register_order_activity extends Activity {
         m_checkout_product_list_recycler_view.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        CartProduct[] dataset =
-                new CartProduct[0];
-        try
-        {
-            dataset = new CartProduct[]{
-                    new CartProduct(
-                            new Product("PID","Core i7", "Processadores", "Intel", null, "This is shit",258,2578,"$"),
-                            5, 0),
-                    new CartProduct(
-                            new Product("PID","Placas Gráficas", "AMD", "AMD RX590", null, "This is shit",258,256,"$"),
-                            5, 0)
-            };
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        } catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (TimeoutException e)
-        {
-            e.printStackTrace();
-        }
-        mAdapter = new register_order_product_list_adapter(dataset);
+        ArrayList<CartProduct> cartProductArrayList = CommonStorage.cartProducts;
+        mAdapter = new register_order_product_list_adapter(cartProductArrayList);
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
 
         float total_price = 0;
         String currency = "";
-        for(CartProduct product:dataset)
+        for (CartProduct product : cartProductArrayList)
         {
             total_price += product.getPvp();
             currency = product.getCurrency();
         }
 
         TextView total_pay_ammount = (TextView) findViewById(R.id.product_price);
-        total_pay_ammount.setText(currency+total_price);
+        total_pay_ammount.setText(total_price + currency);
     }
 
     public void sendMessage(View view)
@@ -93,12 +72,15 @@ public class register_order_activity extends Activity {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig)
+    {
         super.onConfigurationChanged(newConfig);
         // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
             Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
         }
     }

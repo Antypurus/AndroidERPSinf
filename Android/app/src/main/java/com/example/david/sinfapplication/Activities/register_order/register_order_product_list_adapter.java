@@ -10,10 +10,12 @@ import android.widget.TextView;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.R;
 
+import java.util.ArrayList;
+
 public class register_order_product_list_adapter extends RecyclerView.Adapter<register_order_product_list_adapter.register_order_product_list_holder>
 {
     //the database is always an array it seems
-    private CartProduct[] dataset;
+    private ArrayList<CartProduct> dataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -36,7 +38,7 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     }
 
     //constructor
-    public register_order_product_list_adapter(CartProduct[] dataset)
+    public register_order_product_list_adapter(ArrayList<CartProduct> dataset)
     {
         this.dataset = dataset;
     }
@@ -56,15 +58,15 @@ public class register_order_product_list_adapter extends RecyclerView.Adapter<re
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(register_order_product_list_adapter.register_order_product_list_holder holder, int position) {
-       holder.product_name.setText(dataset[position].getDescription());
-       holder.product_ammount.setText(""+dataset[position].getQuantity());
-       holder.product_price.setText(""+dataset[position].getCurrency() + dataset[position].getPvp());
+       holder.product_name.setText(dataset.get(position).getDescription());
+       holder.product_ammount.setText(""+dataset.get(position).getQuantity());
+       holder.product_price.setText(""+dataset.get(position).getCurrency() + dataset.get(position).getPvp());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return dataset.length;
+        return dataset.size();
     }
 
 }
