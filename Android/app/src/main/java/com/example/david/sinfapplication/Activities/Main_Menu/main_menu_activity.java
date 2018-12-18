@@ -21,12 +21,14 @@ public class main_menu_activity extends AppCompatActivity {
     public void toCatalog(View view)
     {
         Intent intent = new Intent(this,product_catalog_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);
     }
 
     public void toCostumerList(View view)
     {
         Intent intent = new Intent(this,customer_list_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);
     }
 
