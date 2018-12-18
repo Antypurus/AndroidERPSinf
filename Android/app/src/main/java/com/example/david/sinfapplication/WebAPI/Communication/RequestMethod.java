@@ -13,7 +13,7 @@ public class RequestMethod
 
     //Customers
     public static String ViewCustomer = GET;
-    public static String listCustomersOfASalesman = GET;
+    public static String listCustomersOfASalesman = POST;
     public static String AddCustomer = POST;
     public static String EditCustomer = POST;
 

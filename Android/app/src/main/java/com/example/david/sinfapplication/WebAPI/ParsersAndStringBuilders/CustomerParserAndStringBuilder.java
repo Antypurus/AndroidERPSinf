@@ -46,10 +46,9 @@ public class CustomerParserAndStringBuilder
     {
         //TODO ver se isto ta bem quando o primavera estiver a
         if(viewCustomersOfSalesmanResponse==null)
-        {
             return null;
-        }
-        JSONObject dataSetObject = new JSONObject(viewCustomersOfSalesmanResponse);
+
+        JSONObject dataSetObject = new JSONObject(viewCustomersOfSalesmanResponse).getJSONObject("DataSet");
         JSONArray customersArray = dataSetObject.getJSONArray("Table");
         ArrayList<CustomerOfSalesman> customers = new ArrayList<>();
         for(int i = 0; i < customersArray.length(); i++)
