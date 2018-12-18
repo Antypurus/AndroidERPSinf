@@ -5,7 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class sales_history_activity extends AppCompatActivity {
 
@@ -16,6 +22,8 @@ public class sales_history_activity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        String customerId = getIntent().getStringExtra("customerId");
+
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.sales_history_layout);
 
@@ -25,7 +33,27 @@ public class sales_history_activity extends AppCompatActivity {
         this.mManager = new LinearLayoutManager(this);
         this.m_sales_history.setLayoutManager(this.mManager);
 
-        this.mAdapter = new sales_history_adapter();
+        ArrayList<Document> documents = null;
+        try {
+            documents = WebAPI.viewDocumentsFromCustomer(customerId);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Document>interesting_documents = new ArrayList<>();
+        for(Document document:documents)
+        {
+            if(document.getDocType().equals("FA"))
+            {
+                interesting_documents.add(document);
+            }
+        }
+
+        this.mAdapter = new sales_history_adapter(interesting_documents);
         this.m_sales_history.setAdapter(this.mAdapter);
     }
 
