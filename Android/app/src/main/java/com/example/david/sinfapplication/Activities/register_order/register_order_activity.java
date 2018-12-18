@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
+import com.example.david.sinfapplication.CommonDataClasses.Document;
+import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 public class register_order_activity extends Activity
 {
@@ -48,7 +52,7 @@ public class register_order_activity extends Activity
         String currency = "";
         for (CartProduct product : cartProductArrayList)
         {
-            total_price += product.getPvp();
+            total_price += (product.getPvp() * ((100-product.getDiscount()) / 100)) * product.getQuantity();
             currency = product.getCurrency();
         }
 
@@ -65,20 +69,66 @@ public class register_order_activity extends Activity
     public void finish_checkout(View view)
     {
         ArrayList<CartProduct> cartProductArrayList = CommonStorage.cartProducts;
+
+        //check cart has products
         if(cartProductArrayList.isEmpty())
             return;
 
+        //check document is a sale or a budget
         Boolean isSale = null;
         if(((RadioButton)findViewById(R.id.saleRadioButton)).isChecked())
             isSale = true;
         else if(((RadioButton)findViewById(R.id.budgetRadioButton)).isChecked())
             isSale = false;
-
         if(isSale == null)
         {
             ((TextView)findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
             return;
         }
+
+        //TODO get and check has customerId
+        String customerId = "";
+        
+        //submit document
+        submitDocument(customerId, cartProductArrayList, isSale);
+
+        //clear cart
+        CommonStorage.cartProducts.clear();
+
+        //TODO ver para onde redirecionar
+    }
+
+    private void submitDocument(String customerId, ArrayList<CartProduct> cartProductArrayList,
+                                Boolean isSale)
+    {
+        String docType = isSale ? "ECL" : "ORC";
+        Document document = new Document(docType, "A");
+        document.setLines(getDocumentLinesFromCartProductArrayList(cartProductArrayList));
+        try
+        {
+            WebAPI.createDocument(document, customerId);
+        } catch (TimeoutException e)
+        {
+            ((TextView)findViewById(R.id.error_pane)).setText("Network error!");
+            return;
+        }
+        catch (Exception e)
+        {
+            ((TextView)findViewById(R.id.error_pane)).setText("Server error!");
+            return;
+        }
+    }
+
+    private ArrayList<DocumentLine> getDocumentLinesFromCartProductArrayList(ArrayList<CartProduct> cartProductArrayList)
+    {
+        ArrayList<DocumentLine> lines = new ArrayList<>();
+        for(CartProduct cartProduct : cartProductArrayList)
+        {
+            DocumentLine line = new DocumentLine(cartProduct.getId(), cartProduct.getQuantity());
+            lines.add(line);
+        }
+
+        return lines;
     }
 
     @Override
