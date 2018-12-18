@@ -58,7 +58,7 @@ public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_ho
 
         holder.product_price.setText(this.products.get(position).getCurrency()+" "+price);
         holder.product_name.setText(this.products.get(position).getDescription());
-        holder.quantity.setText(this.products.get(position).getQuantity());
+        holder.quantity.setText(""+this.products.get(position).getQuantity());
     }
 
     @Override
