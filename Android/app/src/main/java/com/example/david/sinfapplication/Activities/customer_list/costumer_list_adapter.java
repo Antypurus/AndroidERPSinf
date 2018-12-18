@@ -58,7 +58,7 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
         holder.costumer_name.setText(this.customers.get(position).getName());
 
         holder.costumer_layout.setOnClickListener(view -> goToCustomer(holder.costumer,customers.get(position).getId()));
-        holder.costumer_call_button.setOnClickListener(view -> callClient(holder.costumer_call_button,customers.get(position)));
+        holder.costumer_call_button.setOnClickListener(view -> callClient(holder.costumer_call_button,customers.get(position).getPhoneNumber()));
     }
 
     @Override
