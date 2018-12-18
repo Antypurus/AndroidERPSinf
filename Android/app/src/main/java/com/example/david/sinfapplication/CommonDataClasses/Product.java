@@ -55,6 +55,13 @@ public class Product implements Serializable
                    String observations, int currentStock, double pvp, String currency) throws
             InterruptedException, ExecutionException, TimeoutException
     {
+        this(id, family, subfamily, description, imagePath, observations, currentStock, pvp, currency, null);
+        Bitmap bitmap = loadImageFromServer();
+    }
+
+    public Product(String id, String family, String subfamily, String description, String imagePath,
+                   String observations, int currentStock, double pvp, String currency, Bitmap image)
+    {
         this.id = id;
         this.family = family;
         this.subfamily = subfamily;
@@ -64,25 +71,24 @@ public class Product implements Serializable
         this.currentStock = currentStock;
         this.pvp = pvp;
         this.currency = currency;
-        loadImageFromServer();
+        this.image = image;
     }
 
-    private void loadImageFromServer() throws InterruptedException, ExecutionException,
+    private Bitmap loadImageFromServer() throws InterruptedException, ExecutionException,
             TimeoutException
     {
         if(imagePath == null || imagePath.isEmpty())
-            return;
+            return null;
 
         LoadImage imageObject = new LoadImage(imagePath);
         imageObject.execute(new String[1]);
-        image = (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
+        return (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
     }
 
-    public Product(Product product) throws InterruptedException, ExecutionException,
-            TimeoutException
+    public Product(Product product)
     {
         this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.imagePath),
-                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency));
+                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency), product.image);
     }
 
     public String getId()
