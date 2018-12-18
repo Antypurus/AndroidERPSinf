@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
+import com.example.david.sinfapplication.Activities.sales_history.sales_history_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
@@ -63,7 +64,7 @@ public class view_customer_activity extends Activity
     public void goto_customer_sales_history(View view)
     {
         //TODO
-        Intent intent = new Intent(this, edit_customer_activity.class);
+        Intent intent = new Intent(this, sales_history_activity.class);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);
     }

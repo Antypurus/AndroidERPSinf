@@ -51,14 +51,20 @@ public class Product_activity extends AppCompatActivity {
         Integer quantityInt = new Integer(quantityString);
         Integer discountInt = new Integer(discountString);
 
-        //TODO ver qual o max discount e mostrar msg de erro
-        /*
-        if (discountInt < MAX_DISCOUNT)
-            ;
-            */
+        if (quantityInt <= 0)
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Quantity must be greater than 0");
+            return;
+        }
+
+        if (! (0 <= discountInt && discountInt <= 100))
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Discount must be between 0 and 100");
+            return;
+        }
+
         CartProduct cartProduct = new CartProduct(product, quantityInt, discountInt);
         CommonStorage.cartProducts.add(cartProduct);
-        System.out.println("stuff");
     }
 
 }
