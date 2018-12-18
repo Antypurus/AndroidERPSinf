@@ -48,6 +48,16 @@ public class Product_activity extends AppCompatActivity {
         String quantityString = ((TextView)this.findViewById(R.id.buy_quantity)).getText().toString();
         String discountString = ((TextView)this.findViewById(R.id.buy_discount)).getText().toString();
 
+        if(quantityString.equals(""))
+        {
+            quantityString = "1";
+        }
+
+        if(discountString.equals(""))
+        {
+            discountString = "0";
+        }
+
         Integer quantityInt = new Integer(quantityString);
         Integer discountInt = new Integer(discountString);
 
