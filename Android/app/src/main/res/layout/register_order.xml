@@ -94,7 +94,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/rounded_corner_red"
-        android:onClick="sendMessage"
+        android:onClick="finish_checkout"
         android:text="@string/checkout_button"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -104,22 +104,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/edit_customer_details"
-        android:layout_width="333dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_corner_blue"
-        android:onClick="goto_catalgo"
-        android:text="@string/edit_customer_details"
+    <TextView
+        android:id="@+id/error_pane"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textColor="@color/translucent_red"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/finish_checkout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <SearchView
@@ -128,12 +126,12 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_corner"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/edit_customer_details"
+        app:layout_constraintBottom_toTopOf="@+id/error_pane"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
@@ -149,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/saleRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -158,10 +156,11 @@
             android:textSize="18sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/budgetRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="false"
             android:text="@string/reservation"
             android:textAlignment="viewStart"
             android:textSize="18sp" />

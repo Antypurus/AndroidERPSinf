@@ -1,17 +1,15 @@
 package com.example.david.sinfapplication.Activities.register_order;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
-import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.R;
@@ -54,21 +52,33 @@ public class register_order_activity extends Activity
             currency = product.getCurrency();
         }
 
-        TextView total_pay_ammount = (TextView) findViewById(R.id.product_price);
+        TextView total_pay_ammount = findViewById(R.id.product_price);
         total_pay_ammount.setText(total_price + currency);
+
+        if(cartProductArrayList.isEmpty())
+        {
+            ((TextView)findViewById(R.id.error_pane)).setText("No products in cart!");
+            findViewById(R.id.finish_checkout).setClickable(false);
+        }
     }
 
-    public void sendMessage(View view)
+    public void finish_checkout(View view)
     {
-        // prototype, change to the checkout view
-        Intent intent = new Intent(this, view_customer_activity.class);
-        startActivity(intent);
-    }
+        ArrayList<CartProduct> cartProductArrayList = CommonStorage.cartProducts;
+        if(cartProductArrayList.isEmpty())
+            return;
 
-    public void goto_catalgo(View view)
-    {
-        Intent intent = new Intent(this, product_catalog_activity.class);
-        startActivity(intent);
+        Boolean isSale = null;
+        if(((RadioButton)findViewById(R.id.saleRadioButton)).isChecked())
+            isSale = true;
+        else if(((RadioButton)findViewById(R.id.budgetRadioButton)).isChecked())
+            isSale = false;
+
+        if(isSale == null)
+        {
+            ((TextView)findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
+            return;
+        }
     }
 
     @Override
