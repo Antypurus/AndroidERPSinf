@@ -3,16 +3,17 @@ package com.example.david.sinfapplication.WebAPI.Communication;
 public class Route
 {
     //Server
-    private static final String serverHostName = "dservers.ddns.net";
+    private static final String primaveraServerHostName = "dservers.ddns.net";
+    private static final String pythonServerHostName = "dservers.ddns.net";
     private static final String primaveraServerPort = "2018";
     private static final String pythonServerPort = "5000";
 
     //Primavera Web API
-    private static String PrimaveraWebAPIDefaultRoute = "http://" + serverHostName + ":" + primaveraServerPort + "/WebApi/";
+    private static String PrimaveraWebAPIDefaultRoute = "http://" + primaveraServerHostName + ":" + primaveraServerPort + "/WebApi/";
     private static String PrimaveraWebAPIRawQuery = "Administrador/Consulta";
 
     //Python Web API
-    private static String PythonWebAPIDefaultRoute = "http://" + serverHostName + ":" + pythonServerPort + "/";
+    private static String PythonWebAPIDefaultRoute = "http://" + pythonServerHostName + ":" + pythonServerPort + "/";
     //private static String PythonAPIRawQuery = "Administrador/Consulta";
 
     //PrimaveraAuthentication
