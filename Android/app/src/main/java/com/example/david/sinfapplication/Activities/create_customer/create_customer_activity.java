@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
+import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.Utils.UtilsClass;
@@ -33,7 +33,7 @@ public class create_customer_activity extends Activity
         String customerTaxNumber = ((EditText) this.findViewById(R.id.customerTaxNumber)).getText().toString();
 
         if(customerName.isEmpty() || customerAddress.isEmpty() || customerPhoneNumber.isEmpty() ||
-                customerTaxNumber.isEmpty() || customerTaxNumber.isEmpty())
+                customerTaxNumber.isEmpty())
         {
             ((TextView) this.findViewById(R.id.error_pane)).setText("All inputs must be filled");
             return;
@@ -64,12 +64,13 @@ public class create_customer_activity extends Activity
             return;
         } catch (Exception e)
         {
-            ((TextView) this.findViewById(R.id.error_pane)).setText("Server error");
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Server error!");
             e.printStackTrace();
             return;
         }
 
-        Intent intent = new Intent(this, customer_list_activity.class);
+        Intent intent = new Intent(this, view_customer_activity.class);
+        intent.putExtra("customerId", customerBasic.getId());
         startActivity(intent);
     }
 
