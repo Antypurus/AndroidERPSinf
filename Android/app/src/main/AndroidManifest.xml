@@ -114,6 +114,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.view_sales_proposal.view_sales_proposal_activity">
+            android:name=".sales_proposal"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
     </application>
 
 </manifest>
