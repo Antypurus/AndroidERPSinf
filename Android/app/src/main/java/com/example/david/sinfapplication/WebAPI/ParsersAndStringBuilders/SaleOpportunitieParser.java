@@ -135,9 +135,10 @@ public class SaleOpportunitieParser
         for(int i = 0; i < proposalsArray.length(); i++)
         {
             JSONObject productObject = proposalsArray.getJSONObject(i);
+            Integer proposalNumber = productObject.getInt("NumProposta");
             Integer value = productObject.getInt("Valor");
 
-            SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(saleOpportunitie, value, null);
+            SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(proposalNumber, saleOpportunitie, value, null);
 
             salesOpportunities.add(saleOpportunitieProposal);
         }

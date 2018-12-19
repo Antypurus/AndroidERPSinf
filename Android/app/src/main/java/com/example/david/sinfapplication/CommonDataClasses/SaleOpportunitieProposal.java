@@ -15,8 +15,9 @@ public class SaleOpportunitieProposal implements Serializable
     private ArrayList<CartProduct> productsList;
 
 
-    public SaleOpportunitieProposal(SaleOpportunitie saleOpportunitie, Integer value, ArrayList<CartProduct> productsList)
+    public SaleOpportunitieProposal(int proposalNumber, SaleOpportunitie saleOpportunitie, Integer value, ArrayList<CartProduct> productsList)
     {
+        this.proposalNumber = proposalNumber;
         this.saleOpportunitie = saleOpportunitie;
         this.value = value;
         this.productsList = productsList;
