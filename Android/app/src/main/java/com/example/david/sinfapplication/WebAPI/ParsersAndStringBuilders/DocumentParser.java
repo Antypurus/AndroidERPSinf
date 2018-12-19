@@ -21,7 +21,7 @@ public class DocumentParser
         int numberDocumentLines = documentsArray.length();
         for (int i = 0; i < numberDocumentLines; i++)
         {
-            JSONObject line = documentsArray.getJSONObject(0);
+            JSONObject line = documentsArray.getJSONObject(i);
             String id = line.getString("Id");
             String docType = line.getString("TipoDoc");
             String serie = line.getString("Serie");
