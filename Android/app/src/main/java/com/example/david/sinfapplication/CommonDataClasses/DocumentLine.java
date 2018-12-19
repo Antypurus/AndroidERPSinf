@@ -1,6 +1,8 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-public class DocumentLine
+import java.io.Serializable;
+
+public class DocumentLine implements Serializable
 {
     private int number;
     private String productId;

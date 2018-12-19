@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.sales_history;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.sale_order.sale_order_activity;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.R;
 
@@ -62,7 +64,10 @@ public class sales_history_adapter extends RecyclerView.Adapter<sales_history_ad
 
     public void goToDocument(View view, Document document)
     {
-        //TODO: Go to document view
+        Intent intent = new Intent(view.getContext(),sale_order_activity.class);
+        intent.putExtra("Document",document);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        view.getContext().startActivity(intent);
     }
 
 }

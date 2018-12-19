@@ -2,11 +2,12 @@ package com.example.david.sinfapplication.CommonDataClasses;
 
 import com.example.david.sinfapplication.Utils.UtilsClass;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Document
+public class Document implements Serializable
 {
     private String id;
     private String docType;
