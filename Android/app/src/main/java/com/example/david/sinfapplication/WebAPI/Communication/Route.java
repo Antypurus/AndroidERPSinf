@@ -43,5 +43,6 @@ public class Route
     public static String getSalesOportunity = PrimaveraWebAPIDefaultRoute + "CRM/OportunidadesVenda/DaValorAtributos/";
     public static String getMaxIdOfProposalThatBelongToSaleOpportunity = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
     public static String getSalesOpportunitiesOfCustomer = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+    public static String getAllProposalsOfASalesOpportunity = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
 
 }

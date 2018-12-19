@@ -32,4 +32,5 @@ public class RequestMethod
     public static String getSalesOportunity = POST;
     public static String getMaxIdOfProposalThatBelongToSaleOpportunity = POST;
     public static String getSalesOpportunitiesOfCustomer = POST;
+    public static String getAllProposalsOfASalesOpportunity = POST;
 }
