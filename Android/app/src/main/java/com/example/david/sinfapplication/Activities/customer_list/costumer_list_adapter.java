@@ -1,6 +1,8 @@
 package com.example.david.sinfapplication.Activities.customer_list;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
+import com.example.david.sinfapplication.Activities.register_order.register_order_activity;
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
@@ -105,12 +109,7 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
         } else
         {
             //submit document
-            submitDocument(client, cartProducts, isSale);
-
-            //clear cart
-            CommonStorage.cartProducts.clear();
-
-            //TODO ver para onde redirecionar
+            submitDocument(view, client, cartProducts, isSale);
         }
     }
 
@@ -133,26 +132,72 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
     }
 
 
-    private void submitDocument(String customerId, ArrayList<CartProduct> cartProductArrayList,
+    private void submitDocument(View view, String customerId, ArrayList<CartProduct> cartProductArrayList,
                                 Boolean isSale)
     {
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+
         String docType = isSale ? "ECL" : "ORC";
         Document document = new Document(docType, "A");
         document.setLines(getDocumentLinesFromCartProductArrayList(cartProductArrayList));
         try
         {
-            WebAPI.createDocument(document, customerId);
+            boolean success = WebAPI.createDocument(document, customerId);
+
+            if (success)
+            {
+                showMessageBoxAndForwardToMainMenu(view, builder, "Success", "Order created Successfully");
+
+                //clear cart
+                CommonStorage.cartProducts.clear();
+            }
+            else
+                showMessageBoxAndForwardToRegisterOrder(view, builder, "Error", "The request to primavera has failed. Please try again later.");
+
         } catch (TimeoutException e)
         {
-            //TODO ver como fazer para mostrar o erro
-            //((TextView)findViewById(R.id.error_pane)).setText("Network error!");
-            return;
+            showMessageBoxAndForwardToRegisterOrder(view, builder, "Error", "The request to primavera server timed out. Could not complete your request. Please try again later.");
+
         } catch (Exception e)
         {
-            //TODO ver como fazer para mostrar o erro
-            //((TextView)findViewById(R.id.error_pane)).setText("Server error!");
-            return;
+            showMessageBoxAndForwardToRegisterOrder(view, builder, "Error", "Internal error occurred. Could not complete your request. Please try again later.");
         }
+    }
+
+    private void showMessageBoxAndForwardToRegisterOrder(View view, AlertDialog.Builder builder, String title, String message)
+    {
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                Intent intent = new Intent(view.getContext(), register_order_activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                view.getContext().startActivity(intent);
+            }
+        });
+        builder.show();
+    }
+
+    private void showMessageBoxAndForwardToMainMenu(View view, AlertDialog.Builder builder, String title, String message)
+    {
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                Intent intent = new Intent(view.getContext(), main_menu_activity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+        builder.show();
     }
 
     private ArrayList<DocumentLine> getDocumentLinesFromCartProductArrayList(ArrayList<CartProduct> cartProductArrayList)
