@@ -1,11 +1,14 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class SaleOpportunitieParser
 {
@@ -69,5 +72,23 @@ public class SaleOpportunitieParser
 
         String attribValue = array.getJSONObject(0).getString(attribNameToRetrieve);
         return attribValue;
+    }
+
+
+    public static Integer parseMaxIdOfProposalThatBelongToSaleOpportunity(String maxIdOfProposalThatBelongToSaleOpportunityRequestResponse) throws JSONException
+    {
+        if(maxIdOfProposalThatBelongToSaleOpportunityRequestResponse == null)
+            return null;
+
+        JSONObject dataSetObject = new JSONObject(maxIdOfProposalThatBelongToSaleOpportunityRequestResponse).getJSONObject("DataSet");
+        JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
+        Integer maxIdOfProposal = null;
+        for(int i = 0; i < proposalsArray.length(); i++)
+        {
+            JSONObject productObject = proposalsArray.getJSONObject(i);
+            maxIdOfProposal = productObject.getInt("NumProposta");
+        }
+
+        return maxIdOfProposal;
     }
 }
