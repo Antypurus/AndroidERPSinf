@@ -82,4 +82,9 @@ public class SaleOpportunitieProposal implements Serializable
             return null;
         }
     }
+
+    public int getProposalNumber()
+    {
+        return this.proposalNumber;
+    }
 }
