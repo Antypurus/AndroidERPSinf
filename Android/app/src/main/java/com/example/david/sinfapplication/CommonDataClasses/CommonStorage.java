@@ -6,5 +6,6 @@ public class CommonStorage
 {
     public static String vender_id = "";
     public static ArrayList<CartProduct> cartProducts = new ArrayList<>();
+    public static String currentlySelectedCustomerId = "";
 
 }

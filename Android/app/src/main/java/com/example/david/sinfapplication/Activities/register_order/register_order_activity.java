@@ -86,8 +86,13 @@ public class register_order_activity extends Activity
             return;
         }
 
-        //TODO get and check has customerId
-        String customerId = "";
+        //TODO get and check has customerId; penso q ja ta em baixo, mas é preciso verificar
+        if (CommonStorage.currentlySelectedCustomerId.equals(""))
+        {
+            ((TextView)findViewById(R.id.error_pane)).setText("A customer must be selected using the customer menu to complete checkout");
+            return;
+        }
+        String customerId = new String(CommonStorage.currentlySelectedCustomerId);
         
         //submit document
         submitDocument(customerId, cartProductArrayList, isSale);
