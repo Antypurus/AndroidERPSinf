@@ -384,7 +384,7 @@ public class WebAPI
 
     public static ArrayList<SaleOpportunitieProposal> getAllProposalsOfASalesOpportunity(String salesOpportunityId, SaleOpportunitie saleOpportunitie) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "\"\"SELECT  POPV.Valor, POPV.NumProposta, COV.EstadoVenda from CabecOportunidadesVenda COV INNER JOIN PropostasOPV POPV ON COV.ID = POPV.IdOportunidade WHERE IdOportunidade= '" + salesOpportunityId + "'\"";
+        String query = "\"" + "SELECT  POPV.Valor, POPV.NumProposta, COV.EstadoVenda from CabecOportunidadesVenda COV INNER JOIN PropostasOPV POPV ON COV.ID = POPV.IdOportunidade WHERE IdOportunidade= '" + salesOpportunityId + "'\"";
 
         String requestRoute = Route.getAllProposalsOfASalesOpportunity;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getAllProposalsOfASalesOpportunity,
