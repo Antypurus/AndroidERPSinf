@@ -74,7 +74,6 @@ public class SaleOpportunitieParser
         return attribValue;
     }
 
-
     public static Integer parseMaxIdOfProposalThatBelongToSaleOpportunity(String maxIdOfProposalThatBelongToSaleOpportunityRequestResponse) throws JSONException
     {
         if(maxIdOfProposalThatBelongToSaleOpportunityRequestResponse == null)
