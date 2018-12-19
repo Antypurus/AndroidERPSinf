@@ -1,10 +1,11 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
 
+import java.io.Serializable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class CartProduct extends Product
+public class CartProduct extends Product implements Serializable
 {
     private int quantity;
     private int discount;

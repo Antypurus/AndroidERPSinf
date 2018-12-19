@@ -5,10 +5,11 @@ import com.example.david.sinfapplication.Utils.UtilsClass;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SaleOpportunitie
+public class SaleOpportunitie implements Serializable
 {
     /**
      * corresponds to ID in primavera

@@ -109,6 +109,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.view_sales_oportunity.view_sales_oportunity_activity">
+            android:name=".sales_oportunity"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
     </application>
 
 </manifest>

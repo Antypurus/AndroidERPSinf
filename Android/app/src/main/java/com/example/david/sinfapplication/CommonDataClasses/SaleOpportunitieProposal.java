@@ -4,9 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SaleOpportunitieProposal
+public class SaleOpportunitieProposal implements Serializable
 {
     private int proposalNumber; //TODO see how to handle it...como saber o numero que deve ser +1 que o anterior
     private SaleOpportunitie saleOpportunitie;
