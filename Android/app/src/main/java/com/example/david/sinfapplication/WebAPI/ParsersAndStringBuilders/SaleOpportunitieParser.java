@@ -3,6 +3,7 @@ package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,9 +60,14 @@ public class SaleOpportunitieParser
 
     public static String parseGetSaleOportunityResponse(String response, String attribNameToRetrieve) throws JSONException
     {
-        JSONObject dataSetObject = new JSONObject(response);
-        String attribValue = dataSetObject.getString(attribNameToRetrieve);
+        if(response == null)
+            return null;
 
+        JSONArray array = new JSONArray(response);
+        if(array.length() == 0)
+            return null;
+
+        String attribValue = array.getJSONObject(0).getString(attribNameToRetrieve);
         return attribValue;
     }
 }
