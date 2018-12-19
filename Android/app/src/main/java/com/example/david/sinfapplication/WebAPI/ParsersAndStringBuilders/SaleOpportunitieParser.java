@@ -144,4 +144,23 @@ public class SaleOpportunitieParser
 
         return salesOpportunities;
     }
+
+    public static void parseGetDetailsOfProposal(String getAllProposalsOfASalesOpportunityResponse, SaleOpportunitieProposal saleOpportunitieProposal) throws JSONException
+    {
+        if(getAllProposalsOfASalesOpportunityResponse == null)
+            return;
+
+        JSONObject dataSetObject = new JSONObject(getAllProposalsOfASalesOpportunityResponse).getJSONObject("DataSet");
+        JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
+        ArrayList<SaleOpportunitieProposal> salesOpportunities = new ArrayList<>();
+        for(int i = 0; i < proposalsArray.length(); i++)
+        {
+            JSONObject productObject = proposalsArray.getJSONObject(i);
+            Integer value = productObject.getInt("Valor");
+
+            //           SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(saleOpportunitie, value, null);
+
+            salesOpportunities.add(saleOpportunitieProposal);
+        }
+    }
 }

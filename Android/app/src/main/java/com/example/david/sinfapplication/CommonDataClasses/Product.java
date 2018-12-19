@@ -74,6 +74,12 @@ public class Product implements Serializable
         this.image = image;
     }
 
+    public Product(String id, int pvp)
+    {
+        this.id = id;
+        this.pvp = pvp;
+    }
+
     private Bitmap loadImageFromServer() throws InterruptedException, ExecutionException,
             TimeoutException
     {

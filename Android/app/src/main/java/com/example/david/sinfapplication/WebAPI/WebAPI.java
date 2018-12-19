@@ -1,21 +1,23 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
+import com.example.david.sinfapplication.CommonDataClasses.AgendaEntry;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraAuthenticationCredentials;
+import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonResponseStrings;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
-import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
-import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.AgendaParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
@@ -24,6 +26,7 @@ import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpp
 
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -365,9 +368,26 @@ public class WebAPI
         return null;
     }
 
+    public static ArrayList<SaleOpportunitie> getAllSalesOpportunities() throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"SELECT  * from CabecOportunidadesVenda ORDER BY DataCriacao,DataExpiracao ASC\"";
+
+        String requestRoute = Route.getSalesOpportunitiesOfCustomer;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return SaleOpportunitieParser.parseGetSalesOpportunitiesOfCustomer(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static ArrayList<SaleOpportunitie> getSalesOpportunitiesOfCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
+        String query = "\"SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "' ORDER BY DataCriacao,DataExpiracao ASC\"";
 
         String requestRoute = Route.getSalesOpportunitiesOfCustomer;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
@@ -384,7 +404,7 @@ public class WebAPI
 
     public static ArrayList<SaleOpportunitieProposal> getAllProposalsOfASalesOpportunity(String salesOpportunityId, SaleOpportunitie saleOpportunitie) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "\"\"SELECT  POPV.Valor, POPV.NumProposta, COV.EstadoVenda from CabecOportunidadesVenda COV INNER JOIN PropostasOPV POPV ON COV.ID = POPV.IdOportunidade WHERE IdOportunidade= '" + salesOpportunityId + "'\"";
+        String query = "\"" + "SELECT  POPV.Valor, POPV.NumProposta, COV.EstadoVenda from CabecOportunidadesVenda COV INNER JOIN PropostasOPV POPV ON COV.ID = POPV.IdOportunidade WHERE IdOportunidade= '" + salesOpportunityId + "'\"";
 
         String requestRoute = Route.getAllProposalsOfASalesOpportunity;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getAllProposalsOfASalesOpportunity,
@@ -399,5 +419,57 @@ public class WebAPI
         return null;
     }
 
+    public static boolean getDetailsOfProposal(String proposalId, SaleOpportunitieProposal saleOpportunitieProposal) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String requestRoute = Route.getProposalDetailsPart1 + proposalId + Route.getProposalDetailsPart2;
 
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getProposalDetails,
+                ContentType.ApplicationJson, new byte[0]);
+        try
+        {
+            SaleOpportunitieParser.parseGetDetailsOfProposal(proposalId, saleOpportunitieProposal);
+            return true;
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    public static ArrayList<AgendaEntry> getAllAgendaEntries(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"SELECT  * from Tarefas T JOIN Clientes C ON T.EntidadePrincipal = C.Cliente WHERE C.Vendedor = \'" + customerId + "\'\"";
+
+        String requestRoute = Route.listAgendaEntries;
+        String listAgendaEntriesRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listAgendaEntries,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return AgendaParser.parseListAgendaEntries(listAgendaEntriesRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //TODO
+    /*
+    public static boolean setAgendaEntryNotes(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"SELECT  * from Tarefas T JOIN Clientes C ON T.EntidadePrincipal = C.Cliente WHERE C.Vendedor = \'" + customerId + "\'\"";
+
+        String requestRoute = Route.setAgendaEntryNotes;
+        String setAgendaEntryNotesRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.setAgendaEntryNotes,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return AgendaParser.parseSetAgendaEntryNotes(setAgendaEntryNotesRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }*/
 }
