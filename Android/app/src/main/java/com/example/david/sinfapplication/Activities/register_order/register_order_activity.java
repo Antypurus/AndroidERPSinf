@@ -1,6 +1,7 @@
 package com.example.david.sinfapplication.Activities.register_order;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
+import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
@@ -52,16 +55,16 @@ public class register_order_activity extends Activity
         String currency = "";
         for (CartProduct product : cartProductArrayList)
         {
-            total_price += (product.getPvp() * ((100-product.getDiscount()) / 100)) * product.getQuantity();
+            total_price += (product.getPvp() * ((100 - product.getDiscount()) / 100)) * product.getQuantity();
             currency = product.getCurrency();
         }
 
         TextView total_pay_ammount = findViewById(R.id.product_price);
         total_pay_ammount.setText(total_price + currency);
 
-        if(cartProductArrayList.isEmpty())
+        if (cartProductArrayList.isEmpty())
         {
-            ((TextView)findViewById(R.id.error_pane)).setText("No products in cart!");
+            ((TextView) findViewById(R.id.error_pane)).setText("No products in cart!");
             findViewById(R.id.finish_checkout).setClickable(false);
         }
     }
@@ -71,70 +74,43 @@ public class register_order_activity extends Activity
         ArrayList<CartProduct> cartProductArrayList = CommonStorage.cartProducts;
 
         //check cart has products
-        if(cartProductArrayList.isEmpty())
+        if (cartProductArrayList.isEmpty())
             return;
 
         //check document is a sale or a budget
         Boolean isSale = null;
-        if(((RadioButton)findViewById(R.id.saleRadioButton)).isChecked())
+        if (((RadioButton) findViewById(R.id.saleRadioButton)).isChecked())
             isSale = true;
-        else if(((RadioButton)findViewById(R.id.budgetRadioButton)).isChecked())
+        else if (((RadioButton) findViewById(R.id.budgetRadioButton)).isChecked())
             isSale = false;
-        if(isSale == null)
+        if (isSale == null)
         {
-            ((TextView)findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
+            ((TextView) findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
             return;
         }
 
         //TODO get and check has customerId; penso q ja ta em baixo, mas é preciso verificar
+        //first approach
+        /*
         if (CommonStorage.currentlySelectedCustomerId.equals(""))
         {
             ((TextView)findViewById(R.id.error_pane)).setText("A customer must be selected using the customer menu to complete checkout");
             return;
         }
         String customerId = new String(CommonStorage.currentlySelectedCustomerId);
-        
-        //submit document
-        submitDocument(customerId, cartProductArrayList, isSale);
+        */
 
-        //clear cart
-        CommonStorage.cartProducts.clear();
+        Intent intent = new Intent(this, customer_list_activity.class);
+        intent.putExtra("performingCheckout", "true");
+        intent.putExtra("cartProductArrayList", cartProductArrayList);
+        intent.putExtra("isSale", isSale);
 
-        //TODO ver para onde redirecionar
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); //TODO what is this??
+        startActivity(intent);
+
+
     }
 
-    private void submitDocument(String customerId, ArrayList<CartProduct> cartProductArrayList,
-                                Boolean isSale)
-    {
-        String docType = isSale ? "ECL" : "ORC";
-        Document document = new Document(docType, "A");
-        document.setLines(getDocumentLinesFromCartProductArrayList(cartProductArrayList));
-        try
-        {
-            WebAPI.createDocument(document, customerId);
-        } catch (TimeoutException e)
-        {
-            ((TextView)findViewById(R.id.error_pane)).setText("Network error!");
-            return;
-        }
-        catch (Exception e)
-        {
-            ((TextView)findViewById(R.id.error_pane)).setText("Server error!");
-            return;
-        }
-    }
-
-    private ArrayList<DocumentLine> getDocumentLinesFromCartProductArrayList(ArrayList<CartProduct> cartProductArrayList)
-    {
-        ArrayList<DocumentLine> lines = new ArrayList<>();
-        for(CartProduct cartProduct : cartProductArrayList)
-        {
-            DocumentLine line = new DocumentLine(cartProduct.getId(), cartProduct.getQuantity());
-            lines.add(line);
-        }
-
-        return lines;
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig)

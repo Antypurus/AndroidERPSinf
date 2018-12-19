@@ -14,7 +14,8 @@ import com.example.david.sinfapplication.R;
 
 import java.util.ArrayList;
 
-public class cart_activity extends AppCompatActivity {
+public class cart_activity extends AppCompatActivity
+{
 
     private RecyclerView products;
     private RecyclerView.Adapter product_adapter;
@@ -40,7 +41,7 @@ public class cart_activity extends AppCompatActivity {
 
     public void goToCheckOut(View view)
     {
-        Intent intent = new Intent(this,register_order_activity.class);
+        Intent intent = new Intent(this, register_order_activity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);
     }
