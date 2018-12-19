@@ -74,7 +74,7 @@ public class login_activity extends AppCompatActivity {
             if(result.equals(WebAPI.loginResult.loginSucessfull))
             {
                 //go to main menu
-                Log.d("Primavera Login","Login Successfull");
+                Log.d("Primavera Login","Login Successful");
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("username",username);
