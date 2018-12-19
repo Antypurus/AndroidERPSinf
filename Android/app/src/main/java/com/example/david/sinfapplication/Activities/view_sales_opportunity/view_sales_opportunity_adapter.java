@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.view_sales_proposal.view_sales_proposal_activity;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.R;
 
@@ -57,7 +59,10 @@ public class view_sales_opportunity_adapter extends RecyclerView.Adapter<view_sa
 
     public void goToProposal(View view, SaleOpportunitieProposal proposal)
     {
-
+        Intent intent = new Intent(view.getContext(),view_sales_proposal_activity.class);
+        intent.putExtra("SaleProposal",proposal);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        view.getContext().startActivity(intent);
     }
 
 }
