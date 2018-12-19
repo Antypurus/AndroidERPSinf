@@ -347,4 +347,21 @@ public class WebAPI
 
         return saleOportunityAttribValue;
     }
+
+    public static Integer getMaxIdOfProposalThatBelongToSaleOpportunity(String opportunityId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"" + "\"SELECT MAX(NumProposta) FROM PropostasOPV WHERE IdOportunidade = '" + opportunityId + "'\"";
+
+        String requestRoute = Route.getMaxIdOfProposalThatBelongToSaleOpportunity;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getMaxIdOfProposalThatBelongToSaleOpportunity,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return SaleOpportunitieParser.parseMaxIdOfProposalThatBelongToSaleOpportunity(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

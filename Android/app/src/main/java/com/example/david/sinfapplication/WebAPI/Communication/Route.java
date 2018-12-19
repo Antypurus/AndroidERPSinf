@@ -41,5 +41,6 @@ public class Route
     public static String createProposalForSaleOpportunitie = PrimaveraWebAPIDefaultRoute + "CRM/PropostasOPV/Actualiza/";
     public static String transformSaleOpportunitie = PrimaveraWebAPIDefaultRoute + "CRM/PropostasOPV/GenerateDocument/V/{documentType}/A/";
     public static String getSalesOportunity = PrimaveraWebAPIDefaultRoute + "CRM/OportunidadesVenda/DaValorAtributos/";
+    public static String getMaxIdOfProposalThatBelongToSaleOpportunity = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
 
 }

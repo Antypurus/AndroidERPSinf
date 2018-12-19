@@ -5,6 +5,7 @@ import com.example.david.sinfapplication.Utils.UtilsClass;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SaleOpportunitie
@@ -21,6 +22,7 @@ public class SaleOpportunitie
     private String currency;
     private String salesman;
     private String saleCycle;
+    private ArrayList<SaleOpportunitieProposal> proposals;
 
 
     public SaleOpportunitie(String description, String creationDate, String expirationDate, String resume,
@@ -178,6 +180,11 @@ public class SaleOpportunitie
     public void setSaleCycle(String saleCycle)
     {
         this.saleCycle = saleCycle;
+    }
+
+    public void setProposals(ArrayList<SaleOpportunitieProposal> proposals)
+    {
+        this.proposals = proposals;
     }
 
     public String getJson() throws JSONException
