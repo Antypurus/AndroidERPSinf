@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.R;
 
 import java.util.ArrayList;
@@ -56,13 +57,22 @@ public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_ho
     @Override
     public void onBindViewHolder(cart_view_holder holder, int position)
     {
-
         double price = this.products.get(position).getPvp();
         price = price - (price * (this.products.get(position).getDiscount() / 100.0));
 
         holder.product_price.setText(this.products.get(position).getCurrency() + " " + price);
         holder.product_name.setText(this.products.get(position).getDescription());
         holder.quantity.setText("" + this.products.get(position).getQuantity());
+        holder.removeButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                CommonStorage.cartProducts.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, products.size());
+            }
+        });
     }
 
     @Override
