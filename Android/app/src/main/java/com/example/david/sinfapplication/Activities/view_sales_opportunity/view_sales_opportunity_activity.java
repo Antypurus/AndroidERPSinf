@@ -17,6 +17,7 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstances)
     {
         super.onCreate(savedInstances);
+        this.setContentView(R.layout.view_sales_oportunity);
 
         SaleOpportunitie saleOpportunitie = (SaleOpportunitie) getIntent().getSerializableExtra("SaleOportunity");
 
