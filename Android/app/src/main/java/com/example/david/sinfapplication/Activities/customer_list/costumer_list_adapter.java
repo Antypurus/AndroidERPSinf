@@ -15,11 +15,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
+import com.example.david.sinfapplication.CommonDataClasses.Document;
+import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.MainActivity;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 import static android.Manifest.permission.CALL_PHONE;
 
@@ -27,9 +33,22 @@ import static android.Manifest.permission.CALL_PHONE;
 public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_adapter.costumer_list_holder> {
 
     ArrayList<CustomerOfSalesman> customers;
+    Boolean isPerformingCheckout = false;
+    ArrayList<CartProduct> cartProducts;
+    Boolean isSale;
 
     public costumer_list_adapter(ArrayList<CustomerOfSalesman> customers) {
         this.customers = customers;
+        isPerformingCheckout = false;
+
+    }
+
+    public costumer_list_adapter(ArrayList<CustomerOfSalesman> customers, ArrayList<CartProduct> cartProducts, Boolean isSale)
+    {
+        this.customers = customers;
+        this.isPerformingCheckout = true;
+        this.cartProducts = cartProducts;
+        this.isSale = isSale;
     }
 
     public static class costumer_list_holder extends RecyclerView.ViewHolder {
@@ -72,9 +91,22 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
     }
 
     public void goToCustomer(View view, String client) {
-        Intent intent = new Intent(view.getContext(), view_customer_activity.class);
-        intent.putExtra("customerId", client);
-        view.getContext().startActivity(intent);
+        if (!isPerformingCheckout)
+        {
+            Intent intent = new Intent(view.getContext(), view_customer_activity.class);
+            intent.putExtra("customerId", client);
+            view.getContext().startActivity(intent);
+        }
+        else
+        {
+            //submit document
+            submitDocument(client, cartProducts, isSale);
+
+            //clear cart
+            CommonStorage.cartProducts.clear();
+
+            //TODO ver para onde redirecionar
+        }
     }
 
     public void callClient(View view, String client_number) {
@@ -91,6 +123,42 @@ public class costumer_list_adapter extends RecyclerView.Adapter<costumer_list_ad
         {
             view.getContext().startActivity(call_intent);
         }
+    }
+
+
+    private void submitDocument(String customerId, ArrayList<CartProduct> cartProductArrayList,
+                                Boolean isSale)
+    {
+        String docType = isSale ? "ECL" : "ORC";
+        Document document = new Document(docType, "A");
+        document.setLines(getDocumentLinesFromCartProductArrayList(cartProductArrayList));
+        try
+        {
+            WebAPI.createDocument(document, customerId);
+        } catch (TimeoutException e)
+        {
+            //TODO ver como fazer para mostrar o erro
+            //((TextView)findViewById(R.id.error_pane)).setText("Network error!");
+            return;
+        }
+        catch (Exception e)
+        {
+            //TODO ver como fazer para mostrar o erro
+            //((TextView)findViewById(R.id.error_pane)).setText("Server error!");
+            return;
+        }
+    }
+
+    private ArrayList<DocumentLine> getDocumentLinesFromCartProductArrayList(ArrayList<CartProduct> cartProductArrayList)
+    {
+        ArrayList<DocumentLine> lines = new ArrayList<>();
+        for(CartProduct cartProduct : cartProductArrayList)
+        {
+            DocumentLine line = new DocumentLine(cartProduct.getId(), cartProduct.getQuantity());
+            lines.add(line);
+        }
+
+        return lines;
     }
 
 }

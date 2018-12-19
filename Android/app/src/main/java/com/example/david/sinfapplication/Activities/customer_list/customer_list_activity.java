@@ -9,11 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -48,8 +50,28 @@ public class customer_list_activity extends AppCompatActivity {
         }
 
         if(costumers!=null) {
-            mAdapter = new costumer_list_adapter(costumers);
-            m_costumer_list.setAdapter(mAdapter);
+            String isPerformingCheckout = getIntent().getStringExtra("performingCheckout");
+            if (isPerformingCheckout != null)
+            {
+                if (isPerformingCheckout.equals("true"))
+                {
+                    ArrayList<CartProduct> cartProductArrayList = (ArrayList<CartProduct>) getIntent().getSerializableExtra("cartProductArrayList");
+                    Boolean isSale = (Boolean) getIntent().getSerializableExtra("isSale");
+                    mAdapter = new costumer_list_adapter(costumers, cartProductArrayList,
+                            isSale);
+                    m_costumer_list.setAdapter(mAdapter);
+                }
+                else
+                {
+                    mAdapter = new costumer_list_adapter(costumers);
+                    m_costumer_list.setAdapter(mAdapter);
+                }
+            }
+            else
+            {
+                mAdapter = new costumer_list_adapter(costumers);
+                m_costumer_list.setAdapter(mAdapter);
+            }
         }
 
         FloatingActionButton add_button = (FloatingActionButton)this.findViewById(R.id.add_costumer_button);
