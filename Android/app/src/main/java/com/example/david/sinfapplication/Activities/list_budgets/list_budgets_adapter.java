@@ -52,7 +52,7 @@ public class list_budgets_adapter extends RecyclerView.Adapter<list_budgets_adap
     @Override
     public void onBindViewHolder(list_budgets_holder holder, int position) {
         holder.sale_type.setText(this.documents.get(position).getDocType());
-        holder.sale_value.setText(this.documents.get(position).getDocumentTotal());
+        holder.sale_value.setText(this.documents.get(position).getDocumentTotal()+" EUR");
         holder.sale_date.setText(this.documents.get(position).getDate());
 
         holder.layout.setOnClickListener(view -> goToDocument(holder.layout,this.documents.get(position)));

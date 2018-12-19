@@ -51,7 +51,7 @@ public class sales_history_adapter extends RecyclerView.Adapter<sales_history_ad
     @Override
     public void onBindViewHolder(sales_adapter_holder holder, int position) {
         holder.sale_type.setText(this.documents.get(position).getDocType());
-        holder.sale_value.setText(this.documents.get(position).getDocumentTotal());
+        holder.sale_value.setText(this.documents.get(position).getDocumentTotal()+" EUR");
         holder.sale_date.setText(this.documents.get(position).getDate());
 
         holder.layout.setOnClickListener(view -> goToDocument(holder.layout,this.documents.get(position)));

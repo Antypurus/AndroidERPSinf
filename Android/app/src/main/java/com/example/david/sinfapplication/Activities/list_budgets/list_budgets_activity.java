@@ -47,7 +47,7 @@ public class list_budgets_activity extends AppCompatActivity {
         ArrayList<Document>interesting_documents = new ArrayList<>();
         for(Document document:documents)
         {
-            if(document.getDocType().equals("ORC"))
+            if(document.getDocType().equals("ORC")||document.getDocType().equals("ECL"))
             {
                 interesting_documents.add(document);
             }

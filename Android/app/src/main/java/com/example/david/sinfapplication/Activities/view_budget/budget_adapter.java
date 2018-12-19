@@ -53,7 +53,7 @@ public class budget_adapter extends RecyclerView.Adapter<budget_adapter.budget_h
     @Override
     public void onBindViewHolder(budget_holder holder, int position) {
         DocumentLine product = this.products.get(position);
-        holder.product_price.setText(""+product.getUnitaryPrice());
+        holder.product_price.setText(""+product.getUnitaryPrice()+" EUR");
         holder.product_discount.setText(""+product.getCommercialDiscount()+"%");
         holder.quantity_button.setText(""+product.getQuantity());
         holder.product_name.setText(product.getProductId());

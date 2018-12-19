@@ -54,7 +54,7 @@ public class sale_order_adapter extends RecyclerView.Adapter<sale_order_adapter.
     @Override
     public void onBindViewHolder(sale_order_view_holder holder, int position) {
         DocumentLine product = this.products.get(position);
-        holder.product_price.setText(""+product.getUnitaryPrice());
+        holder.product_price.setText(""+product.getUnitaryPrice()+" EUR");
         holder.product_discount.setText(""+product.getCommercialDiscount()+"%");
         holder.quantity_button.setText(""+product.getQuantity());
         holder.product_name.setText(product.getProductId());
