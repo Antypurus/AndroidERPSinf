@@ -350,7 +350,7 @@ public class WebAPI
 
     public static Integer getMaxIdOfProposalThatBelongToSaleOpportunity(String opportunityId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "\"SELECT MAX(NumProposta) FROM PropostasOPV WHERE IdOportunidade = '" + opportunityId + "'\"";
+        String query = "\"" + "SELECT MAX(NumProposta) as NumProposta FROM PropostasOPV WHERE IdOportunidade = '" + opportunityId + "'\"";
 
         String requestRoute = Route.getMaxIdOfProposalThatBelongToSaleOpportunity;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getMaxIdOfProposalThatBelongToSaleOpportunity,
@@ -367,7 +367,7 @@ public class WebAPI
 
     public static ArrayList<SaleOpportunitie> getSalesOpportunitiesOfCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "\"SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
+        String query = "\"" + "SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
 
         String requestRoute = Route.getSalesOpportunitiesOfCustomer;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
