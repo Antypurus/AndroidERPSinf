@@ -124,14 +124,14 @@ public class SaleOpportunitieParser
         return salesOpportunities;
     }
 
-    public static ArrayList<SaleOpportunitie> parseGetAllProposalsOfASalesOpportunity(String salesOpportunityResponse, SaleOpportunitie saleOpportunitie) throws JSONException
+    public static ArrayList<SaleOpportunitieProposal> parseGetAllProposalsOfASalesOpportunity(String salesOpportunityResponse, SaleOpportunitie saleOpportunitie) throws JSONException
     {
         if(salesOpportunityResponse == null)
             return null;
 
         JSONObject dataSetObject = new JSONObject(salesOpportunityResponse).getJSONObject("DataSet");
         JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
-        ArrayList<SaleOpportunitie> salesOpportunities = new ArrayList<>();
+        ArrayList<SaleOpportunitieProposal> salesOpportunities = new ArrayList<>();
         for(int i = 0; i < proposalsArray.length(); i++)
         {
             JSONObject productObject = proposalsArray.getJSONObject(i);
@@ -139,7 +139,7 @@ public class SaleOpportunitieParser
 
             SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(saleOpportunitie, value, null);
 
-            salesOpportunities.add(saleOpportunitie);
+            salesOpportunities.add(saleOpportunitieProposal);
         }
 
         return salesOpportunities;
