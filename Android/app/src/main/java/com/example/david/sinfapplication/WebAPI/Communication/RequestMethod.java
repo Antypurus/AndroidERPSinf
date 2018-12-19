@@ -29,4 +29,5 @@ public class RequestMethod
     public static String createSaleOpportunitie = POST;
     public static String createProposalForSaleOpportunitie = POST;
     public static String transformSaleOpportunitie = POST;
+    public static String getSalesOportunity = POST;
 }

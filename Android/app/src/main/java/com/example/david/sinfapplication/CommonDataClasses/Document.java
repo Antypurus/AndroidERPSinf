@@ -1,11 +1,7 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-import com.example.david.sinfapplication.Utils.UtilsClass;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Document implements Serializable
 {
@@ -26,22 +22,28 @@ public class Document implements Serializable
         this.series = series;
         this.docNumber = docNumber;
         this.documentTotal = documentTotal;
-        this.date = date;
+        if(date != null)
+            this.date = parseDate(date);
         this.state = state;
     }
 
-    public Document(String docType, String series, String documentTotal, String date, String state)
+    private String parseDate(String date)
+    {
+        return date.replace("T", "  ");
+    }
+
+    //TODO
+    /*public Document(String docType, String series, String documentTotal, String date, String state)
     {
         Long randomNumber = new Random().nextLong();
         String sha256 = UtilsClass.getSHA256OfStringInHexadecimalEncoding(String.valueOf(randomNumber));
         this.id = sha256.substring(0, 12);
         this.docType = docType;
         this.series = series;
-        //this.docNumber = docNumber;
         this.documentTotal = documentTotal;
         this.date = date;
         this.state = state;
-    }
+    }*/
 
     public Document(String docType, String series)
     {

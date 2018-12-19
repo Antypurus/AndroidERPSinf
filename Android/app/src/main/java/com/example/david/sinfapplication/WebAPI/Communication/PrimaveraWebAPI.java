@@ -5,11 +5,10 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -80,7 +79,7 @@ public class PrimaveraWebAPI
                 urlConnection.setRequestProperty("Authorization", "Bearer " + authenticationToken.get());
             urlConnection.setRequestProperty("Content-Length", String.valueOf(bodyContent.length));
 
-            if(method == "POST")
+            if(method.equals("POST"))
             {
                 urlConnection.setDoOutput(true);
                 urlConnection.getOutputStream().write(bodyContent);

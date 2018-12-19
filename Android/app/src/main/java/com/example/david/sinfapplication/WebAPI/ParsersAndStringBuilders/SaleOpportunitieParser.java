@@ -1,5 +1,8 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,6 +17,12 @@ public class SaleOpportunitieParser
             return true;
 
         return false;
+    }
+
+    public static SaleOpportunitie createSaleOpportunitieRequestBody(String description, String creationDate, String expirationDate, String entity)
+    {
+        return new SaleOpportunitie(description, creationDate, expirationDate, description, entity, "C",
+                "0", "EUR", CommonStorage.vender_id, "CV1");
     }
 
     public static boolean parseCreateProposalForSaleOpportunitieRequestResponse(String createSaleOpportunitieRequestResponse)
@@ -46,5 +55,13 @@ public class SaleOpportunitieParser
         requestBody.put("NumeroPropostaOPV", numberProposalToAccept);
 
         return requestBody.toString();
+    }
+
+    public static String parseGetSaleOportunityResponse(String response, String attribNameToRetrieve) throws JSONException
+    {
+        JSONObject dataSetObject = new JSONObject(response);
+        String attribValue = dataSetObject.getString(attribNameToRetrieve);
+
+        return attribValue;
     }
 }
