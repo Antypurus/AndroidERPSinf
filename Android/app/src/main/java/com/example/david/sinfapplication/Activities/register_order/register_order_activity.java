@@ -55,16 +55,16 @@ public class register_order_activity extends Activity
         String currency = "";
         for (CartProduct product : cartProductArrayList)
         {
-            total_price += (product.getPvp() * ((100-product.getDiscount()) / 100)) * product.getQuantity();
+            total_price += (product.getPvp() * ((100 - product.getDiscount()) / 100)) * product.getQuantity();
             currency = product.getCurrency();
         }
 
         TextView total_pay_ammount = findViewById(R.id.product_price);
         total_pay_ammount.setText(total_price + currency);
 
-        if(cartProductArrayList.isEmpty())
+        if (cartProductArrayList.isEmpty())
         {
-            ((TextView)findViewById(R.id.error_pane)).setText("No products in cart!");
+            ((TextView) findViewById(R.id.error_pane)).setText("No products in cart!");
             findViewById(R.id.finish_checkout).setClickable(false);
         }
     }
@@ -74,18 +74,18 @@ public class register_order_activity extends Activity
         ArrayList<CartProduct> cartProductArrayList = CommonStorage.cartProducts;
 
         //check cart has products
-        if(cartProductArrayList.isEmpty())
+        if (cartProductArrayList.isEmpty())
             return;
 
         //check document is a sale or a budget
         Boolean isSale = null;
-        if(((RadioButton)findViewById(R.id.saleRadioButton)).isChecked())
+        if (((RadioButton) findViewById(R.id.saleRadioButton)).isChecked())
             isSale = true;
-        else if(((RadioButton)findViewById(R.id.budgetRadioButton)).isChecked())
+        else if (((RadioButton) findViewById(R.id.budgetRadioButton)).isChecked())
             isSale = false;
-        if(isSale == null)
+        if (isSale == null)
         {
-            ((TextView)findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
+            ((TextView) findViewById(R.id.error_pane)).setText("Order must be sale or budget!");
             return;
         }
 

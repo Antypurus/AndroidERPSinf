@@ -13,9 +13,10 @@ import com.example.david.sinfapplication.R;
 
 import java.util.ArrayList;
 
-public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_holder>{
+public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_holder>
+{
 
-    private ArrayList<CartProduct>products = null;
+    private ArrayList<CartProduct> products = null;
 
     public cart_adapter(ArrayList<CartProduct> products)
     {
@@ -30,7 +31,8 @@ public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_ho
         public TextView product_name;
         public TextView product_price;
 
-        public cart_view_holder(ConstraintLayout layout) {
+        public cart_view_holder(ConstraintLayout layout)
+        {
             super(layout);
 
             this.layout = layout;
@@ -43,7 +45,8 @@ public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_ho
     }
 
     @Override
-    public cart_view_holder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public cart_view_holder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         ConstraintLayout c_layout = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
 
         cart_view_holder holder = new cart_view_holder(c_layout);
@@ -51,18 +54,20 @@ public class cart_adapter extends RecyclerView.Adapter<cart_adapter.cart_view_ho
     }
 
     @Override
-    public void onBindViewHolder(cart_view_holder holder, int position) {
+    public void onBindViewHolder(cart_view_holder holder, int position)
+    {
 
         double price = this.products.get(position).getPvp();
-        price = price - (price * (this.products.get(position).getDiscount()/100.0));
+        price = price - (price * (this.products.get(position).getDiscount() / 100.0));
 
-        holder.product_price.setText(this.products.get(position).getCurrency()+" "+price);
+        holder.product_price.setText(this.products.get(position).getCurrency() + " " + price);
         holder.product_name.setText(this.products.get(position).getDescription());
-        holder.quantity.setText(""+this.products.get(position).getQuantity());
+        holder.quantity.setText("" + this.products.get(position).getQuantity());
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return this.products.size();
     }
 

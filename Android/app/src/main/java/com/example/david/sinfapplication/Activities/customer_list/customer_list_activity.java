@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class customer_list_activity extends AppCompatActivity {
+public class customer_list_activity extends AppCompatActivity
+{
 
     private RecyclerView m_costumer_list;
     private RecyclerView.Adapter mAdapter;
@@ -32,24 +33,29 @@ public class customer_list_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.costumer_list_layout);
 
-        m_costumer_list = (RecyclerView)this.findViewById(R.id.costumer_list);
+        m_costumer_list = (RecyclerView) this.findViewById(R.id.costumer_list);
         m_costumer_list.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
         m_costumer_list.setLayoutManager(mLayoutManager);
 
         ArrayList<CustomerOfSalesman> costumers = null;
-        try {
+        try
+        {
             costumers = WebAPI.listCustomersOfASalesman(CommonStorage.vender_id);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e)
+        {
             e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (ExecutionException e)
+        {
             e.printStackTrace();
-        } catch (TimeoutException e) {
+        } catch (TimeoutException e)
+        {
             e.printStackTrace();
         }
 
-        if(costumers!=null) {
+        if (costumers != null)
+        {
             String isPerformingCheckout = getIntent().getStringExtra("performingCheckout");
             if (isPerformingCheckout != null)
             {
@@ -60,21 +66,19 @@ public class customer_list_activity extends AppCompatActivity {
                     mAdapter = new costumer_list_adapter(costumers, cartProductArrayList,
                             isSale);
                     m_costumer_list.setAdapter(mAdapter);
-                }
-                else
+                } else
                 {
                     mAdapter = new costumer_list_adapter(costumers);
                     m_costumer_list.setAdapter(mAdapter);
                 }
-            }
-            else
+            } else
             {
                 mAdapter = new costumer_list_adapter(costumers);
                 m_costumer_list.setAdapter(mAdapter);
             }
         }
 
-        FloatingActionButton add_button = (FloatingActionButton)this.findViewById(R.id.add_costumer_button);
+        FloatingActionButton add_button = (FloatingActionButton) this.findViewById(R.id.add_costumer_button);
         add_button.setOnClickListener(view -> toAddCostumer(add_button));
     }
 

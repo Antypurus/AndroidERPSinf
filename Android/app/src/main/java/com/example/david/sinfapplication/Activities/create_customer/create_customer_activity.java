@@ -32,7 +32,7 @@ public class create_customer_activity extends Activity
         String customerPhoneNumber = ((EditText) this.findViewById(R.id.customerPhoneNumber)).getText().toString();
         String customerTaxNumber = ((EditText) this.findViewById(R.id.customerTaxNumber)).getText().toString();
 
-        if(customerName.isEmpty() || customerAddress.isEmpty() || customerPhoneNumber.isEmpty() ||
+        if (customerName.isEmpty() || customerAddress.isEmpty() || customerPhoneNumber.isEmpty() ||
                 customerTaxNumber.isEmpty())
         {
             ((TextView) this.findViewById(R.id.error_pane)).setText("All inputs must be filled");
