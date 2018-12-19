@@ -304,7 +304,7 @@ public class WebAPI
      * @throws TimeoutException
      */
     public static boolean createProposalForSaleOpportunitie(SaleOpportunitieProposal saleOpportunitieProposal) throws
-            InterruptedException, ExecutionException, TimeoutException, JSONException
+            InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.createProposalForSaleOpportunitie;
         String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.createProposalForSaleOpportunitie,

@@ -5,6 +5,8 @@ import com.example.david.sinfapplication.Utils.UtilsClass;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 public class SaleOpportunitie
 {
     private String opportunitieId;
@@ -35,7 +37,8 @@ public class SaleOpportunitie
         this.currency = currency;
         this.salesman = salesman;
         this.saleCycle = saleCycle;
-        this.opportunitieNumber = String.valueOf((description + creationDate + expirationDate + resume + entity + entityType + saleState).hashCode());
+        String generatedValue = String.valueOf(new Random().nextLong());
+        this.opportunitieNumber = generatedValue.substring(0, Math.min(18, generatedValue.length()));
     }
 
     public SaleOpportunitie(String opportunitieId, String opportunitieNumber, String description, String creationDate,
@@ -53,7 +56,8 @@ public class SaleOpportunitie
         this.currency = currency;
         this.salesman = salesman;
         this.saleCycle = saleCycle;
-        this.opportunitieNumber = String.valueOf((description + creationDate + expirationDate + resume + entity + entityType + saleState).hashCode());
+        String generatedValue = String.valueOf(new Random().nextLong());
+        this.opportunitieNumber = generatedValue.substring(0, Math.min(18, generatedValue.length()));
     }
 
     public String getOpportunitieId()
