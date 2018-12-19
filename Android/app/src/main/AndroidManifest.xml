@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
             android:allowBackup="true"
@@ -116,6 +118,11 @@
 
         <activity android:name=".Activities.view_sales_proposal.view_sales_proposal_activity">
             android:name=".sales_proposal"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity android:name=".Activities.Agenda.agenda_activity">
+            android:name=".agenda"
             android:configChanges="orientation|screenSize">
         </activity>
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.david.sinfapplication.Activities.Agenda.agenda_activity;
 import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
 import com.example.david.sinfapplication.Activities.list_sales_oportunities.list_sales_oportunities_activity;
 import com.example.david.sinfapplication.Activities.product_cart.cart_activity;
@@ -44,6 +45,13 @@ public class main_menu_activity extends AppCompatActivity {
     public void goToSalesOportunities(View view)
     {
         Intent intent = new Intent(this,list_sales_oportunities_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        this.startActivity(intent);
+    }
+
+    public void goToAgenda(View view)
+    {
+        Intent intent = new Intent(this,agenda_activity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         this.startActivity(intent);
     }
