@@ -6,6 +6,10 @@ import android.widget.TextView;
 
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class view_sales_opportunity_activity extends AppCompatActivity {
 
@@ -27,6 +31,21 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
         expiration_date.setText("Expiration Date: "+saleOpportunitie.getExpirationDate());
         entity.setText("Costumer: "+saleOpportunitie.getEntity());
         state.setText("State: "+saleOpportunitie.getSaleState());
+
+        try
+        {
+            saleOpportunitie.setProposals(WebAPI.getAllProposalsOfASalesOpportunity(saleOpportunitie.getOpportunitieId(), saleOpportunitie));
+
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
