@@ -56,4 +56,12 @@ public class SaleOpportunitieParser
 
         return requestBody.toString();
     }
+
+    public static String parseGetSaleOportunityResponse(String response, String attribNameToRetrieve) throws JSONException
+    {
+        JSONObject dataSetObject = new JSONObject(response);
+        String attribValue = dataSetObject.getString(attribNameToRetrieve);
+
+        return attribValue;
+    }
 }

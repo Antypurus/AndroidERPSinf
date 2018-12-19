@@ -24,7 +24,6 @@ import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpp
 
 import org.json.JSONException;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -332,5 +331,20 @@ public class WebAPI
                 ContentType.ApplicationJson, SaleOpportunitieParser.transformSaleOpportunitieProposalRequestBody(saleOpportunitieNumber, numberProposalToAccept).getBytes());
 
         return SaleOpportunitieParser.parseTransformSaleOpportunitieRequestResponse(createSaleOpportunitieRequestResponse);
+    }
+
+    public static String getAttribOfSalesOportunity(String saleOportunityNumber, String attribToRetrieve) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    {
+        String requestRoute = Route.getSalesOportunity + saleOportunityNumber;
+        String requestBody = "[" +
+                "\t\"Id\"\n" +
+                "]";
+
+        String getSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOportunity,
+                ContentType.ApplicationJson, requestBody.getBytes());
+
+        String saleOportunityAttribValue = SaleOpportunitieParser.parseGetSaleOportunityResponse(getSaleOpportunitieRequestResponse, attribToRetrieve);
+
+        return saleOportunityAttribValue;
     }
 }
