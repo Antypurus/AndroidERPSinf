@@ -2,32 +2,24 @@ package com.example.david.sinfapplication.Activities.create_sales_oportunity;
 
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
+import com.example.david.sinfapplication.Activities.view_sales_opportunity.view_sales_opportunity_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.Utils.UtilsClass;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpportunitieParser;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -37,7 +29,7 @@ public class create_sales_oportunity_activity extends AppCompatActivity implemen
     private ArrayList<String> names;
 
     private void updateLabel(EditText date, int day,int month,int year) {
-        date.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year).append(" "));
+        date.setText(new StringBuilder().append(month + 1).append("/").append(day).append("/").append(year).append(" "));
     }
 
     @Override
@@ -75,8 +67,6 @@ public class create_sales_oportunity_activity extends AppCompatActivity implemen
 
             this.names = names;
             this.customers = customers;
-
-
         }
         else
         {
@@ -91,8 +81,29 @@ public class create_sales_oportunity_activity extends AppCompatActivity implemen
     }
 
     @Override
-    public void onDialogClick(DialogFragment dialog, String custumerId) {
-        Log.d("Primavera",custumerId);
-        //call for registering the sales oportunity
+    public void onDialogClick(DialogFragment dialog, String custumerId)
+    {
+        String creationDate = UtilsClass.getDateAsString();
+        String expirationDate = ((EditText) this.findViewById(R.id.expiration_date)).getText().toString();
+        String description = ((EditText) this.findViewById(R.id.description)).getText().toString();
+
+        SaleOpportunitie saleOpportunitie = SaleOpportunitieParser.createSaleOpportunitieRequestBody(description, creationDate, expirationDate, custumerId);
+        try
+        {
+            //call for registering the sales oportunity
+            WebAPI.createSaleOpportunitie(saleOpportunitie);
+            Intent intent = new Intent(this, view_sales_opportunity_activity.class);
+            startActivity(intent);
+        } catch (TimeoutException e)
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Network error!");
+            e.printStackTrace();
+        } catch (Exception e)
+        {
+            ((TextView) this.findViewById(R.id.error_pane)).setText("Server error!");
+            e.printStackTrace();
+        }
+
+
     }
 }

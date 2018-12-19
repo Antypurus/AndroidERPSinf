@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.Activities.view_sales_oportunity;
+package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
 
-public class view_sales_oportunity_activity extends AppCompatActivity {
+public class view_sales_opportunity_activity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstances)

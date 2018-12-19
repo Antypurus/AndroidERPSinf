@@ -9,6 +9,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class UtilsClass
@@ -56,8 +59,7 @@ public class UtilsClass
                 return true;
             else
                 return false;
-        else
-        if (nif == 11 - remainder_11)
+        else if (nif == 11 - remainder_11)
             return true;
         else
             return false;
@@ -66,7 +68,7 @@ public class UtilsClass
     public static void addToJsonObjectIfNotNull(JSONObject jsonObject, String key, String value) throws
             JSONException
     {
-        if(value == null)
+        if (value == null)
             value = "";
 
         jsonObject.put(key, value);
@@ -89,5 +91,15 @@ public class UtilsClass
             hashSB.append(String.format("%02X", b));
 
         return hashSB.toString();
+    }
+
+    public static String getDateAsString()
+    {
+        Date date = new Date();
+        String strDateFormat = "MM/dd/yyyy";
+        DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+        String formattedDate = dateFormat.format(date);
+
+        return formattedDate;
     }
 }
