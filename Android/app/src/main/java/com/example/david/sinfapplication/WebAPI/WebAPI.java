@@ -26,6 +26,7 @@ import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpp
 
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -399,6 +400,23 @@ public class WebAPI
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean getDetailsOfProposal(String proposalId, SaleOpportunitieProposal saleOpportunitieProposal) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String requestRoute = Route.getProposalDetailsPart1 + proposalId + Route.getProposalDetailsPart2;
+
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getProposalDetails,
+                ContentType.ApplicationJson, new byte[0]);
+        try
+        {
+            SaleOpportunitieParser.parseGetDetailsOfProposal(proposalId, saleOpportunitieProposal);
+            return true;
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
