@@ -84,6 +84,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.sale_order.sale_order_activity">
+            android:name=".sales_history"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
     </application>
 
 </manifest>

@@ -89,7 +89,7 @@ public class WebAPI
         String query = "\"SELECT Cliente, Nome FROM Clientes WHERE Vendedor = \'" + salesmanId + "\'\"";
 
         //TODO
-        query = "\"SELECT Cliente, Nome, Fac_Tel FROM Clientes WHERE Cliente = '1'\"";
+        query = "\"SELECT Cliente, Nome, Fac_Tel FROM Clientes WHERE Vendedor = '"+salesmanId+"'\"";
         String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
                 ContentType.ApplicationJson, query.getBytes());
         try
