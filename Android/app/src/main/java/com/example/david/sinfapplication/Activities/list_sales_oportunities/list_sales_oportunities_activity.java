@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.Activities.list_sales_oportunities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -15,6 +16,9 @@ public class list_sales_oportunities_activity extends AppCompatActivity {
     {
         super.onCreate(savedInstance);
         setContentView(R.layout.list_sales_oportunitie);
+
+        FloatingActionButton button = this.findViewById(R.id.add_sales_oportunity);
+        button.setOnClickListener(view -> goToAddSalesoportunity(button));
     }
 
     public void goToAddSalesoportunity(View view)
