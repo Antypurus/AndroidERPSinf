@@ -364,4 +364,21 @@ public class WebAPI
         }
         return null;
     }
+
+    public static ArrayList<SaleOpportunitie> getSalesOpportunitiesOfCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"" + "\"SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
+
+        String requestRoute = Route.getSalesOpportunitiesOfCustomer;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return SaleOpportunitieParser.parseGetSalesOpportunitiesOfCustomer(viewCustomerRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
