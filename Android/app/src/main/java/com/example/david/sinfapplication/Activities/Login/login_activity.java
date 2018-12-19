@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
 import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
+import com.example.david.sinfapplication.Activities.create_sales_oportunity.create_sales_oportunity_activity;
 import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
@@ -91,8 +92,6 @@ public class login_activity extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
-                CustomerBasic customerBasic = new CustomerBasic("47", "asdasd", "asdasd", "23112", "123123", "EUR");
-                intent.putExtra("customer", customerBasic);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))
