@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,12 +91,12 @@ public class SaleOpportunitieParser
         return maxIdOfProposal;
     }
 
-    public static ArrayList<SaleOpportunitie> parseGetSalesOpportunitiesOfCustomer(String salesOpportunityResponse) throws JSONException
+    public static ArrayList<SaleOpportunitie>  parseGetSalesOpportunitiesOfCustomer(String getAllProposalsOfASalesOpportunityResponse) throws JSONException
     {
-        if(salesOpportunityResponse == null)
+        if(getAllProposalsOfASalesOpportunityResponse == null)
             return null;
 
-        JSONObject dataSetObject = new JSONObject(salesOpportunityResponse).getJSONObject("DataSet");
+        JSONObject dataSetObject = new JSONObject(getAllProposalsOfASalesOpportunityResponse).getJSONObject("DataSet");
         JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
         ArrayList<SaleOpportunitie> salesOpportunities = new ArrayList<>();
         for(int i = 0; i < proposalsArray.length(); i++)
@@ -116,6 +117,27 @@ public class SaleOpportunitieParser
             SaleOpportunitie saleOpportunitie = new SaleOpportunitie(opportunitieId, opportunitieNumber,
                     description, creationDate, expirationDate, resume, entity, entity, entityType,
                     saleState, salesman, saleCycle);
+
+            salesOpportunities.add(saleOpportunitie);
+        }
+
+        return salesOpportunities;
+    }
+
+    public static ArrayList<SaleOpportunitie> parseGetAllProposalsOfASalesOpportunity(String salesOpportunityResponse, SaleOpportunitie saleOpportunitie) throws JSONException
+    {
+        if(salesOpportunityResponse == null)
+            return null;
+
+        JSONObject dataSetObject = new JSONObject(salesOpportunityResponse).getJSONObject("DataSet");
+        JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
+        ArrayList<SaleOpportunitie> salesOpportunities = new ArrayList<>();
+        for(int i = 0; i < proposalsArray.length(); i++)
+        {
+            JSONObject productObject = proposalsArray.getJSONObject(i);
+            Integer value = productObject.getInt("Valor");
+
+            SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(saleOpportunitie, value, null);
 
             salesOpportunities.add(saleOpportunitie);
         }
