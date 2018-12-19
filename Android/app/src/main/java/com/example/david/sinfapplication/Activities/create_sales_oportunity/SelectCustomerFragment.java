@@ -6,10 +6,8 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
-import com.example.david.sinfapplication.CommonDataClasses.Customer;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -24,7 +22,7 @@ public class SelectCustomerFragment extends DialogFragment {
 
     public interface CustomerSelectionInterface
     {
-        public void onDialogClick(DialogFragment dialog,String cusomerID);
+        public void onDialogClick(DialogFragment dialog,String customerId);
     }
 
     public SelectCustomerFragment()

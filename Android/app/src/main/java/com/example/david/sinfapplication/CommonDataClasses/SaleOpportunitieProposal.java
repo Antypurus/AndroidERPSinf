@@ -11,12 +11,14 @@ public class SaleOpportunitieProposal implements Serializable
 {
     private int proposalNumber; //TODO see how to handle it...como saber o numero que deve ser +1 que o anterior
     private SaleOpportunitie saleOpportunitie;
+    private Integer value;
     private ArrayList<CartProduct> productsList;
 
 
-    public SaleOpportunitieProposal(SaleOpportunitie saleOpportunitie, ArrayList<CartProduct> productsList)
+    public SaleOpportunitieProposal(SaleOpportunitie saleOpportunitie, Integer value, ArrayList<CartProduct> productsList)
     {
         this.saleOpportunitie = saleOpportunitie;
+        this.value = value;
         this.productsList = productsList;
     }
 

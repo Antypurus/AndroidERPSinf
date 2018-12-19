@@ -381,4 +381,23 @@ public class WebAPI
         }
         return null;
     }
+
+    public static ArrayList<SaleOpportunitie> getAllProposalsOfASalesOpportunity(String salesOpportunityId, SaleOpportunitie saleOpportunitie) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"" + "\"\"SELECT  POPV.Valor, POPV.NumProposta, COV.EstadoVenda from CabecOportunidadesVenda COV INNER JOIN PropostasOPV POPV ON COV.ID = POPV.IdOportunidade WHERE IdOportunidade= '" + salesOpportunityId + "'\"";
+
+        String requestRoute = Route.getAllProposalsOfASalesOpportunity;
+        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getAllProposalsOfASalesOpportunity,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return SaleOpportunitieParser.parseGetAllProposalsOfASalesOpportunity(viewCustomerRequestResponse, saleOpportunitie);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.david.sinfapplication.Activities.view_sales_oportunity;
+package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +12,11 @@ import com.example.david.sinfapplication.R;
 
 import java.util.ArrayList;
 
-public class view_sales_oportunity_adapter extends RecyclerView.Adapter<view_sales_oportunity_adapter.view_sales_oportunity_holder>{
+public class view_sales_opportunity_adapter extends RecyclerView.Adapter<view_sales_opportunity_adapter.view_sales_oportunity_holder>{
 
     ArrayList<SaleOpportunitieProposal> proposals;
 
-    public view_sales_oportunity_adapter(ArrayList<SaleOpportunitieProposal> proposals)
+    public view_sales_opportunity_adapter(ArrayList<SaleOpportunitieProposal> proposals)
     {
         this.proposals = proposals;
     }
