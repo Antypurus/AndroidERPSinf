@@ -63,6 +63,9 @@ public class SaleOpportunitieProposal
                 line.put("IdOportunidade", opportunitieId);
                 line.put("NumProposta", proposalNumber);
 
+                if(i > 0)
+                    line.put("Linha", i);
+
                 linesArray.put(line);
             }
             requestBody.putOpt("Linhas", linesArray);
