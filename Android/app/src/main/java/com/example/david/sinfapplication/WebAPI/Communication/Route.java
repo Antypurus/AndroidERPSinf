@@ -45,4 +45,8 @@ public class Route
     public static String getSalesOpportunitiesOfCustomer = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
     public static String getAllProposalsOfASalesOpportunity = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
 
+    //AgendaEntry
+    public static String listAgendaEntries = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+    public static String setAgendaEntryNotes = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+
 }

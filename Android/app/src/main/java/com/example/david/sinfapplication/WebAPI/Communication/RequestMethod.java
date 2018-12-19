@@ -33,4 +33,8 @@ public class RequestMethod
     public static String getMaxIdOfProposalThatBelongToSaleOpportunity = POST;
     public static String getSalesOpportunitiesOfCustomer = POST;
     public static String getAllProposalsOfASalesOpportunity = POST;
+
+    //Sales Opportunities
+    public static String listAgendaEntries = POST;
+    public static String setAgendaEntryNotes = POST;
 }

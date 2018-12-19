@@ -1,21 +1,23 @@
 package com.example.david.sinfapplication.WebAPI;
 
 
+import com.example.david.sinfapplication.CommonDataClasses.AgendaEntry;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
+import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.WebAPI.Communication.ContentType;
 import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraAuthenticationCredentials;
+import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonResponseStrings;
 import com.example.david.sinfapplication.WebAPI.Communication.PythonWebAPI;
 import com.example.david.sinfapplication.WebAPI.Communication.RequestMethod;
-import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.WebAPI.Communication.Route;
-import com.example.david.sinfapplication.WebAPI.Communication.PrimaveraWebAPI;
+import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.AgendaParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.CustomerParserAndStringBuilder;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.DocumentParser;
 import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.ProductsListParser;
@@ -350,7 +352,7 @@ public class WebAPI
 
     public static Integer getMaxIdOfProposalThatBelongToSaleOpportunity(String opportunityId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT MAX(NumProposta) as NumProposta FROM PropostasOPV WHERE IdOportunidade = '" + opportunityId + "'\"";
+        String query = "\"" + "\"SELECT MAX(NumProposta) FROM PropostasOPV WHERE IdOportunidade = '" + opportunityId + "'\"";
 
         String requestRoute = Route.getMaxIdOfProposalThatBelongToSaleOpportunity;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getMaxIdOfProposalThatBelongToSaleOpportunity,
@@ -367,7 +369,7 @@ public class WebAPI
 
     public static ArrayList<SaleOpportunitie> getSalesOpportunitiesOfCustomer(String customerId) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"" + "SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
+        String query = "\"" + "\"SELECT  * from CabecOportunidadesVenda WHERE Entidade='" + customerId + "'\"";
 
         String requestRoute = Route.getSalesOpportunitiesOfCustomer;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
@@ -400,4 +402,39 @@ public class WebAPI
     }
 
 
+    public static ArrayList<AgendaEntry> getAllAgendaEntries(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"SELECT  * from Tarefas T JOIN Clientes C ON T.EntidadePrincipal = C.Cliente WHERE C.Vendedor = \'" + customerId + "\'\"";
+
+        String requestRoute = Route.listAgendaEntries;
+        String listAgendaEntriesRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listAgendaEntries,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return AgendaParser.parseListAgendaEntries(listAgendaEntriesRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //TODO
+    /*
+    public static boolean setAgendaEntryNotes(String customerId) throws InterruptedException, ExecutionException, TimeoutException
+    {
+        String query = "\"SELECT  * from Tarefas T JOIN Clientes C ON T.EntidadePrincipal = C.Cliente WHERE C.Vendedor = \'" + customerId + "\'\"";
+
+        String requestRoute = Route.setAgendaEntryNotes;
+        String setAgendaEntryNotesRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.setAgendaEntryNotes,
+                ContentType.ApplicationJson, query.getBytes());
+        try
+        {
+            return AgendaParser.parseSetAgendaEntryNotes(setAgendaEntryNotesRequestResponse);
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }*/
 }
