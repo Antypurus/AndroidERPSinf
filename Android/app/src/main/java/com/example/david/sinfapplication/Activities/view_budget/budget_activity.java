@@ -50,11 +50,11 @@ public class budget_activity extends AppCompatActivity {
         this.adapter = new budget_adapter(products);
         this.products.setAdapter(this.adapter);
 
-        ((TextView)this.findViewById(R.id.doc_date)).setText(doc.getDate());
-        ((TextView)this.findViewById(R.id.doc_series)).setText(doc.getSeries());
-        ((TextView)this.findViewById(R.id.doc_state)).setText(doc.getState());
-        ((TextView)this.findViewById(R.id.doc_type)).setText(doc.getDocType());
-        ((TextView)this.findViewById(R.id.doc_total)).setText(doc.getDocumentTotal());
+        ((TextView)this.findViewById(R.id.doc_date)).setText("Date: "+doc.getDate());
+        ((TextView)this.findViewById(R.id.doc_series)).setText("Series: "+doc.getSeries());
+        ((TextView)this.findViewById(R.id.doc_state)).setText("State:"+doc.getState());
+        ((TextView)this.findViewById(R.id.doc_type)).setText("Document Type: "+doc.getDocType());
+        ((TextView)this.findViewById(R.id.doc_total)).setText("Document Total: "+doc.getDocumentTotal()+" EUR");
     }
 
     public void convertToSalesOrder(View view)
