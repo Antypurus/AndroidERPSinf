@@ -17,6 +17,13 @@ public class CartProduct extends Product implements Serializable
         this.discount = discount;
     }
 
+    public CartProduct(String productId, int price, int quantity, int discount)
+    {
+        super(productId, price);
+        this.quantity = quantity;
+        this.discount = discount;
+    }
+
     public int getQuantity()
     {
         return quantity;
