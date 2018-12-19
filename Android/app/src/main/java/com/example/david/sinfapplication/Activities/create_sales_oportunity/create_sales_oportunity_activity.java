@@ -29,7 +29,7 @@ public class create_sales_oportunity_activity extends AppCompatActivity implemen
     private ArrayList<String> names;
 
     private void updateLabel(EditText date, int day,int month,int year) {
-        date.setText(new StringBuilder().append(day).append("/").append(month + 1).append("/").append(year).append(" "));
+        date.setText(new StringBuilder().append(month + 1).append("/").append(day).append("/").append(year).append(" "));
     }
 
     @Override
