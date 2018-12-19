@@ -11,17 +11,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
 import com.example.david.sinfapplication.Activities.customer_list.customer_list_activity;
-import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
-import com.example.david.sinfapplication.CommonDataClasses.Document;
-import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
 import com.example.david.sinfapplication.R;
-import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeoutException;
 
 public class register_order_activity extends Activity
 {
@@ -124,6 +120,13 @@ public class register_order_activity extends Activity
         {
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(this, main_menu_activity.class);
+        startActivity(intent);
     }
 
 }
