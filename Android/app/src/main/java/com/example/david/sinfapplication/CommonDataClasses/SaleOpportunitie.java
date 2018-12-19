@@ -81,6 +81,7 @@ public class SaleOpportunitie
                             String currency, String salesman, String saleCycle)
     {
         this.opportunitieId = opportunitieId;
+        this.opportunitieNumber = opportunitieNumber;
         this.description = description;
         this.creationDate = creationDate;
         this.expirationDate = expirationDate;
