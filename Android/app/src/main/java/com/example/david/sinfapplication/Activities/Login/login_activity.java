@@ -11,8 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import java.util.ArrayList;
 
 public class login_activity extends AppCompatActivity {
 
@@ -59,8 +62,9 @@ public class login_activity extends AppCompatActivity {
 
         WebAPI.loginResult result;
         try {
-            result = WebAPI.login(username,password);
-            WebAPI.getMaxIdOfProposalThatBelongToSaleOpportunity("d58cac54-03af-11e9-8dd0-080027266259");
+            result = WebAPI.login("user2","pass");
+            //WebAPI.getMaxIdOfProposalThatBelongToSaleOpportunity("d58cac54-03af-11e9-8dd0-080027266259");
+            //ArrayList<SaleOpportunitie> saleOpportunities = WebAPI.getSalesOpportunitiesOfCustomer("1");
         } catch (Exception e)
         {
             e.printStackTrace();

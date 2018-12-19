@@ -11,17 +11,50 @@ import java.util.Random;
 
 public class SaleOpportunitie implements Serializable
 {
+    /**
+     * corresponds to ID in primavera
+     */
     private String opportunitieId;
+    /**
+     * corresponds to Oportunidade in primavera
+     */
     private String opportunitieNumber;
+    /**
+     * corresponds to Descricao in primavera
+     */
     private String description;
+    /**
+     * corresponds to DataCriacao in primavera
+     */
     private String creationDate;
+    /**
+     * corresponds to DataExpiracao in primavera
+     */
     private String expirationDate;
+    /**
+     * corresponds to Resumo in primavera
+     */
     private String resume;
+    /**
+     * corresponds to Entidade in primavera
+     */
     private String entity;
+    /**
+     * corresponds to TipoEntidade in primavera
+     */
     private String entityType;
+    /**
+     * corresponds to EstadoVenda in primavera
+     */
     private String saleState;
     private String currency;
+    /**
+     * corresponds to Vendedor in primavera
+     */
     private String salesman;
+    /**
+     * corresponds to CicloVenda in primavera
+     */
     private String saleCycle;
     private ArrayList<SaleOpportunitieProposal> proposals;
 
@@ -37,7 +70,7 @@ public class SaleOpportunitie implements Serializable
         this.entity = entity;
         this.entityType = entityType;
         this.saleState = saleState;
-        this.currency = currency;
+        this.currency = "EUR";
         this.salesman = salesman;
         this.saleCycle = saleCycle;
         String generatedValue = String.valueOf(new Random().nextLong());
@@ -49,6 +82,7 @@ public class SaleOpportunitie implements Serializable
                             String currency, String salesman, String saleCycle)
     {
         this.opportunitieId = opportunitieId;
+        this.opportunitieNumber = opportunitieNumber;
         this.description = description;
         this.creationDate = creationDate;
         this.expirationDate = expirationDate;
