@@ -1,6 +1,5 @@
 package com.example.david.sinfapplication.Activities.customer_list;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,7 +19,6 @@ import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.Document;
 import com.example.david.sinfapplication.CommonDataClasses.DocumentLine;
-import com.example.david.sinfapplication.MainActivity;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 

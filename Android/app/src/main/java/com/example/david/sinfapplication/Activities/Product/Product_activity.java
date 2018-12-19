@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.Product;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.product_catalog.product_catalog_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
@@ -73,8 +75,13 @@ public class Product_activity extends AppCompatActivity {
             return;
         }
 
+        //add to cart
         CartProduct cartProduct = new CartProduct(product, quantityInt, discountInt);
         CommonStorage.cartProducts.add(cartProduct);
+
+        //redirect to product list
+        Intent intent = new Intent(this, product_catalog_activity.class);
+        startActivity(intent);
     }
 
 }
