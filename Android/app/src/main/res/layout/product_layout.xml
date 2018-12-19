@@ -144,7 +144,7 @@
                 android:background="@drawable/rounder_corner_gray_border"
                 android:ems="10"
                 android:hint="Quantity"
-                android:inputType="numberPassword"
+                android:inputType="numberDecimal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_description" />
 
