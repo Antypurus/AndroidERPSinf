@@ -9,11 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.david.sinfapplication.Activities.create_sales_oportunity.create_sales_oportunity_activity;
-import com.example.david.sinfapplication.Activities.list_budgets.list_budgets_adapter;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.WebAPI.WebAPI;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeoutException;
 
 public class list_sales_oportunities_activity extends AppCompatActivity {
 
@@ -36,7 +37,25 @@ public class list_sales_oportunities_activity extends AppCompatActivity {
         this.layoutManager = new LinearLayoutManager(this);
         this.sales_oportunities.setLayoutManager(this.layoutManager);
 
-        ArrayList<SaleOpportunitie> opportunities = new ArrayList<>();
+        String customerId = getIntent().getStringExtra("customerId");
+
+        ArrayList<SaleOpportunitie> opportunities;
+        try
+        {
+            if(customerId == null)
+                opportunities = WebAPI.getAllSalesOpportunities();
+            else
+                opportunities = WebAPI.getSalesOpportunitiesOfCustomer(customerId);
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+            return;
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            return;
+        }
+
         this.adapter = new list_sales_oportunities_adapter(opportunities);
         this.sales_oportunities.setAdapter(this.adapter);
     }

@@ -34,7 +34,7 @@ public class list_sales_oportunities_adapter extends RecyclerView.Adapter<list_s
 
             this.layout = layout;
             this.timeline = layout.findViewById(R.id.timeline);
-            this.name = layout.findViewById(R.id.costumer_name);
+            this.name = layout.findViewById(R.id.customer_name);
         }
     }
 
@@ -50,7 +50,8 @@ public class list_sales_oportunities_adapter extends RecyclerView.Adapter<list_s
     public void onBindViewHolder(list_sales_oportunities_holder holder, int position) {
         SaleOpportunitie oportunity = this.salesOportunities.get(position);
 
-        holder.timeline.setText(oportunity.getCreationDate()+" - "+oportunity.getExpirationDate());
+        holder.timeline.setText(oportunity.getCreationDate().substring(0, oportunity.getCreationDate().indexOf("T")) +
+                "  -  " + oportunity.getCreationDate().substring(0, oportunity.getExpirationDate().indexOf("T")));
         holder.name.setText(oportunity.getEntity());
         holder.layout.setOnClickListener(view->goToSalesOportunity(holder.layout,oportunity));
     }
