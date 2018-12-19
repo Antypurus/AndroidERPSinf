@@ -11,9 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
+
+import org.json.JSONException;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class login_activity extends AppCompatActivity {
 
@@ -58,13 +62,19 @@ public class login_activity extends AppCompatActivity {
             return;
         }
 
-        WebAPI.loginResult result;
+        WebAPI.loginResult result = null;
         try {
             result = WebAPI.login(username,password);
-        } catch (Exception e)
+            WebAPI.getAttribOfSalesOportunity("20", "Valor");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        } catch (JSONException e)
         {
             e.printStackTrace();
-           result = null;
         }
 
         Log.d("Primavera Login","Finished Login Proccess");
@@ -82,8 +92,6 @@ public class login_activity extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
-                CustomerBasic customerBasic = new CustomerBasic("47", "asdasd", "asdasd", "23112", "123123", "EUR");
-                intent.putExtra("customer", customerBasic);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))

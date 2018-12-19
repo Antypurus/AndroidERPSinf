@@ -101,7 +101,7 @@ public class register_order_activity extends Activity
         intent.putExtra("cartProductArrayList", cartProductArrayList);
         intent.putExtra("isSale", isSale);
 
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); //TODO what is this??
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
 
 
