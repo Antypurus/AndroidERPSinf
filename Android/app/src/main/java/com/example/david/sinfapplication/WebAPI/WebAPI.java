@@ -370,7 +370,7 @@ public class WebAPI
 
     public static ArrayList<SaleOpportunitie> getAllSalesOpportunities() throws InterruptedException, ExecutionException, TimeoutException
     {
-        String query = "\"SELECT  * from CabecOportunidadesVenda\" ORDER BY DataCriacao,DataExpiracao ASC";
+        String query = "\"SELECT  * from CabecOportunidadesVenda ORDER BY DataCriacao,DataExpiracao ASC\"";
 
         String requestRoute = Route.getSalesOpportunitiesOfCustomer;
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getSalesOpportunitiesOfCustomer,
