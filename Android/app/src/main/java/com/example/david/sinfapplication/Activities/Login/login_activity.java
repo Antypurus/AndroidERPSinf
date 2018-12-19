@@ -14,11 +14,6 @@ import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
-import org.json.JSONException;
-
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
-
 public class login_activity extends AppCompatActivity {
 
     SharedPreferences preferences = null;
@@ -62,19 +57,13 @@ public class login_activity extends AppCompatActivity {
             return;
         }
 
-        WebAPI.loginResult result = null;
+        WebAPI.loginResult result;
         try {
             result = WebAPI.login(username,password);
-            WebAPI.getAttribOfSalesOportunity("20", "Valor");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (JSONException e)
+        } catch (Exception e)
         {
             e.printStackTrace();
+            result = null;
         }
 
         Log.d("Primavera Login","Finished Login Proccess");
