@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.david.sinfapplication.Activities.view_sales_oportunity.view_sales_oportunity_activity;
+import com.example.david.sinfapplication.Activities.view_sales_opportunity.view_sales_opportunity_activity;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.R;
 
@@ -62,7 +62,7 @@ public class list_sales_oportunities_adapter extends RecyclerView.Adapter<list_s
 
     public void goToSalesOportunity(View view,SaleOpportunitie opportunitie)
     {
-        Intent intent = new Intent(view.getContext(),view_sales_oportunity_activity.class);
+        Intent intent = new Intent(view.getContext(),view_sales_opportunity_activity.class);
         intent.putExtra("SaleOportunity",opportunitie);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         view.getContext().startActivity(intent);
