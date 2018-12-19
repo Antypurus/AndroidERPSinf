@@ -130,6 +130,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/rounded_corner_red"
+        android:onClick="convertToSalesOrder"
         android:text="Convert To Sales Order"
         android:textAlignment="center"
         android:textAllCaps="false"

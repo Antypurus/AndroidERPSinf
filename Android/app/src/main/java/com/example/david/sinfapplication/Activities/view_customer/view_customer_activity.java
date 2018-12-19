@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
+import com.example.david.sinfapplication.Activities.list_budgets.list_budgets_activity;
 import com.example.david.sinfapplication.Activities.sales_history.sales_history_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.R;
@@ -49,30 +50,31 @@ public class view_customer_activity extends Activity
     public void goto_edit_customer(View view)
     {
         Intent intent = new Intent(this, edit_customer_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customer", customer);
         startActivity(intent);
     }
 
     public void goto_customer_meetings(View view)
     {
-        //TODO
         Intent intent = new Intent(this, edit_customer_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);
     }
 
     public void goto_customer_sales_history(View view)
     {
-        //TODO
         Intent intent = new Intent(this, sales_history_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);
     }
 
-    public void goto_customer_orders(View view)
+    public void goto_budget_list(View view)
     {
-        //TODO
-        Intent intent = new Intent(this, edit_customer_activity.class);
+        Intent intent = new Intent(this, list_budgets_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);
     }

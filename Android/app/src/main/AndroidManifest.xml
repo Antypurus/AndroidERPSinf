@@ -85,7 +85,17 @@
         </activity>
 
         <activity android:name=".Activities.sale_order.sale_order_activity">
-            android:name=".sales_history"
+            android:name=".sales_order"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity android:name=".Activities.list_budgets.list_budgets_activity">
+            android:name=".budgets_list"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity android:name=".Activities.view_budget.budget_activity">
+            android:name=".budget"
             android:configChanges="orientation|screenSize">
         </activity>
 

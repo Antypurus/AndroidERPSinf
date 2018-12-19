@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/meetings_button4"
+        android:id="@+id/edit_customer_button"
         android:layout_width="337dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -161,7 +161,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/rounded_corner_blue"
-        android:onClick="goto_customer_orders"
+        android:onClick="goto_budget_list"
         android:text="Orders"
         android:textAllCaps="false"
         android:textColor="@color/white"
