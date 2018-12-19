@@ -1,6 +1,5 @@
 package com.example.david.sinfapplication.Activities.Login;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,10 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
-import com.example.david.sinfapplication.Activities.create_customer.create_customer_activity;
-import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
-import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -97,8 +92,6 @@ public class login_activity extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(this, main_menu_activity.class);
-                CustomerBasic customerBasic = new CustomerBasic("47", "asdasd", "asdasd", "23112", "123123", "EUR");
-                intent.putExtra("customer", customerBasic);
                 startActivity(intent);
             }
             else if(result.equals(WebAPI.loginResult.loginFailedWrongUsernameOrPassword))

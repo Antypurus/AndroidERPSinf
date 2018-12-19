@@ -7,6 +7,23 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/sales_oportunities"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_navy_blue"
+        android:onClick="goToSalesOportunities"
+        android:text="Sales Oportunities"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_button" />
+
+    <Button
         android:id="@+id/cart_button"
         android:layout_width="349dp"
         android:layout_height="wrap_content"
@@ -32,7 +49,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner_navy_blue"
         android:onClick="toCatalog"
-        android:text="Prodcut Catalog"
+        android:text="Product Catalog"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
