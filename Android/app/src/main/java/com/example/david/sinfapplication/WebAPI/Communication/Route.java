@@ -47,4 +47,8 @@ public class Route
     public static String getProposalDetailsPart1 = PrimaveraWebAPIDefaultRoute + "CRM/PropostasOPV/Edita/d58cac54-03af-11e9-8dd0-080027266259/";
     public static String getProposalDetailsPart2 = PrimaveraWebAPIDefaultRoute + "/5/true";
 
+    //AgendaEntry
+    public static String listAgendaEntries = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+    public static String setAgendaEntryNotes = PrimaveraWebAPIDefaultRoute + PrimaveraWebAPIRawQuery;
+
 }
