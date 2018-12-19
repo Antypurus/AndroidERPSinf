@@ -60,6 +60,7 @@ public class login_activity extends AppCompatActivity {
         WebAPI.loginResult result;
         try {
             result = WebAPI.login(username,password);
+            WebAPI.getMaxIdOfProposalThatBelongToSaleOpportunity("d58cac54-03af-11e9-8dd0-080027266259");
         } catch (Exception e)
         {
             e.printStackTrace();
