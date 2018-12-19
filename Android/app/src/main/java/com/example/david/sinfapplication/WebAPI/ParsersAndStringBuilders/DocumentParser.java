@@ -79,7 +79,7 @@ public class DocumentParser
         if(createDocumentRequestResponse == null)
             return false;
 
-        if(createDocumentRequestResponse == "true")
+        if(createDocumentRequestResponse.equals("true"))
             return true;
         else
             return false;
