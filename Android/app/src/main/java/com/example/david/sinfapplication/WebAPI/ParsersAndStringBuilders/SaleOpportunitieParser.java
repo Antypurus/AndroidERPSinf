@@ -1,7 +1,6 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerOfSalesman;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 
 import org.json.JSONArray;
@@ -89,5 +88,38 @@ public class SaleOpportunitieParser
         }
 
         return maxIdOfProposal;
+    }
+
+    public static ArrayList<SaleOpportunitie> parseGetSalesOpportunitiesOfCustomer(String salesOpportunityResponse) throws JSONException
+    {
+        if(salesOpportunityResponse == null)
+            return null;
+
+        JSONObject dataSetObject = new JSONObject(salesOpportunityResponse).getJSONObject("DataSet");
+        JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
+        ArrayList<SaleOpportunitie> salesOpportunities = new ArrayList<>();
+        for(int i = 0; i < proposalsArray.length(); i++)
+        {
+            JSONObject productObject = proposalsArray.getJSONObject(i);
+            String opportunitieId = productObject.getString("ID");
+            String opportunitieNumber = productObject.getString("Oportunidade");
+            String description = productObject.getString("Descricao");
+            String creationDate = productObject.getString("DataCriacao");
+            String expirationDate = productObject.getString("DataExpiracao");
+            String resume = productObject.getString("Resumo");
+            String entity = productObject.getString("Entidade");
+            String entityType = productObject.getString("TipoEntidade");
+            String saleState = productObject.getString("EstadoVenda");
+            String salesman = productObject.getString("Vendedor");
+            String saleCycle = productObject.getString("CicloVenda");
+
+            SaleOpportunitie saleOpportunitie = new SaleOpportunitie(opportunitieId, opportunitieNumber,
+                    description, creationDate, expirationDate, resume, entity, entity, entityType,
+                    saleState, salesman, saleCycle);
+
+            salesOpportunities.add(saleOpportunitie);
+        }
+
+        return salesOpportunities;
     }
 }
