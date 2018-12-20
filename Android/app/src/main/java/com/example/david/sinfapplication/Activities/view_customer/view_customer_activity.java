@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.david.sinfapplication.Activities.Agenda.agenda_activity;
 import com.example.david.sinfapplication.Activities.edit_customer.edit_customer_activity;
 import com.example.david.sinfapplication.Activities.list_budgets.list_budgets_activity;
+import com.example.david.sinfapplication.Activities.list_sales_oportunities.list_sales_oportunities_activity;
 import com.example.david.sinfapplication.Activities.sales_history.sales_history_activity;
-import com.example.david.sinfapplication.Activities.view_sales_opportunity.view_sales_opportunity_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
@@ -58,7 +59,7 @@ public class view_customer_activity extends Activity
 
     public void goto_customer_meetings(View view)
     {
-        Intent intent = new Intent(this, edit_customer_activity.class);
+        Intent intent = new Intent(this, agenda_activity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);
@@ -82,7 +83,7 @@ public class view_customer_activity extends Activity
 
     public void goto_sales_op(View view)
     {
-        Intent intent = new Intent(this, view_sales_opportunity_activity.class);
+        Intent intent = new Intent(this, list_sales_oportunities_activity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("customerId", customer.getId());
         startActivity(intent);

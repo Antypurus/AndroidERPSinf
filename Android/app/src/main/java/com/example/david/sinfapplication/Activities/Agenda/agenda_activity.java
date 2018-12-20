@@ -28,9 +28,13 @@ public class agenda_activity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
         agenda_events.setLayoutManager(layoutManager);
 
+        String customerId = getIntent().getStringExtra("customerId");
         ArrayList<AgendaEntry> events = new ArrayList<>();
         try {
-            events = WebAPI.getAllAgendaEntries(CommonStorage.vender_id);
+            if(customerId == null)
+                events = WebAPI.getAllAgendaEntries(CommonStorage.vender_id);
+            else
+                events = getAgendaEntriesFromCustomerWithGivenId(WebAPI.getAllAgendaEntries(CommonStorage.vender_id), customerId);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -41,6 +45,21 @@ public class agenda_activity extends AppCompatActivity {
 
         RecyclerView.Adapter adapter = new agenda_adapter(events);
         agenda_events.setAdapter(adapter);
+    }
+
+    private ArrayList<AgendaEntry> getAgendaEntriesFromCustomerWithGivenId(ArrayList<AgendaEntry> allAgendaEntries, String customerId)
+    {
+        ArrayList<AgendaEntry> result = new ArrayList<>();
+        for(AgendaEntry agendaEntry : allAgendaEntries)
+        {
+            String entidadePrincipal = agendaEntry.getEntidadePrincipal();
+            if(entidadePrincipal == null)
+                continue;
+            if(entidadePrincipal.equals(customerId))
+                result.add(agendaEntry);
+        }
+
+        return result;
     }
 
 }
