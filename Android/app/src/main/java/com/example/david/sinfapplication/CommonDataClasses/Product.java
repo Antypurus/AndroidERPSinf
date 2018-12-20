@@ -84,7 +84,7 @@ public class Product implements Serializable
     private Bitmap loadImageFromServer() throws InterruptedException, ExecutionException,
             TimeoutException
     {
-        if(imagePath == null || imagePath.isEmpty())
+        if(imagePath == null || imagePath.isEmpty() || imagePath.equals("null"))
             return null;
 
         LoadImage imageObject = new LoadImage(serverImageRoute + imagePath);
