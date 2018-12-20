@@ -34,7 +34,6 @@ public class view_event_activity extends AppCompatActivity {
         ((TextView)this.findViewById(R.id.description)).setText(event.getDescriçao());
         ((TextView)this.findViewById(R.id.client)).setText("Client: "+event.getEntidadePrincipal());
         ((TextView)this.findViewById(R.id.location)).setText("Location: "+event.getLocalRealizaçao());
-        ((TextView)this.findViewById(R.id.state)).setText("State: "+event.getEstado());
         ((TextView)this.findViewById(R.id.priority)).setText("Priority: " + priority);
     }
 
