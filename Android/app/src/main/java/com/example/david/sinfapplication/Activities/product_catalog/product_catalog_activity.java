@@ -1,10 +1,12 @@
 package com.example.david.sinfapplication.Activities.product_catalog;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.david.sinfapplication.Activities.Main_Menu.main_menu_activity;
 import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
@@ -54,6 +56,13 @@ public class product_catalog_activity extends Activity {
 
         mAdapter = new product_list_adapter(products);
         m_product_list.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(this, main_menu_activity.class);
+        startActivity(intent);
     }
 
 }
