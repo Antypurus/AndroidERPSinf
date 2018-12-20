@@ -75,7 +75,8 @@ public class SaleOpportunitieParser
         return attribValue;
     }
 
-    public static Integer parseMaxIdOfProposalThatBelongToSaleOpportunity(String maxIdOfProposalThatBelongToSaleOpportunityRequestResponse) throws JSONException
+    public static Integer parseMaxIdOfProposalThatBelongToSaleOpportunity(String maxIdOfProposalThatBelongToSaleOpportunityRequestResponse) throws
+            JSONException
     {
         if(maxIdOfProposalThatBelongToSaleOpportunityRequestResponse == null)
             return null;
@@ -86,7 +87,14 @@ public class SaleOpportunitieParser
         for(int i = 0; i < proposalsArray.length(); i++)
         {
             JSONObject productObject = proposalsArray.getJSONObject(i);
-            maxIdOfProposal = productObject.getInt("NumProposta");
+            try
+            {
+                maxIdOfProposal = productObject.getInt("NumProposta");
+            }
+            catch (JSONException e)
+            {
+                maxIdOfProposal = 0;
+            }
         }
 
         return maxIdOfProposal;

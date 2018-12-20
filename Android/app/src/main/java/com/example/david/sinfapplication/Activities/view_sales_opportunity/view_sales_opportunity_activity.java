@@ -2,10 +2,12 @@ package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
+import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -14,13 +16,15 @@ import java.util.concurrent.TimeoutException;
 
 public class view_sales_opportunity_activity extends AppCompatActivity {
 
+    private SaleOpportunitie saleOpportunitie;
+
     @Override
     public void onCreate(Bundle savedInstances)
     {
         super.onCreate(savedInstances);
         this.setContentView(R.layout.view_sales_oportunity);
 
-        SaleOpportunitie saleOpportunitie = (SaleOpportunitie) getIntent().getSerializableExtra("SaleOportunity");
+        saleOpportunitie = (SaleOpportunitie) getIntent().getSerializableExtra("SaleOportunity");
 
         TextView description = this.findViewById(R.id.description);
         TextView creation_date = this.findViewById(R.id.creation_date);
@@ -55,4 +59,35 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
         }
     }
 
+    public void addSaleProposal(View view)
+    {
+        if(CommonStorage.cartProducts.isEmpty())
+        {
+            ((TextView)this.findViewById(R.id.error_pane)).setText("Cart must be have products!");
+            return;
+        }
+        try
+        {
+            int maxIdProposal = WebAPI.getMaxIdOfProposalThatBelongToSaleOpportunity(saleOpportunitie.getOpportunitieId());
+            SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(maxIdProposal + 1,
+                    saleOpportunitie, CommonStorage.cartProducts);
+            boolean success = WebAPI.createProposalForSaleOpportunitie(saleOpportunitieProposal);
+            if(success)
+            {
+                CommonStorage.cartProducts.clear();
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Transform into sale successfully!");
+            }
+            else
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Transform into sale has failed!");
+        } catch (TimeoutException e)
+        {
+            ((TextView)this.findViewById(R.id.error_pane)).setText("Network error!");
+            e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            ((TextView)this.findViewById(R.id.error_pane)).setText("Server error!");
+            e.printStackTrace();
+        }
+    }
 }

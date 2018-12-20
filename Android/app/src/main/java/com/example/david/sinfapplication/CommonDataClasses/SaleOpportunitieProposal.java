@@ -23,6 +23,13 @@ public class SaleOpportunitieProposal implements Serializable
         this.productsList = productsList;
     }
 
+    public SaleOpportunitieProposal(int proposalNumber, SaleOpportunitie saleOpportunitie, ArrayList<CartProduct> productsList)
+    {
+        this.proposalNumber = proposalNumber;
+        this.saleOpportunitie = saleOpportunitie;
+        this.productsList = productsList;
+    }
+
     public SaleOpportunitie getSaleOpportunitie()
     {
         return saleOpportunitie;
