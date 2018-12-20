@@ -47,11 +47,11 @@ public class register_order_activity extends Activity
         mAdapter = new register_order_product_list_adapter(cartProductArrayList);
         m_checkout_product_list_recycler_view.setAdapter(mAdapter);
 
-        float total_price = 0;
+        double total_price = 0.0;
         String currency = "";
         for (CartProduct product : cartProductArrayList)
         {
-            total_price += (product.getPvp() * ((100 - product.getDiscount()) / 100)) * product.getQuantity();
+            total_price += ((product.getPvp() * ((100 - product.getDiscount()) / 100)) * product.getQuantity());
             currency = product.getCurrency();
         }
 
