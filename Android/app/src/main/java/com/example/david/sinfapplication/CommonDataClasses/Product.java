@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Product implements Serializable
 {
-    private static String serverImageRoute = "dservers.ddns.net/SINF/";
+    private static String serverImageRoute = "http://dservers.ddns.net/SINF/";
     /**
      * Corresponds to Artigo in primavera
      */
