@@ -71,6 +71,8 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
 
 
         Bitmap image = dataset.get(position).getImage();
+        Product product = dataset.get(position);
+        Bitmap image = product.getImage();
         if (image != null)
         {
             holder.product_image.setImageBitmap(image);
