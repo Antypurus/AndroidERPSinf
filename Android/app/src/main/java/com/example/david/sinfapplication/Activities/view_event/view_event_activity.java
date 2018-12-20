@@ -17,7 +17,7 @@ public class view_event_activity extends AppCompatActivity {
 
         AgendaEntry event = (AgendaEntry) getIntent().getSerializableExtra("Event");
 
-        ((TextView)this.findViewById(R.id.event_name)).setText(event.getResumo());
+        ((TextView)this.findViewById(R.id.resumo)).setText(event.getResumo());
         ((TextView)this.findViewById(R.id.start_time)).setText("Start Time: "+event.getDataInicio());
         ((TextView)this.findViewById(R.id.end_time)).setText("End Time: "+event.getDataFim());
         ((TextView)this.findViewById(R.id.description)).setText(event.getDescriçao());
