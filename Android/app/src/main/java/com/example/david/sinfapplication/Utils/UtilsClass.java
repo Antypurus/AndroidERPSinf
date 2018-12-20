@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Utils;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -13,6 +14,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class UtilsClass
 {
@@ -101,5 +104,15 @@ public class UtilsClass
         String formattedDate = dateFormat.format(date);
 
         return formattedDate;
+    }
+
+    public static Bitmap loadImageFromServer(String imagePath) throws InterruptedException, ExecutionException,
+            TimeoutException
+    {
+        if(imagePath == null || imagePath.isEmpty() || imagePath.equals("null"))
+            return null;
+
+        Bitmap imageObject = (Bitmap) LoadImage.doInBackground(imagePath);
+        return imageObject;
     }
 }
