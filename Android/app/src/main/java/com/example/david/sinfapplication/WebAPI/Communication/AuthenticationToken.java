@@ -1,12 +1,9 @@
 package com.example.david.sinfapplication.WebAPI.Communication;
 
-import android.util.Log;
-
 import com.example.david.sinfapplication.Utils.UtilsClass;
 
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -51,7 +48,6 @@ class AuthenticationToken
         String loginRequestResponse  = primaveraWebAPI.makeLoginRequest(Route.PrimaveraAuthentication, authenticationRequestParamatersBytes);
         JSONObject jsonObject = new JSONObject(loginRequestResponse);
         authenticationToken = jsonObject.getString("access_token");
-        Log.d("generate token", authenticationToken); //TODO
 
         lastGeneratedTokenTimeMilis = System.currentTimeMillis();
     }

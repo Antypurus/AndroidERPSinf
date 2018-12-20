@@ -39,11 +39,4 @@ public class AgendaParser
 
         return agendaEntries;
     }
-
-    //TODO
-   /* public static boolean parseSetAgendaEntryNotes(String setAgendaEntryNotesRequestResponse)
-    {
-
-        return false;
-    }*/
 }

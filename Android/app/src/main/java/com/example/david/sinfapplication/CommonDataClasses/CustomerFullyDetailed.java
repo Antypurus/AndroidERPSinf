@@ -2,7 +2,6 @@ package com.example.david.sinfapplication.CommonDataClasses;
 
 import android.util.Log;
 
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -80,7 +79,6 @@ public class CustomerFullyDetailed extends CustomerBasic
                                  String pendingOrdersDebit)
     {
         super("", name, address, phoneNumber, taxNumber, currency);
-        //TODO ver se isto ta a funcionar direito;
         String fullObjString = name + description + address + city + postalCode
                 + postalCodeCity + phoneNumber + faxNumber + webSite + state
                 + taxNumber + country + currency + checkingAccountDebit + pendingOrdersDebit;

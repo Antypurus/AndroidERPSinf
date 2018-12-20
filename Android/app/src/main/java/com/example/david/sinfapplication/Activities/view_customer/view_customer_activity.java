@@ -28,7 +28,7 @@ public class view_customer_activity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_customer);
         String customerId = getIntent().getStringExtra("customerId");
-        getAndSetCustomerInfoOnScreen("1"); //TODO
+        getAndSetCustomerInfoOnScreen(customerId);
     }
 
     private void getAndSetCustomerInfoOnScreen(String customerId)
@@ -40,11 +40,9 @@ public class view_customer_activity extends Activity
             ((TextView)(this.findViewById(R.id.customer_name))).setText(customer.getName());
             ((TextView)(this.findViewById(R.id.customer_phone))).setText(customer.getPhoneNumber());
             ((TextView)(this.findViewById(R.id.customer_tax_no))).setText(customer.getTaxNumber());
-            //TODO ((TextView)(this.findViewById(R.id.customer_description))).setText(customer.getDescription());
 
         } catch (Exception e)
         {
-            //TODO VIEW ERROR PAGE
             e.printStackTrace();
         }
     }

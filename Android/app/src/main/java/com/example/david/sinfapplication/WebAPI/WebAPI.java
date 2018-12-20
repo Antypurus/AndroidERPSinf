@@ -87,10 +87,7 @@ public class WebAPI
     public static ArrayList<CustomerOfSalesman> listCustomersOfASalesman(String salesmanId) throws InterruptedException, ExecutionException, TimeoutException
     {
         String requestRoute = Route.listCustomersOfASalesman;
-        String query = "\"SELECT Cliente, Nome FROM Clientes WHERE Vendedor = \'" + salesmanId + "\'\"";
-
-        //TODO
-        query = "\"SELECT Cliente, Nome, Fac_Tel FROM Clientes WHERE Vendedor = '"+salesmanId+"'\"";
+        String query = "\"SELECT Cliente, Nome, Fac_Tel FROM Clientes WHERE Vendedor = '"+salesmanId+"'\"";
         String viewCustomersOfSalesmanResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.listCustomersOfASalesman,
                 ContentType.ApplicationJson, query.getBytes());
         try
@@ -180,30 +177,6 @@ public class WebAPI
                 ContentType.ApplicationJson, query.getBytes());
         return ProductsListParser.parseListProductsRequestResponse(listProductsRequestResponse);
     }
-
-    /**
-     * Retrieves details of a product by id from the ERP server. Returns an instance of class Product representing the product retrieved from the ERP server.
-     * @param productId A String representing the id of the product to retrieve from the ERP server.
-     * @return An instance of class Product representing the product retrieved from server.
-     * @throws InterruptedException
-     * @throws ExecutionException
-     * @throws TimeoutException
-     */
-    //TODO no need em principio porque o list faz tudo
-    /*public static Product viewProductAndStock(String productId) throws InterruptedException, ExecutionException, TimeoutException
-    {
-        String requestRoute = Route.viewProduct + productId;
-        String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.ViewProduct,
-                ContentType.UrlEncoded, new byte[0]);
-        try
-        {
-            return ProductParser.parseViewProductRequestResponse(viewCustomerRequestResponse);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return null;
-    }*/
 
     /**
      * Adds a document on the ERP server. Returns a boolean indicating the result of the request.
@@ -453,23 +426,4 @@ public class WebAPI
         }
         return null;
     }
-
-    //TODO
-    /*
-    public static boolean setAgendaEntryNotes(String customerId) throws InterruptedException, ExecutionException, TimeoutException
-    {
-        String query = "\"SELECT  * from Tarefas T JOIN Clientes C ON T.EntidadePrincipal = C.Cliente WHERE C.Vendedor = \'" + customerId + "\'\"";
-
-        String requestRoute = Route.setAgendaEntryNotes;
-        String setAgendaEntryNotesRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.setAgendaEntryNotes,
-                ContentType.ApplicationJson, query.getBytes());
-        try
-        {
-            return AgendaParser.parseSetAgendaEntryNotes(setAgendaEntryNotesRequestResponse);
-        } catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
-    }*/
 }
