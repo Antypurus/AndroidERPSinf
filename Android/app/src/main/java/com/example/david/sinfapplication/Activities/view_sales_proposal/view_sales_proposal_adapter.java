@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.view_sales_proposal;
 
+import android.database.CursorIndexOutOfBoundsException;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,7 +52,12 @@ public class view_sales_proposal_adapter extends RecyclerView.Adapter<view_sales
     public void onBindViewHolder(view_sales_proposal_holder holder, int position) {
         CartProduct product = this.products.get(position);
 
-        holder.price.setText(product.getCurrency()+" "+product.getPvp());
+        String Currency = product.getCurrency();
+        if(Currency==null || Currency.equals("null"))
+        {
+            Currency = "EUR";
+        }
+        holder.price.setText(Currency +" "+product.getPvp());
         holder.name.setText(product.getDescription());
         holder.quantity.setText(""+product.getQuantity());
     }
