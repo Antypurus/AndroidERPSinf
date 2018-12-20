@@ -2,6 +2,7 @@ package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
