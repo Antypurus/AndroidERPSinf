@@ -87,7 +87,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/sales_proposals"
                 android:layout_width="0dp"
-                android:layout_height="231dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
