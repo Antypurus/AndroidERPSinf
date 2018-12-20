@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders;
 
+import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitie;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
@@ -151,17 +152,22 @@ public class SaleOpportunitieParser
         if(getAllProposalsOfASalesOpportunityResponse == null)
             return;
 
-        JSONObject dataSetObject = new JSONObject(getAllProposalsOfASalesOpportunityResponse).getJSONObject("DataSet");
-        JSONArray proposalsArray = dataSetObject.getJSONArray("Table");
-        ArrayList<SaleOpportunitieProposal> salesOpportunities = new ArrayList<>();
-        for(int i = 0; i < proposalsArray.length(); i++)
+        JSONObject dataSetObject = new JSONObject(getAllProposalsOfASalesOpportunityResponse);
+        JSONArray linesArray = dataSetObject.getJSONArray("Linhas");
+        ArrayList<CartProduct> cartProducts = new ArrayList<>();
+
+        for(int i = 0; i < linesArray.length(); i++)
         {
-            JSONObject productObject = proposalsArray.getJSONObject(i);
-            Integer value = productObject.getInt("Valor");
+            JSONObject productObject = linesArray.getJSONObject(i);
+            String productId = productObject.getString("Artigo");
+            Integer price = productObject.getInt("PrecoVenda");
+            Integer quantity = productObject.getInt("Quantidade");
+            Integer discount = productObject.getInt("Desconto1");
+            CartProduct cartProduct = new CartProduct(productId, price, quantity, discount);
 
-            //           SaleOpportunitieProposal saleOpportunitieProposal = new SaleOpportunitieProposal(saleOpportunitie, value, null);
-
-            salesOpportunities.add(saleOpportunitieProposal);
+            cartProducts.add(cartProduct);
         }
+
+        saleOpportunitieProposal.setProductsList(cartProducts);
     }
 }
