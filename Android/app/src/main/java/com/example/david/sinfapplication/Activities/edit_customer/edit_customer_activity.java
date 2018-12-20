@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.view_customer.view_customer_activity;
-import com.example.david.sinfapplication.CommonDataClasses.CustomerBasic;
+import com.example.david.sinfapplication.CommonDataClasses.CustomerFullyDetailed;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
 
@@ -25,7 +25,7 @@ public class edit_customer_activity extends Activity {
 
     public void sendMessage(View view)
     {
-        CustomerBasic customer = (CustomerBasic) getIntent().getSerializableExtra("customer");
+        CustomerFullyDetailed customer = (CustomerFullyDetailed) getIntent().getSerializableExtra("customer");
 
         String customerName = ((EditText)this.findViewById(R.id.customerName)).getText().toString();
         String customerAddress = ((EditText)this.findViewById(R.id.customerAddress)).getText().toString();

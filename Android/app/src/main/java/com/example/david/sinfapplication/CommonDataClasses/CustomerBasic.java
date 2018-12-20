@@ -1,11 +1,6 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-import android.util.Log;
-
 import com.example.david.sinfapplication.Utils.UtilsClass;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class CustomerBasic extends Customer
 {

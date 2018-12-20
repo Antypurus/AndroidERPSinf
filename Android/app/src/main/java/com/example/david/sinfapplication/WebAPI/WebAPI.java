@@ -152,7 +152,7 @@ public class WebAPI
      * @throws ExecutionException
      * @throws TimeoutException
      */
-    public static boolean editCustomer(CustomerBasic customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
+    public static boolean editCustomer(CustomerFullyDetailed customerFullyDetailed) throws InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.editCostumer;
         String requestBody = CustomerParserAndStringBuilder.buildJsonWithCustomerNonNullAttributes(customerFullyDetailed, true).toString();
