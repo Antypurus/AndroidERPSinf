@@ -2,7 +2,9 @@ package com.example.david.sinfapplication.Activities.view_event;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
+import com.example.david.sinfapplication.CommonDataClasses.AgendaEntry;
 import com.example.david.sinfapplication.R;
 
 public class view_event_activity extends AppCompatActivity {
@@ -12,6 +14,17 @@ public class view_event_activity extends AppCompatActivity {
     {
         super.onCreate(savedInstances);
         this.setContentView(R.layout.view_event);
+
+        AgendaEntry event = null;
+
+        ((TextView)this.findViewById(R.id.event_name)).setText(event.getResumo());
+        ((TextView)this.findViewById(R.id.start_time)).setText("Start Time: "+event.getDataInicio());
+        ((TextView)this.findViewById(R.id.end_time)).setText("End Time: "+event.getDataFim());
+        ((TextView)this.findViewById(R.id.description)).setText(event.getDescriçao());
+        ((TextView)this.findViewById(R.id.client)).setText("Client: "+event.getEntidadePrincipal());
+        ((TextView)this.findViewById(R.id.location)).setText("Location: "+event.getLocalRealizaçao());
+        ((TextView)this.findViewById(R.id.state)).setText("State: "+event.getEstado());
+        ((TextView)this.findViewById(R.id.priority)).setText("Priority: "+event.getPrioridade());
     }
 
 }
