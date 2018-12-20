@@ -57,7 +57,7 @@ public class Product implements Serializable
             InterruptedException, ExecutionException, TimeoutException
     {
         this(id, family, subfamily, description, imagePath, observations, currentStock, pvp, currency, null);
-        Bitmap bitmap = loadImageFromServer();
+        image = loadImageFromServer();
     }
 
     public Product(String id, String family, String subfamily, String description, String imagePath,
@@ -87,9 +87,11 @@ public class Product implements Serializable
         if(imagePath == null || imagePath.isEmpty() || imagePath.equals("null"))
             return null;
 
-        LoadImage imageObject = new LoadImage(serverImageRoute + imagePath);
-        imageObject.execute(new String[1]);
-        return (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
+        System.out.println("loading image for " + description);
+        Bitmap imageObject = (Bitmap) LoadImage.doInBackground(serverImageRoute + imagePath);
+        if (imageObject == null)
+            System.out.printf("image loaded for " + description + " is null");
+        return imageObject;
     }
 
     public Product(Product product)
