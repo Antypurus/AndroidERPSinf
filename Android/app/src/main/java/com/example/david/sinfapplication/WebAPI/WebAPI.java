@@ -419,15 +419,16 @@ public class WebAPI
         return null;
     }
 
-    public static boolean getDetailsOfProposal(String proposalId, SaleOpportunitieProposal saleOpportunitieProposal) throws InterruptedException, ExecutionException, TimeoutException
+    public static boolean getDetailsOfProposal(SaleOpportunitieProposal saleOpportunitieProposal) throws InterruptedException, ExecutionException, TimeoutException
     {
-        String requestRoute = Route.getProposalDetailsPart1 + proposalId + Route.getProposalDetailsPart2;
+        String requestRoute = Route.getProposalDetailsPart1 + saleOpportunitieProposal.getSaleOpportunitie().getOpportunitieId()
+                + "/" + saleOpportunitieProposal.getProposalNumber() + Route.getProposalDetailsPart2;
 
         String viewCustomerRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.getProposalDetails,
-                ContentType.ApplicationJson, new byte[0]);
+                ContentType.UrlEncoded, new byte[0]);
         try
         {
-            SaleOpportunitieParser.parseGetDetailsOfProposal(proposalId, saleOpportunitieProposal);
+            SaleOpportunitieParser.parseGetDetailsOfProposal(viewCustomerRequestResponse, saleOpportunitieProposal);
             return true;
         } catch (JSONException e)
         {
