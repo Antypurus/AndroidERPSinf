@@ -26,7 +26,6 @@ import com.example.david.sinfapplication.WebAPI.ParsersAndStringBuilders.SaleOpp
 
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
@@ -328,7 +327,7 @@ public class WebAPI
             InterruptedException, ExecutionException, TimeoutException, JSONException
     {
         String requestRoute = Route.transformSaleOpportunitie;
-        requestRoute.replaceFirst("{documentType}", documentType);
+        requestRoute = requestRoute.replace("{documentType}", documentType);
 
         String createSaleOpportunitieRequestResponse = PrimaveraWebAPI.sendRequest(requestRoute, RequestMethod.transformSaleOpportunitie,
                 ContentType.ApplicationJson, SaleOpportunitieParser.transformSaleOpportunitieProposalRequestBody(saleOpportunitieNumber, numberProposalToAccept).getBytes());

@@ -73,8 +73,7 @@ public class SaleOpportunitie implements Serializable
         this.currency = "EUR";
         this.salesman = salesman;
         this.saleCycle = saleCycle;
-        String generatedValue = String.valueOf(new Random().nextLong());
-        this.opportunitieNumber = generatedValue.substring(0, Math.min(18, generatedValue.length()));
+        this.opportunitieNumber = String.valueOf(new Random().nextInt(Integer.MAX_VALUE));
     }
 
     public SaleOpportunitie(String opportunitieId, String opportunitieNumber, String description, String creationDate,
@@ -93,8 +92,7 @@ public class SaleOpportunitie implements Serializable
         this.currency = currency;
         this.salesman = salesman;
         this.saleCycle = saleCycle;
-        String generatedValue = String.valueOf(new Random().nextLong());
-        this.opportunitieNumber = generatedValue.substring(0, Math.min(18, generatedValue.length()));
+        this.opportunitieNumber = String.valueOf(new Random().nextInt(Integer.MAX_VALUE));
     }
 
     public String getOpportunitieId()

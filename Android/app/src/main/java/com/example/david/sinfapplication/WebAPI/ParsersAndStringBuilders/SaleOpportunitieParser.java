@@ -46,7 +46,7 @@ public class SaleOpportunitieParser
         if(transformSaleOpportunitieRequestResponse == null)
             return false;
 
-        if(transformSaleOpportunitieRequestResponse.equals("")) //TODO maybe seja true
+        if(transformSaleOpportunitieRequestResponse.equals("true"))
             return true;
 
         return false;
