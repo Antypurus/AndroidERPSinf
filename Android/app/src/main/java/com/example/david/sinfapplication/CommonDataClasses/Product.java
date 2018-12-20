@@ -12,6 +12,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Product implements Serializable
 {
+    private static String serverImageRoute = "dservers.ddns.net/SINF/";
     /**
      * Corresponds to Artigo in primavera
      */
@@ -86,7 +87,7 @@ public class Product implements Serializable
         if(imagePath == null || imagePath.isEmpty())
             return null;
 
-        LoadImage imageObject = new LoadImage(imagePath);
+        LoadImage imageObject = new LoadImage(serverImageRoute + imagePath);
         imageObject.execute(new String[1]);
         return (Bitmap)imageObject.get(50000,TimeUnit.MILLISECONDS);
     }

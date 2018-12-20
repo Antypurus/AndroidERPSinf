@@ -17,6 +17,7 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
     public void onCreate(Bundle savedInstances)
     {
         super.onCreate(savedInstances);
+        this.setContentView(R.layout.view_sales_oportunity);
 
         SaleOpportunitie saleOpportunitie = (SaleOpportunitie) getIntent().getSerializableExtra("SaleOportunity");
 
@@ -26,11 +27,16 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
         TextView entity = this.findViewById(R.id.entity);
         TextView state = this.findViewById(R.id.sale_state);
 
-        description.setText(saleOpportunitie.getDescription());
-        creation_date.setText("Creation Date: "+saleOpportunitie.getCreationDate());
-        expiration_date.setText("Expiration Date: "+saleOpportunitie.getExpirationDate());
-        entity.setText("Costumer: "+saleOpportunitie.getEntity());
-        state.setText("State: "+saleOpportunitie.getSaleState());
+        if(saleOpportunitie.getDescription() != null)
+            description.setText(saleOpportunitie.getDescription());
+        if(saleOpportunitie.getCreationDate() != null)
+            creation_date.setText("Creation Date: "+saleOpportunitie.getCreationDate());
+        if(saleOpportunitie.getExpirationDate() != null)
+            expiration_date.setText("Expiration Date: "+saleOpportunitie.getExpirationDate());
+        if(saleOpportunitie.getEntity() != null)
+            entity.setText("Costumer: "+saleOpportunitie.getEntity());
+        if(saleOpportunitie.getSaleState() != null)
+            state.setText("State: "+saleOpportunitie.getSaleState());
 
         try
         {
