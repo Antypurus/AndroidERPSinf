@@ -69,19 +69,12 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
         holder.product_price.setText(dataset.get(position).getCurrency()+dataset.get(position).getPvp());
         holder.product_name.setText(dataset.get(position).getDescription());
 
-        LoadImage image = new LoadImage("http://dservers.ddns.net/sinf_images/a.png");
-        image.execute(new String[1]);
-        Bitmap bmp = null;
-        try {
-            bmp = (Bitmap)image.get(50000,TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
+
+        Bitmap image = dataset.get(position).getImage();
+        if (image != null)
+        {
+            holder.product_image.setImageBitmap(image);
         }
-        holder.product_image.setImageBitmap(bmp);
 
         holder.product.setOnClickListener(view -> go_to_product(position, holder.product));
     }
