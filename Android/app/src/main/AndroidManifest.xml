@@ -125,6 +125,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity android:name=".Activities.view_event.view_event_activity">
+            android:name=".event"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
     </application>
 
 </manifest>

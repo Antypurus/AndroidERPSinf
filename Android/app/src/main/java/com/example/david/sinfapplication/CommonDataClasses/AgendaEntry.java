@@ -1,6 +1,8 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
-public class AgendaEntry
+import java.io.Serializable;
+
+public class AgendaEntry implements Serializable
 {
     private String id;
     private String prioridade;
