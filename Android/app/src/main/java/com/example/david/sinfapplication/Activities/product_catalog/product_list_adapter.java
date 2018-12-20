@@ -69,14 +69,13 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
         holder.product_price.setText(dataset.get(position).getCurrency()+dataset.get(position).getPvp());
         holder.product_name.setText(dataset.get(position).getDescription());
 
-
-        Bitmap image = dataset.get(position).getImage();
         Product product = dataset.get(position);
         Bitmap image = product.getImage();
         if (image != null)
         {
             holder.product_image.setImageBitmap(image);
         }
+
 
         holder.product.setOnClickListener(view -> go_to_product(position, holder.product));
     }
