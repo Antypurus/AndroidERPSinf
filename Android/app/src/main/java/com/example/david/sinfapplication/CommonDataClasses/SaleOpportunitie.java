@@ -222,6 +222,11 @@ public class SaleOpportunitie implements Serializable
         this.proposals = proposals;
     }
 
+    public ArrayList<SaleOpportunitieProposal> getProposals()
+    {
+        return this.proposals;
+    }
+
     public String getJson() throws JSONException
     {
         JSONObject jsonObject = new JSONObject();

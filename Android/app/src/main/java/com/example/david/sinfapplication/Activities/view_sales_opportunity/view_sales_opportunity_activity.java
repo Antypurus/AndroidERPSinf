@@ -2,6 +2,8 @@ package com.example.david.sinfapplication.Activities.view_sales_opportunity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -57,6 +59,15 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
         {
             e.printStackTrace();
         }
+
+        RecyclerView proposals = this.findViewById(R.id.sales_proposals);
+        proposals.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        proposals.setLayoutManager(layoutManager);
+
+        RecyclerView.Adapter adapter = new view_sales_opportunity_adapter(saleOpportunitie.getProposals());
+        proposals.setAdapter(adapter);
     }
 
     public void addSaleProposal(View view)
