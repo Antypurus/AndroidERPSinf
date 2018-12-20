@@ -15,6 +15,23 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/error_pane3"
+                android:layout_width="317dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:textAlignment="center"
+                android:textColor="@color/translucent_red"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/add_sales_proposal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sale_state" />
+
+            <TextView
                 android:id="@+id/sale_state"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -96,7 +113,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/rounded_corner_navy_blue"
                 android:text="Add Sales Proposal"
@@ -105,8 +121,9 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sale_state" />
+                tools:layout_editor_absoluteY="531dp" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
