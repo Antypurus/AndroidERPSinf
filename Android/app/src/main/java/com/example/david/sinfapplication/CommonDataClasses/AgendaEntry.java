@@ -25,7 +25,11 @@ public class AgendaEntry implements Serializable
         this.descriçao = descriçao;
         this.entidadePrincipal = entidadePrincipal;
         this.dataInicio = dataInicio;
+        if(dataInicio != null)
+            dataInicio.replace("T", "  ");
         this.dataFim = dataFim;
+        if(dataFim != null)
+            dataFim.replace("T", "  ");
         this.localRealizaçao = localRealizaçao;
     }
 
