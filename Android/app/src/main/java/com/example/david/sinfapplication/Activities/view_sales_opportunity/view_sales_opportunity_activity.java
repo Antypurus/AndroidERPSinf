@@ -86,10 +86,10 @@ public class view_sales_opportunity_activity extends AppCompatActivity {
             if(success)
             {
                 CommonStorage.cartProducts.clear();
-                ((TextView)this.findViewById(R.id.error_pane)).setText("Transform into sale successfully!");
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Added sale proposal successfully!");
             }
             else
-                ((TextView)this.findViewById(R.id.error_pane)).setText("Transform into sale has failed!");
+                ((TextView)this.findViewById(R.id.error_pane)).setText("Add sale proposal has failed!");
         } catch (TimeoutException e)
         {
             ((TextView)this.findViewById(R.id.error_pane)).setText("Network error!");

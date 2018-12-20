@@ -1,5 +1,6 @@
 package com.example.david.sinfapplication.Activities.view_sales_proposal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.david.sinfapplication.Activities.view_sales_opportunity.view_sales_opportunity_activity;
 import com.example.david.sinfapplication.CommonDataClasses.SaleOpportunitieProposal;
 import com.example.david.sinfapplication.R;
 import com.example.david.sinfapplication.WebAPI.WebAPI;
@@ -28,18 +30,49 @@ public class view_sales_proposal_activity extends AppCompatActivity {
 
         saleOpportunitieProposal = (SaleOpportunitieProposal) getIntent().getSerializableExtra("SaleProposal");
 
-        if(saleOpportunitieProposal != null) {
+        boolean success = true;
+        if(saleOpportunitieProposal != null)
+        {
+            try
+            {
+                if(!WebAPI.getDetailsOfProposal(saleOpportunitieProposal))
+                    success = false;
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+                success = false;
+            }
+
+            if(!success)
+            {
+                Intent intent = new Intent(this, view_sales_opportunity_activity.class);
+                startActivity(intent);
+                return;
+            }
+
             TextView title_bar = this.findViewById(R.id.proposal_number);
             title_bar.setText("" + saleOpportunitieProposal.getProposalNumber());
 
-            this.products = this.findViewById(R.id.products);
-            this.products.setHasFixedSize(true);
+            if(saleOpportunitieProposal.getProductsList() != null)
+            {
+                this.products = this.findViewById(R.id.products);
+                this.products.setHasFixedSize(true);
 
-            this.layoutManager = new LinearLayoutManager(this);
-            this.products.setLayoutManager(this.layoutManager);
+                this.layoutManager = new LinearLayoutManager(this);
+                this.products.setLayoutManager(this.layoutManager);
 
-            this.adapter = new view_sales_proposal_adapter(saleOpportunitieProposal.getProductsList());
-            this.products.setAdapter(this.adapter);
+                this.adapter = new view_sales_proposal_adapter(saleOpportunitieProposal.getProductsList());
+                this.products.setAdapter(this.adapter);
+            }
+
+        }
+        else
+            success = false;
+
+        if(!success)
+        {
+            Intent intent = new Intent(this, view_sales_opportunity_activity.class);
+            startActivity(intent);
         }
     }
 
