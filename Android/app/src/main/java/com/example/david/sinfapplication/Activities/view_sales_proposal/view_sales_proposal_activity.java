@@ -28,17 +28,19 @@ public class view_sales_proposal_activity extends AppCompatActivity {
 
         saleOpportunitieProposal = (SaleOpportunitieProposal) getIntent().getSerializableExtra("SaleProposal");
 
-        TextView title_bar = this.findViewById(R.id.proposal_number);
-        title_bar.setText(""+ saleOpportunitieProposal.getProposalNumber());
+        if(saleOpportunitieProposal != null) {
+            TextView title_bar = this.findViewById(R.id.proposal_number);
+            title_bar.setText("" + saleOpportunitieProposal.getProposalNumber());
 
-        this.products = this.findViewById(R.id.products);
-        this.products.setHasFixedSize(true);
+            this.products = this.findViewById(R.id.products);
+            this.products.setHasFixedSize(true);
 
-        this.layoutManager = new LinearLayoutManager(this);
-        this.products.setLayoutManager(this.layoutManager);
+            this.layoutManager = new LinearLayoutManager(this);
+            this.products.setLayoutManager(this.layoutManager);
 
-        this.adapter = new view_sales_proposal_adapter(saleOpportunitieProposal.getProductsList());
-        this.products.setAdapter(this.adapter);
+            this.adapter = new view_sales_proposal_adapter(saleOpportunitieProposal.getProductsList());
+            this.products.setAdapter(this.adapter);
+        }
     }
 
     public void transformSaleIntoOrder(View view)
