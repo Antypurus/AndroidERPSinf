@@ -2,29 +2,21 @@ package com.example.david.sinfapplication.Activities.product_catalog;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.example.david.sinfapplication.Activities.Product.Product_activity;
-import com.example.david.sinfapplication.Activities.register_order.register_order_product_list_adapter;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
-import com.example.david.sinfapplication.Utils.LoadImage;
+import com.example.david.sinfapplication.Utils.UtilsClass;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class product_list_adapter extends RecyclerView.Adapter<product_list_adapter.product_list_holder> {
@@ -70,7 +62,20 @@ public class product_list_adapter extends RecyclerView.Adapter<product_list_adap
         holder.product_name.setText(dataset.get(position).getDescription());
 
         Product product = dataset.get(position);
-        Bitmap image = product.getImage();
+        Bitmap image = null;
+        try
+        {
+            image = UtilsClass.loadImageFromServer(product.getImagePath());
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        }
         if (image != null)
         {
             holder.product_image.setImageBitmap(image);

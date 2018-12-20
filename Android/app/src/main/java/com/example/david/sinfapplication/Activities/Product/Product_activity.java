@@ -13,6 +13,10 @@ import com.example.david.sinfapplication.CommonDataClasses.CartProduct;
 import com.example.david.sinfapplication.CommonDataClasses.CommonStorage;
 import com.example.david.sinfapplication.CommonDataClasses.Product;
 import com.example.david.sinfapplication.R;
+import com.example.david.sinfapplication.Utils.UtilsClass;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class Product_activity extends AppCompatActivity {
 
@@ -23,7 +27,20 @@ public class Product_activity extends AppCompatActivity {
         setContentView(R.layout.product_layout);
 
         Product product = (Product) getIntent().getSerializableExtra("product");
-        Bitmap productImage = product.getImage();
+        Bitmap productImage = null;
+        try
+        {
+            productImage = UtilsClass.loadImageFromServer(product.getImagePath());
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        } catch (ExecutionException e)
+        {
+            e.printStackTrace();
+        } catch (TimeoutException e)
+        {
+            e.printStackTrace();
+        }
         if(productImage != null)
             ((ImageView)this.findViewById(R.id.product_image)).setImageBitmap(productImage);
 

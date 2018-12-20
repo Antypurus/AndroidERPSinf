@@ -1,14 +1,7 @@
 package com.example.david.sinfapplication.CommonDataClasses;
 
 
-import android.graphics.Bitmap;
-
-import com.example.david.sinfapplication.Utils.LoadImage;
-
 import java.io.Serializable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Product implements Serializable
 {
@@ -33,11 +26,11 @@ public class Product implements Serializable
      * Corresponds to Observacoes in primavera
      */
     private String observations;
+
     /**
      * Corresponds to CDU_CampoVar1 in primavera
      */
     private String imagePath;
-    private Bitmap image;
     /**
      * Corresponds to StkActual in primavera
      */
@@ -53,15 +46,7 @@ public class Product implements Serializable
 
 
     public Product(String id, String family, String subfamily, String description, String imagePath,
-                   String observations, int currentStock, double pvp, String currency) throws
-            InterruptedException, ExecutionException, TimeoutException
-    {
-        this(id, family, subfamily, description, imagePath, observations, currentStock, pvp, currency, null);
-        image = loadImageFromServer();
-    }
-
-    public Product(String id, String family, String subfamily, String description, String imagePath,
-                   String observations, int currentStock, double pvp, String currency, Bitmap image)
+                   String observations, int currentStock, double pvp, String currency)
     {
         this.id = id;
         this.family = family;
@@ -72,7 +57,6 @@ public class Product implements Serializable
         this.currentStock = currentStock;
         this.pvp = pvp;
         this.currency = currency;
-        this.image = image;
     }
 
     public Product(String id, int pvp)
@@ -81,23 +65,15 @@ public class Product implements Serializable
         this.pvp = pvp;
     }
 
-    private Bitmap loadImageFromServer() throws InterruptedException, ExecutionException,
-            TimeoutException
-    {
-        if(imagePath == null || imagePath.isEmpty() || imagePath.equals("null"))
-            return null;
-
-        System.out.println("loading image for " + description);
-        Bitmap imageObject = (Bitmap) LoadImage.doInBackground(serverImageRoute + imagePath);
-        if (imageObject == null)
-            System.out.printf("image loaded for " + description + " is null");
-        return imageObject;
-    }
-
     public Product(Product product)
     {
         this(new String(product.id), new String(product.family), new String(product.subfamily), new String(product.description), new String(product.imagePath),
-                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency), product.image);
+                new String(product.observations), product.currentStock,  product.pvp, new String(product.currency));
+    }
+
+    public String getImagePath()
+    {
+        return serverImageRoute + imagePath;
     }
 
     public String getId()
@@ -148,16 +124,6 @@ public class Product implements Serializable
     public void setObservations(String observations)
     {
         this.observations = observations;
-    }
-
-    public Bitmap getImage()
-    {
-        return image;
-    }
-
-    public void setImage(Bitmap image)
-    {
-        this.image = image;
     }
 
     public int getCurrentStock()
