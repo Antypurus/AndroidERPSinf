@@ -168,10 +168,11 @@ public class SaleOpportunitieParser
         {
             JSONObject productObject = linesArray.getJSONObject(i);
             String productId = productObject.getString("Artigo");
+            String productName = productObject.getString("Descricao");
             Integer price = productObject.getInt("PrecoVenda");
             Integer quantity = productObject.getInt("Quantidade");
             Integer discount = productObject.getInt("Desconto1");
-            CartProduct cartProduct = new CartProduct(productId, price, quantity, discount);
+            CartProduct cartProduct = new CartProduct(productId, productName, price, quantity, discount);
 
             cartProducts.add(cartProduct);
         }

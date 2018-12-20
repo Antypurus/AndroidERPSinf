@@ -59,10 +59,11 @@ public class Product implements Serializable
         this.currency = currency;
     }
 
-    public Product(String id, int pvp)
+    public Product(String id, String productName, int pvp)
     {
         this.id = id;
         this.pvp = pvp;
+        this.description = productName;
     }
 
     public Product(Product product)
