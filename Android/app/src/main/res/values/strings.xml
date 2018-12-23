@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Animais do Primavera</string>
+    <string name="app_name">Farnell</string>
 
     <!-- ******** Strings For the register customerFullyDetailed view *************-->
     <string name="register_customer_title">Register Customer</string>

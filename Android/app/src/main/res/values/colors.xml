@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#FF4C4C</color>
+<color name="colorPrimary">#23A9F4</color>
+<color name="colorPrimaryDark">#2379F4</color>
+<color name="colorAccent">#FF4C4C</color>
     <color name="white">#FFFFFF</color>
     <color name="translucent_red">#EA3C53</color>
     <color name="translucent_white">#CCFFFFFF</color>
     <color name="old_copper_blue1">#d3dfeb</color>
-    <color name="buttonsColor">#6a99b5</color>
-    <color name="gray">#404040</color>
-    <color name="old_copper_blue">#73b1b7</color>
+<color name="buttonsColor">#6a99b5</color>
+<color name="gray">#404040</color>
+<color name="old_copper_blue">#73b1b7</color>
 
 </resources>
